@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Mails;
+use App\Mail\Captacao;
 use App\Models\Captura;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class CapturaController extends Controller
 {
@@ -41,6 +44,11 @@ class CapturaController extends Controller
             'email' => $request['email'],
       
         ]);
+
+        $mails = new Mails();
+        $mails['name'] = $request->name;
+
+        Mail::to($request->email)->send(new Captacao($mails));
 
         return redirect()->route('thanks');
     }
