@@ -31,6 +31,7 @@
 
             </tbody>
         </table>
+        {{ $capturas->links() }}
     </div>
 
 </x-app-layout>

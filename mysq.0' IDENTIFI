@@ -4,3 +4,5 @@ FLUSH PRIVILEGES
 
  chown -R www-data.www-data /var/www/html/celeiro/storage
  chown -R www-data.www-data /var/www/html/celeiro/bootstrap/cache
+
+ certbot --nginx -d celeirodomalte.com -d www.celeirodomalte.com
