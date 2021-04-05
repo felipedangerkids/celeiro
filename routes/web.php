@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\CapturaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -16,3 +17,6 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('front.index');
 });
+
+Route::post('user-store', [CapturaController::class, 'store']);
+Route::get('obrigado', [CapturaController::class, 'thanks'])->name('thanks');

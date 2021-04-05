@@ -1,0 +1,3 @@
+CREATE USER 'celeiro'@'0.0.0.0' IDENTIFIED BY 'Powerfull1@';
+GRANT ALL PRIVILEGES ON * . * TO 'celeiro'@'0.0.0.0';
+FLUSH PRIVILEGES
