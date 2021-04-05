@@ -27,6 +27,3 @@ Route::get('obrigado', [CapturaController::class, 'thanks'])->name('thanks');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index']
 )->name('dashboard');
 
-Route::get('/mail', function () {
-    return view('mails.contacts');
-});
