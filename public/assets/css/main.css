@@ -1,0 +1,52 @@
+h1 {
+  color: #eda200 !important;
+  font-size: 1.5em;
+}
+
+body {
+  background: #191919;
+  font-family: "Bungee Inline", cursive;
+}
+
+.logo {
+  max-width: 150px;
+  width: 100%;
+}
+
+.logo img {
+  width: 100%;
+}
+
+.mid-text p {
+  padding: 0 16em;
+}
+
+.low-text {
+  background: #eda200;
+  padding: 1em 1em;
+  border-radius: 10px;
+}
+
+.low-text p {
+  font-weight: 900;
+}
+
+.form input {
+  background: #333332 !important;
+  border: none !important;
+  padding: 1em !important;
+}
+
+.btn-env {
+  background-color: #eda200;
+  width: 100%;
+  padding: 1em;
+  font-weight: 900;
+}
+
+@media only screen and (max-width: 600px) {
+  .mid-text p {
+    padding: 0 1em;
+  }
+}
+/*# sourceMappingURL=main.css.map */
