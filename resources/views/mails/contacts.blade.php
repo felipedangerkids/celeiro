@@ -12,7 +12,7 @@
 <body>
       <div class="container">
             <div>
-                  <img width="200" src="{{ url('assets/img/logo-mail.png') }}" alt="">
+                  <img  src="{{ url('assets/img/logo-mail.png') }}" alt="">
             </div>
 
             <div>
