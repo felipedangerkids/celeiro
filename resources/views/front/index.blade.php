@@ -55,7 +55,7 @@
 
                   </div>
                   <div class="col-md-4 col-10 mt-2 mb-4">
-                        <button class="btn btn-env">CADASTRAR E GANHAR 10%</button>
+                        <button class="btn btn-env">CADASTRAR E GANHAR 100%</button>
                   </div>
             </div>
       </section>
