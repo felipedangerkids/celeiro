@@ -35,6 +35,7 @@ body {
   background: #333332 !important;
   border: none !important;
   padding: 1em !important;
+  color: #b8b8b8 !important;
 }
 
 .btn-env {
@@ -42,6 +43,24 @@ body {
   width: 100%;
   padding: 1em;
   font-weight: 900;
+}
+
+::-webkit-input-placeholder {
+  color: white !important;
+}
+
+:-moz-placeholder {
+  /* Firefox 18- */
+  color: white !important;
+}
+
+::-moz-placeholder {
+  /* Firefox 19+ */
+  color: white !important;
+}
+
+:-ms-input-placeholder {
+  color: white !important;
 }
 
 @media only screen and (max-width: 600px) {
