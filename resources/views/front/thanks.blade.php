@@ -17,10 +17,10 @@
                 </div>
                 <div class="d-flex mx-auto mt-3 icons">
                       <div class="face" id="face" onmousemove="face()" onmouseleave="faceOut()">
-                         <a href="">  <img src="{{ url('assets/img/face.svg') }}" alt=""></a>
+                         <a href="https://www.facebook.com/celeirodomaltecervejasartesanais" target="_blank">  <img src="{{ url('assets/img/face.svg') }}" alt=""></a>
                       </div>
                       <div class="insta" id="insta" onmousemove="insta()" onmouseleave="instaOut()">
-                           <a href=""><img src="{{ url('assets/img/insta.svg') }}" alt=""></a>
+                           <a href="https://www.instagram.com/celeirodomalte/" target="_blank"><img src="{{ url('assets/img/insta.svg') }}" alt=""></a>
                       </div>
                 </div>
           </div>
