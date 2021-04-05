@@ -12,10 +12,10 @@
 <body>
       <div class="container">
             <div>
-                  <img width="50" src="{{ url('assets/img/logo-mail.png') }}" alt="">
+                  <img width="200" src="{{ url('assets/img/logo-mail.png') }}" alt="">
             </div>
 
-            <div class="text">
+            <div>
                   <h3>Olá {{ $name }}</h3>
 
                   <p>Acabamos de receber a sua inscrição.</p>
