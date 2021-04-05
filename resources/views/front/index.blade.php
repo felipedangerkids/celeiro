@@ -15,7 +15,7 @@
                         Malte vai até aí.
                   </p>
             </div>
-            <div class="text-uppercase mx-auto text-center low-text col-md-6 mt-2">
+            <div class="text-uppercase mx-auto text-center low-text col-md-6 col-10 mt-2">
                   <p class="my-auto">
                         Se você tem mais de 18 anos faça o pré cadastro e garanta 10% de desconto na primeira
                         compra.
@@ -24,7 +24,7 @@
       </div>
       <form action="{{ url('user-store') }}" method="POST">
             @csrf
-            <div class="d-flex flex-column align-items-center mx-auto text-center form">
+            <div class="d-flex flex-column align-items-center mx-auto text-center mt-4 form">
 
                   <div class="form-group col-md-4 col-10 mt-2">
 
