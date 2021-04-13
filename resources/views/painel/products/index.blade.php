@@ -10,8 +10,8 @@
 <div>
       <table class="table table-dark">
             <thead>
-                  <tr>
-                        <th scope="col">Produto</th>
+                  <tr class="table-th">
+                        <th >Produto</th>
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Contato</th>
                         <th scope="col">Preço de Compra</th>
@@ -21,7 +21,7 @@
             </thead>
             <tbody>
                   @foreach ($products as $product)
-                  <tr>
+                  <tr class="table-tr">
                         <th>{{ $product->name }}</th>
                         <td>{{ $product->provider }}</td>
                         <td>{{ $product->provname }}</td>
