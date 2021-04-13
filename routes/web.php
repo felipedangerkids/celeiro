@@ -31,6 +31,6 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/clientes', [DashboardCont
 Route::middleware(['auth:sanctum', 'verified'])->get('/produtos', [ProductController::class, 'index'])->name('products');
 Route::middleware(['auth:sanctum', 'verified'])->get('/produtos-edit/{id}', [ProductController::class, 'edit']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/produtos-store', [ProductController::class, 'store']);
-Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-delete/{id}', [ProductController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->any('/produtosDelete/{id}', [ProductController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [ProductController::class, 'update']);
 

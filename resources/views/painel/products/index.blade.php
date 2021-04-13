@@ -29,12 +29,12 @@
                         <td>{{  'R$ '.number_format($product->sellprice, 2, ',', '.') }}</td>
                         <td>
                               <div class="icons d-flex justify-content-around">
-                                    <a  href="{{ url('produtos-edit/'. $product->id) }}">
+                                    <a href="{{ url('produtos-edit/'. $product->id) }}">
                                           <div class="edit">
                                                 <i class="far fa-edit"></i>
                                           </div>
                                     </a>
-                                    <a href="{{ url('produtos-delete/'. $product->id) }}">
+                                    <a onclick="deleteItem(this)" data-id="{{ $product->id }}">
                                           <div class="trash">
                                                 <i class="far fa-trash-alt"></i>
                                           </div>
@@ -69,7 +69,7 @@
                                     <div class="form-group col-md-6">
 
                                           <input type="text" class="form-control" name="name"
-                                                placeholder="Nome do Produto" >
+                                                placeholder="Nome do Produto">
 
                                     </div>
                                     <div class="form-group col-md-6">
@@ -163,7 +163,67 @@
             </div>
       </div>
 </div>
-
+<script type="application/javascript">
+      function deleteItem(e) {
+        
+                    let id = e.getAttribute('data-id');
+        
+                    const swalWithBootstrapButtons = Swal.mixin({
+                          customClass: {
+                                confirmButton: 'btn btn-success',
+                                cancelButton: 'btn btn-danger'
+                          },
+                          buttonsStyling: false
+                    });
+        
+                    swalWithBootstrapButtons.fire({
+                          title: 'Você tem certeza?',
+                          text: "Está deletando permanentemente!",
+                          icon: 'warning',
+                          showCancelButton: true,
+                          confirmButtonText: 'Sim, delete!',
+                          cancelButtonText: 'Não, cancelar!',
+                          reverseButtons: true
+                    }).then((result) => {
+                          if (result.value) {
+                                if (result.isConfirmed) {
+        
+                                      $.ajax({
+                                            type: 'DELETE',
+                                            url: '{{url('produtosDelete')}}/' + id,
+                                            data: {
+                                                  "_token": "{{ csrf_token() }}",
+                                            },
+                                            success: function (data) {
+                                                  if (data.success) {
+                                                        swalWithBootstrapButtons.fire(
+                                                              'Deletado!',
+                                                              'Seu produto foi deletado!',
+                                                              "success"
+                                                           
+                                                        );
+                                                     
+                                                  }
+        
+                                            }
+                                      });
+        
+                                }
+        location.reload();
+                          } else if (
+                                result.dismiss === Swal.DismissReason.cancel
+                          ) {
+                                swalWithBootstrapButtons.fire(
+                                      'Cancelado',
+                                      'Este produto está seguro!)',
+                                      'error'
+                                );
+                          }
+                    });
+        
+              }
+        
+</script>
 
 
 

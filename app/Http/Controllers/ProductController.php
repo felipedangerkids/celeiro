@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic;
 
+
 class ProductController extends Controller
 {
     /**
@@ -166,11 +167,18 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Product $product, $id)
+    public function destroy(Request $request, $id)
     {
-        $product = Product::find($id);
-        $product->delete();
+        if ($request->ajax()) {
 
-        return redirect()->back()->with('success', 'Produto deletado com sucesso!'); 
+            $user = Product::findOrFail($id);
+
+            if ($user) {
+
+                $user->delete();
+
+                return response()->json(array('success' => true));
+            }
+        }
     }
 }
