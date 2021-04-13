@@ -10,7 +10,12 @@ class DashboardController extends Controller
     public function index()
     {
 
+        return view('painel.index');
+    }
+
+    public function clientes()
+    {
         $capturas =  Captura::paginate(10);
-        return view('dashboard', compact('capturas'));
+        return view('painel.clientes', compact('capturas'));
     }
 }
