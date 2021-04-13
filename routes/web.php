@@ -28,5 +28,9 @@ Route::get('obrigado', [CapturaController::class, 'thanks'])->name('thanks');
 Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index']
 )->name('dashboard');
 Route::middleware(['auth:sanctum', 'verified'])->get('/clientes', [DashboardController::class, 'clientes']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/produtos', [ProductController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/produtos', [ProductController::class, 'index'])->name('products');
+Route::middleware(['auth:sanctum', 'verified'])->get('/produtos-edit/{id}', [ProductController::class, 'edit']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/produtos-store', [ProductController::class, 'store']);
+Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-delete/{id}', [ProductController::class, 'destroy']);
+Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [ProductController::class, 'update']);
 

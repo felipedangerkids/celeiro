@@ -14,34 +14,38 @@
                         <th scope="col">Produto</th>
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Contato</th>
-                        <th scope="col">PC</th>
-                        <th scope="col">PV</th>
+                        <th scope="col">Preço de Compra</th>
+                        <th scope="col">Preço de Venda</th>
                         <th scope="col">Ações</th>
                   </tr>
             </thead>
             <tbody>
-
+                  @foreach ($products as $product)
                   <tr>
-                        <th>TEste</th>
-                        <td>teste</td>
-                        <td>teste</td>
-                        <td>teste</td>
-                        <td>teste</td>
+                        <th>{{ $product->name }}</th>
+                        <td>{{ $product->provider }}</td>
+                        <td>{{ $product->provname }}</td>
+                        <td>{{  'R$ '.number_format($product->buyprice, 2, ',', '.') }}</td>
+                        <td>{{  'R$ '.number_format($product->sellprice, 2, ',', '.') }}</td>
                         <td>
                               <div class="icons d-flex justify-content-around">
-                                    <div class="edit">
-                                          <i class="far fa-edit"></i>
-                                    </div>
-                                    <div class="trash">
-                                          <i class="far fa-trash-alt"></i>
-                                    </div>
+                                    <a  href="{{ url('produtos-edit/'. $product->id) }}">
+                                          <div class="edit">
+                                                <i class="far fa-edit"></i>
+                                          </div>
+                                    </a>
+                                    <a href="{{ url('produtos-delete/'. $product->id) }}">
+                                          <div class="trash">
+                                                <i class="far fa-trash-alt"></i>
+                                          </div>
+                                    </a>
                                     <div class="block">
                                           <i class="fas fa-ban"></i>
                                     </div>
                               </div>
                         </td>
                   </tr>
-
+                  @endforeach
             </tbody>
       </table>
 
@@ -59,81 +63,96 @@
                         </button>
                   </div>
                   <div class="modal-body">
-                        <form>
+                        <form method="POST" action="{{ url('/produtos-store') }}" enctype="multipart/form-data">
+                              @csrf
                               <div class="row">
                                     <div class="form-group col-md-6">
 
-                                          <input type="text" class="form-control" placeholder="Nome do Produto">
+                                          <input type="text" class="form-control" name="name"
+                                                placeholder="Nome do Produto" >
 
                                     </div>
                                     <div class="form-group col-md-6">
 
-                                          <input type="text" class="form-control" placeholder="Nome Resumido">
+                                          <input type="text" class="form-control" name="resume"
+                                                placeholder="Nome Resumido">
                                     </div>
                                     <div class="form-group col-md-6">
 
-                                          <input type="text" class="form-control" placeholder="Fornecedor">
+                                          <input type="text" class="form-control" name="provider"
+                                                placeholder="Fornecedor">
                                     </div>
                                     <div class="form-group col-md-6">
 
-                                          <textarea type="text" class="form-control" placeholder="Descrição"
-                                                rows="4"></textarea>
+                                          <textarea type="text" class="form-control" name="description"
+                                                placeholder="Descrição" rows="4"></textarea>
                                     </div>
                                     <div class="form-group col-md-3">
 
-                                          <input type="text" class="form-control" placeholder="Contato">
+                                          <input type="text" class="form-control" id="phone" name="provphone"
+                                                placeholder="Contato">
                                     </div>
                                     <div class="form-group col-md-3">
 
-                                          <input type="text" class="form-control" placeholder="Nome do Contato">
+                                          <input type="text" class="form-control" name="provname"
+                                                placeholder="Nome do Contato">
                                     </div>
                                     <div class="form-group col-md-6">
 
-                                          <input type="file" class="form-control" placeholder="Foto do Produto">
+                                          <input type="file" class="form-control" name="image"
+                                                placeholder="Foto do Produto">
                                     </div>
                                     <div class="form-group col-md-3">
 
-                                          <input type="text" class="form-control" placeholder="Preço de Compra">
+                                          <input type="text" class="form-control" id="buyprice" name="buyprice"
+                                                placeholder="Preço de Compra">
                                     </div>
                                     <div class="form-group col-md-3">
 
-                                          <input type="text" class="form-control" placeholder="Preço de Venda">
+                                          <input type="text" class="form-control" id="sellprice" name="sellprice"
+                                                placeholder="Preço de Venda">
                                     </div>
                                     <div class="form-group col-md-6">
 
-                                          <input type="text" class="form-control" placeholder="Amargor">
+                                          <input type="text" class="form-control" name="bitterness"
+                                                placeholder="Amargor">
                                     </div>
                                     <div class="form-group col-md-3">
 
-                                          <input type="text" class="form-control" placeholder="Temperatura">
+                                          <input type="text" class="form-control" name="temperature"
+                                                placeholder="Temperatura">
                                     </div>
                                     <div class="form-group col-md-3">
 
-                                          <input type="text" class="form-control" placeholder="IBV">
+                                          <input type="text" class="form-control" name="ibv" placeholder="IBV">
                                     </div>
                                     <div class="form-group col-md-3">
 
-                                          <input type="text" class="form-control" placeholder="Tipo">
+                                          <input type="text" class="form-control" name="type" placeholder="Tipo">
                                     </div>
                                     <div class="col-md-3">
-                                   <div class="form-group">
-                                          <label for="happy" class="col-sm-4 col-md-4 control-label text-right text-white">Destaque?</label>
-                                          <div class="col-sm-7 col-md-7">
-                                                <div class="input-group">
-                                                      <div id="radioBtn" class="btn-group">
-                                                            <a class="btn btn-add btn-sm active" data-toggle="happy" data-title="Y">SIM</a>
-                                                            <a class="btn btn-add btn-sm notActive" data-toggle="happy" data-title="N">NÂO</a>
+                                          <div class="form-group">
+                                                <label for="happy"
+                                                      class="col-sm-4 col-md-4 control-label text-right text-white">Destaque?</label>
+                                                <div class="col-sm-7 col-md-7">
+                                                      <div class="input-group">
+                                                            <div id="radioBtn" class="btn-group">
+                                                                  <a class="btn btn-add btn-sm " data-toggle="happy"
+                                                                        data-title="1">SIM</a>
+                                                                  <a class="btn btn-add btn-sm" data-toggle="happy"
+                                                                        data-title="2">NÂO</a>
+                                                            </div>
+                                                            <input type="hidden" name="spotlight" id="happy">
                                                       </div>
-                                                      <input type="hidden" name="happy" id="happy">
                                                 </div>
                                           </div>
-                                    </div>
                                     </div>
                                     <div class="col-md-6">
                                           <button type="submit" class="btn btn-orange">Cadastrar Produto</button>
                                     </div>
                                     <div class="col-md-6">
-                                          <button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-orange">Fechar e Não Salvar</button>
+                                          <button type="button" data-dismiss="modal" aria-label="Close"
+                                                class="btn btn-orange">Fechar e Não Salvar</button>
                                     </div>
                               </div>
                         </form>
@@ -144,4 +163,9 @@
             </div>
       </div>
 </div>
+
+
+
+
+
 @endsection

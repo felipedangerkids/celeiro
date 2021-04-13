@@ -258,7 +258,9 @@ a.article:hover {
 .modal-header {
     border-bottom: none !important;
 }
-
+.modal {
+    font-family: "Montserrat", sans-serif !important;
+}
 .modal-title {
     color: #eda200;
 }
@@ -270,10 +272,12 @@ a.article:hover {
         background: #726d6d !important;
         border: none !important;
         font-size: 0.9em !important;
+        color: rgb(218, 216, 216) !important;
     }
     textarea {
         background: #726d6d !important;
         border: none !important;
+        color: white !important;
     }
 }
 ::-webkit-input-placeholder {
@@ -321,10 +325,12 @@ a.article:hover {
 .btn-orange {
     background-color: #eda200;
     width: 100%;
+    font-family: "Bungee Inline", cursive !important;
 }
 .btn-orange:hover {
     background-color: #eda200;
     width: 100%;
+
     color: white;
 }
 
@@ -346,7 +352,10 @@ a.article:hover {
     padding: 1em;
 }
 .closed {
-     background-color: red;
+    background-color: red;
     color: #fff !important;
     padding: 1em;
+}
+.edit-form {
+    font-family: "Montserrat", sans-serif !important;
 }
