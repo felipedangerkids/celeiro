@@ -39,8 +39,29 @@ class ProductController extends Controller
      */
     public function store(Request $request)
     {
+        $rules = [
+            'name' => 'required|min:3|max:255',
+            'buyprice' => 'required',
+            'sellprice' => 'required',
+            'image' => 'mimes:jpeg,jpg,png,gif|required|max:10000',
+        ];
+
+        $customMessages = [
+            'name.required' => 'O campo Nome é obrigatório!',
+            'name.min' => 'O campo Nome precisa no minimo 3 caracteres',
+            'name.max' => 'O campo Nome excede o numero de caracteres',
+            'buyprice.required' => 'O campo preço de compra e obrigatório!',
+            'sellprice.required' => 'O campo preço de venda e obrigatório!',
+            'image.required' => 'O campo imagem do produto e obrigatório!',
+            'image.mimes' => 'Formato de imagem não aceito! por favor coloque jpeg, jpg, png ou svg',
+            'image.max' => 'Imagem excede limite de tamanho',
+        ];
+
+        $this->validate($request, $rules, $customMessages);
+
+
         $data = $request->all();
-        
+
         // $price = str_replace(['.', ','], ['', '.'], $data['price']);
         $img = ImageManagerStatic::make($data['image']);
 
@@ -52,26 +73,26 @@ class ProductController extends Controller
 
         $sellprice = str_replace(['.', ','], ['', '.'], $data['sellprice']);
         $buyprice = str_replace(['.', ','], ['', '.'], $data['buyprice']);
-    
+
 
         $product = Product::create([
 
-            'name' => $data['name'], 
-            'resume' => $data['resume'], 
-            'provider' => $data['provider'], 
-            'provphone' => $data['provphone'], 
-            'provname' => $data['provname'], 
-            'buyprice' => $buyprice, 
-            'sellprice' => $sellprice, 
-            'bitterness' => $data['bitterness'], 
-            'temperature' => $data['temperature'], 
-            'ibv' => $data['ibv'], 
-            'type' => $data['type'], 
-            'image' => $name, 
-            'description' => $data['description'], 
-            'spotlight' => $data['spotlight'], 
-       
-  
+            'name' => $data['name'],
+            'resume' => $data['resume'],
+            'provider' => $data['provider'],
+            'provphone' => $data['provphone'],
+            'provname' => $data['provname'],
+            'buyprice' => $buyprice,
+            'sellprice' => $sellprice,
+            'bitterness' => $data['bitterness'],
+            'temperature' => $data['temperature'],
+            'ibv' => $data['ibv'],
+            'type' => $data['type'],
+            'image' => $name,
+            'description' => $data['description'],
+            'spotlight' => $data['spotlight'],
+
+
         ]);
 
         return redirect()->back()->with('success', 'Produto criado com sucesso!');
@@ -145,7 +166,7 @@ class ProductController extends Controller
         $produto->provider = $request->get('provider');
         $produto->provphone = $request->get('provphone');
         $produto->provname = $request->get('provname');
-        $produto->buyprice =  $buyprice ;
+        $produto->buyprice =  $buyprice;
         $produto->sellprice = $sellprice;
         $produto->bitterness = $request->get('bitterness');
         $produto->temperature = $request->get('temperature');
@@ -156,7 +177,7 @@ class ProductController extends Controller
         $produto->spotlight = $request->get('spotlight');
         $produto->save();
 
-        
+
 
         return redirect()->route('products')->with('success', 'Produto alterado com sucesso!');
     }

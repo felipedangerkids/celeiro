@@ -2,16 +2,26 @@
 
 
 @section('content')
+@if ($errors->any())
+      <div class="alert alert-danger">
+            <ul>
+                  @foreach ($errors->all() as $error)
+                  <li>{{ $error }}</li>
+                  @endforeach
+            </ul>
+      </div>
+      @endif
 <div class="my-4 float-right">
       <button data-toggle="modal" data-target="#staticBackdrop" class="btn btn-add"><i class="fas fa-plus"></i>
             Adicionar</button>
 </div>
 
 <div>
+
       <table class="table table-dark">
             <thead>
                   <tr class="table-th">
-                        <th >Produto</th>
+                        <th>Produto</th>
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Contato</th>
                         <th scope="col">Preço de Compra</th>
@@ -62,7 +72,9 @@
                               <span aria-hidden="true">&times;</span>
                         </button>
                   </div>
+        
                   <div class="modal-body">
+                
                         <form method="POST" action="{{ url('/produtos-store') }}" enctype="multipart/form-data">
                               @csrf
                               <div class="row">

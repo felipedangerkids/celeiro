@@ -78,8 +78,8 @@
                   <button type="submit" class="btn btn-orange">Alterar Produto</button>
             </div>
             <div class="col-md-6">
-                  <button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-orange">Fechar e Não
-                        Salvar</button>
+                 <a href="{{ url('produtos') }}"><button type="button" data-dismiss="modal" aria-label="Close" class="btn btn-orange">Fechar e Não
+                        Salvar</button></a>
             </div>
       </div>
 </form>
