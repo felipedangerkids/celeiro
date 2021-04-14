@@ -34,7 +34,7 @@
             <div class="form-group col-md-6">
 
                   <input type="file" class="form-control" value="{{ $product->image }}" name="image" placeholder="Foto do Produto">
-                  <img width="100" height="80" class="mt-2" src="{{ url('storage/produtos/'. $product->image) }}" alt="">
+                  <img width="100" height="120" class="mt-2" src="{{ url('storage/produtos/'. $product->image) }}" alt="">
             </div>
             <div class="form-group col-md-3">
                   @php 
@@ -57,7 +57,7 @@
             </div>
             <div class="form-group col-md-3">
 
-                  <input type="text" class="form-control" value="{{ $product->ibv }}" name="ibv" placeholder="IBV">
+                  <input type="text" class="form-control" value="{{ $product->ibv }}" name="ibv" placeholder="ABV">
             </div>
             <div class="form-group col-md-3">
 
