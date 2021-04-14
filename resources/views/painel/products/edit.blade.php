@@ -20,8 +20,8 @@
             </div>
             <div class="form-group col-md-6">
 
-                  <textarea type="text" class="form-control" value="{{ $product->description }}" name="description" placeholder="Descrição"
-                        rows="4"></textarea>
+                  <textarea type="text" class="form-control"  value="{{ old('description', $product->description) }}" name="description" placeholder=""
+                        rows="4">{{ $product->description }}</textarea>
             </div>
             <div class="form-group col-md-3">
 
@@ -36,12 +36,15 @@
                   <input type="file" class="form-control" value="{{ $product->image }}" name="image" placeholder="Foto do Produto">
             </div>
             <div class="form-group col-md-3">
-
-                  <input type="text" class="form-control" value="{{ $product->buyprice }}" id="buyprice" name="buyprice" placeholder="Preço de Compra">
+                  @php 
+                  $sellprice = str_replace([',', '.'], ['', ','], $product->sellprice);
+                  $buyprice = str_replace([',', '.'], ['', ','], $product->buyprice);
+                  @endphp
+                  <input type="text" class="form-control" value="{{ $buyprice }}" id="buyprice" name="buyprice" placeholder="Preço de Compra">
             </div>
             <div class="form-group col-md-3">
 
-                  <input type="text" class="form-control" value="{{ $product->sellprice }}" id="sellprice" name="sellprice" placeholder="Preço de Venda">
+                  <input type="text" class="form-control" value="{{ $sellprice }}" id="sellprice" name="sellprice" placeholder="Preço de Venda">
             </div>
             <div class="form-group col-md-6">
 
