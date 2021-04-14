@@ -17,7 +17,7 @@
             </thead>
             <tbody>
                   @forelse ($capturas as $cap)
-                  <tr>
+                  <tr class="table-tr">
                         <th scope="row">{{ $cap->id }}</th>
                         <td>{{ $cap->name }}</td>
                         <td>{{ $cap->whatsapp }}</td>
