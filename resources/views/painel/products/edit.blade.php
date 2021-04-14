@@ -34,6 +34,7 @@
             <div class="form-group col-md-6">
 
                   <input type="file" class="form-control" value="{{ $product->image }}" name="image" placeholder="Foto do Produto">
+                  <img width="100" class="mt-2" src="{{ url('storage/produtos/'. $product->image) }}" alt="">
             </div>
             <div class="form-group col-md-3">
                   @php 

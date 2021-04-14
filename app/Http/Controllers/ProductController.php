@@ -134,17 +134,17 @@ class ProductController extends Controller
 
         $data = $request->all();
 
-        if ($request->logo != '') {
+        if ($request->image != '') {
             $path = storage_path('app/public/produtos/');
 
             //code for remove old file
-            if ($produto->logo != ''  && $produto->logo != null) {
-                $file_old = $path . $produto->logo;
+            if ($produto->image != ''  && $produto->image != null) {
+                $file_old = $path . $produto->image;
                 unlink($file_old);
             }
 
             //upload new file
-            $img = ImageManagerStatic::make($data['logo']);
+            $img = ImageManagerStatic::make($data['image']);
 
 
             $name = Str::random() . '.jpg';
