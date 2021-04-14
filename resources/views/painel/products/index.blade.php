@@ -24,8 +24,8 @@
                         <th>Produto</th>
                         <th scope="col">Fornecedor</th>
                         <th scope="col">Contato</th>
-                        <th scope="col">Preço de Compra</th>
-                        <th scope="col">Preço de Venda</th>
+                        <th scope="col">PC</th>
+                        <th scope="col">PV</th>
                         <th scope="col">Ações</th>
                   </tr>
             </thead>
