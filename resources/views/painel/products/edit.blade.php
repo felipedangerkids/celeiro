@@ -25,7 +25,7 @@
             </div>
             <div class="form-group col-md-3">
 
-                  <input type="text" class="form-control" value="{{ $product->provphone }}" id="phone" name="provphone" placeholder="Contato">
+                  <input type="text" class="form-control" value="{{ $product->provphone }}" id="phone" name="provphone" placeholder="Telefone">
             </div>
             <div class="form-group col-md-3">
 
@@ -53,7 +53,7 @@
             </div>
             <div class="form-group col-md-3">
 
-                  <input type="text" class="form-control" value="{{ $product->temperature }}" name="temperature" placeholder="Temperatura">
+                  <input type="text" class="form-control" value="{{ $product->temperature }}" name="temperature" placeholder="Link do Video">
             </div>
             <div class="form-group col-md-3">
 

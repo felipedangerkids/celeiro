@@ -102,7 +102,7 @@
                                     <div class="form-group col-md-3">
 
                                           <input type="text" class="form-control" id="phone" name="provphone"
-                                                placeholder="Contato">
+                                                placeholder="Telefone">
                                     </div>
                                     <div class="form-group col-md-3">
 
@@ -132,7 +132,7 @@
                                     <div class="form-group col-md-3">
 
                                           <input type="text" class="form-control" name="temperature"
-                                                placeholder="Temperatura">
+                                                placeholder="Link do Video">
                                     </div>
                                     <div class="form-group col-md-3">
 
