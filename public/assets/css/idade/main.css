@@ -1,0 +1,38 @@
+.logo-img {
+  display: flex;
+  justify-content: center;
+}
+
+.sub-logo {
+  display: flex;
+  justify-content: center;
+}
+
+.idade {
+  font-family: Bungee Inline;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 31.7143px;
+  line-height: 38px;
+  text-align: center;
+  color: #eda200;
+}
+
+.idade-res {
+  justify-content: center;
+  justify-content: space-evenly;
+}
+
+.btn-sim {
+  background-color: #eda200;
+  color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100px;
+}
+
+.btn-nao {
+  background-color: gray;
+  color: white;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  width: 100px;
+}

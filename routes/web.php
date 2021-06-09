@@ -34,3 +34,8 @@ Route::middleware(['auth:sanctum', 'verified'])->post('/produtos-store', [Produc
 Route::middleware(['auth:sanctum', 'verified'])->any('/produtosDelete/{id}', [ProductController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [ProductController::class, 'update']);
 
+//layouts e rotas provisorias
+
+Route::get('/idade', function () {
+    return view('front.idade.idade');
+});

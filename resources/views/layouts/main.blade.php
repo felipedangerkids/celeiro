@@ -10,6 +10,7 @@
       <link href="https://fonts.googleapis.com/css2?family=Bungee+Inline&display=swap" rel="stylesheet">
       <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
       <link rel="stylesheet" href="{{ url('assets/css/main.css') }}">
+      <link rel="stylesheet" href="{{ url('assets/css/idade/main.css') }}">
       <title>CELEIRO DO MALTE</title>
 </head>
 
