@@ -39,3 +39,6 @@ Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [P
 Route::get('/idade', function () {
     return view('front.idade.idade');
 });
+Route::get('/inicio', function () {
+    return view('front.home.inicio');
+});

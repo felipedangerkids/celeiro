@@ -36,3 +36,123 @@
   text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
   width: 100px;
 }
+
+.spans {
+  margin-top: 10px;
+  padding-left: 12px;
+}
+
+.spans .receber {
+  color: white;
+  font-size: 14px;
+}
+
+.spans .endereco {
+  color: #eda200;
+  font-size: 12px;
+}
+
+.submit-line {
+  position: relative;
+  width: 250px;
+  top: 0;
+  right: 0;
+  left: 70px;
+}
+
+.submit-line input {
+  width: 100%;
+  height: 50px;
+  border-radius: 25px;
+  box-shadow: #eda200 0px 3px 3px 1px;
+  border: none;
+}
+
+.submit-line input::placeholder {
+  font-family: Montserrat;
+  color: black !important;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: 28px;
+  letter-spacing: 0px;
+  text-align: left;
+}
+
+.submit-lente {
+  font-size: 30px;
+  position: absolute;
+  top: 0;
+  right: 0;
+  z-index: 10;
+  border: none;
+  background: transparent;
+  outline: none;
+}
+
+::-webkit-input-placeholder {
+  color: black !important;
+}
+
+:-moz-placeholder {
+  color: black !important;
+}
+
+::-moz-placeholder {
+  color: black !important;
+}
+
+:-ms-input-placeholder {
+  color: black !important;
+}
+
+.icones-gerais {
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+.icones-gerais .beer {
+  margin-left: 20px;
+  width: 80px;
+  background-color: white;
+  border-radius: 19px;
+  height: 80px;
+  box-shadow: #eda200  0px 6px 3px 0px;
+}
+
+.icones-gerais img {
+  position: relative;
+  top: 8px;
+  left: 0;
+}
+
+.destaque-produtos {
+  margin-left: 25px;
+}
+
+.destaque-produtos .product {
+  margin-left: 20px;
+  width: 40%;
+  height: 200px;
+  background-color: white;
+  border-radius: 19px;
+  box-shadow: #eda200  0px 6px 3px 0px;
+}
+
+.destaque-produtos img {
+  position: relative;
+  top: 8px;
+  left: 0;
+  width: 80%;
+  height: 180px;
+}
+
+.destaque-produtos button {
+  border: none;
+}
+
+.destaque-produtos .caption {
+  position: relative;
+  top: 30px;
+  color: white;
+}
