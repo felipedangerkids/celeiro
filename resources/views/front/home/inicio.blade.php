@@ -20,7 +20,7 @@
             <img src="{{ url('assets/img/Camada x0020 3.png') }}" alt="">
         </div>
 
-        <div class="submit-line mt-3">
+        <div class="submit-line mt-3 text-center">
             <input type="texte" placeholder="  Busque o que você ama..." />
             <button class="submit-lente" type="submit">
                 <i class="fa fa-search"></i>
@@ -54,39 +54,41 @@
             <div class="text-center">
                 <div class="row">
                     <div class="product col-5 mt-3 mb-5">
-                            <button>
-                                <img src="{{ url('assets/img/Group 25.png') }}" alt="">
-                            </button>
+                        <a href="/produto-single">
+                            <img src="{{ url('assets/img/Group 25.png') }}" alt="">
+                        </a>
                         <div class="caption">
                             <span>wenski bier</span>
                         </div>
                     </div>
                     <div class="product col-5 mt-3 mb-5">
-                        <button>
+                        <a class="/produto-single">
                             <img src="{{ url('assets/img/Group 25.png') }}" alt="">
-                        </button>
+                        </a>
                         <div class="caption">
                             <span>wenski bier</span>
                         </div>
                     </div>
                     <div class="product col-5 mt-3 mb-5">
-                        <button>
+                        <a class="/produto-single">
                             <img src="{{ url('assets/img/Group 25.png') }}" alt="">
-                        </button>
+                        </a>
                         <div class="caption">
                             <span>wenski bier</span>
                         </div>
                     </div>
                     <div class="product col-5 mt-3 mb-5">
-                        <button>
+                        <a class="/produto-single">
                             <img src="{{ url('assets/img/Group 25.png') }}" alt="">
-                        </button>
+                        </a>
                         <div class="caption">
                             <span>wenski bier</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="fundo">
         </div>
     </div>
 @endsection

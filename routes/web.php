@@ -42,3 +42,9 @@ Route::get('/idade', function () {
 Route::get('/inicio', function () {
     return view('front.home.inicio');
 });
+Route::get('/produtos', function () {
+    return view('front.produto.produto');
+});
+Route::get('/produto-single', function () {
+    return view('front.produto-single.produto-single');
+});
