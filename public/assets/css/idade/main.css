@@ -260,7 +260,7 @@
   border-radius: 25px;
   box-shadow: #eda200 2px 4px 0px 0px;
   height: 20px;
-  width: 31%;
+  width: 33%;
 }
 
 .btn-american-ibv {
@@ -376,4 +376,32 @@ button.d {
 
 .fundo {
   height: 100px;
+}
+
+.btn-continuar {
+  background-color: #eda200;
+  color: black;
+  width: 80%;
+  height: 40px;
+}
+
+#linha-horizontal {
+  width: 100%;
+  border: 1px solid #eda200;
+}
+
+.edit img {
+  padding-top: 35px;
+}
+
+.nome {
+  color: #eda200;
+}
+
+.email {
+  color: white;
+}
+
+.telefone {
+  color: white;
 }

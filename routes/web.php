@@ -42,9 +42,28 @@ Route::get('/idade', function () {
 Route::get('/inicio', function () {
     return view('front.home.inicio');
 });
-Route::get('/produtos', function () {
-    return view('front.produto.produto');
+
+//produtos//
+
+Route::get('/cervejas', function () {
+    return view('front.produtos.cervejas.cervejas');
 });
+Route::get('/kits', function () {
+    return view('front.produtos.kits.kits');
+});
+Route::get('/embutidos', function () {
+    return view('front.produtos.embutidos.embutidos');
+});
+
+//carrinho//
+
+Route::get('/adc-carrinho', function () {
+    return view('front.carrinho.adc-carrinho');
+});
+Route::get('/finalizar-compra', function () {
+    return view('front.carrinho.finalizar-compra');
+});
+
 Route::get('/produto-single', function () {
     return view('front.produto-single.produto-single');
 });

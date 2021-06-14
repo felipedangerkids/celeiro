@@ -76,7 +76,7 @@
             </div>
             <div>
                 <div class="text-center mt-4">
-                    <button class="btn btn-adicionar">ADICIONAR</button>
+                    <a href="/adc-carrinho" class="btn btn-adicionar">ADICIONAR</a>
                 </div>
                 <div class="text-center mt-4">
                     <button class="btn btn-adicionar">ITENS (1) R$ 42,00</button>
