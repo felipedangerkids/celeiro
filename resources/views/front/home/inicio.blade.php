@@ -1,17 +1,21 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
-        <div class="profile mt-3">
+        <div class="profile mt-5">
             <div class="d-flex">
                 <div>
-                    <img src="{{ url('assets/img/Group 1.png') }}" alt="">
+                    <a href="">
+                        <img src="{{ url('assets/img/Group 1.png') }}" alt="">
+                    </a>
                 </div>
                 <div class="spans">
                     <div class="receber">
                         <span>Receber agora em:</span> <br>
                     </div>
                     <div class="endereco">
-                        <span>Avenida do Batel, 600-Batel, Curitiba-PR</span>
+                        <a href="/perfil">
+                            <span>Avenida do Batel, 600-Batel, Curitiba-PR</span>
+                        </a>
                     </div>
                 </div>
             </div>

@@ -25,26 +25,38 @@
     color: white;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 100px;
+    height: 100%;
 }
 .btn-nao {
     background-color: gray;
     color: white;
     text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     width: 100px;
+    height: 100%;
 }
 //FINALIZADO PAGINA//
 
 //PAGINA DE DESTAQUES//
 .spans {
-    margin-top: 10px;
+    width: 100%;
+    display: block;
+    align-items: center;
     padding-left: 12px;
     .receber {
         color: white;
         font-size: 14px;
     }
     .endereco {
-        color: #eda200;
-        font-size: 12px;
+        
+        a{
+            span{
+                color: #eda200 !important;
+                list-style: none;
+                font-size: 14px;
+                font-family: montserrat;
+            }
+
+        }
     }
 }
 
@@ -317,7 +329,6 @@ button.c {
     border-radius: 25px;
     height: 30px;
     width: 100px;
-
 }
 button.d {
     border: none;
@@ -327,35 +338,34 @@ button.d {
 }
 ////////FINALIZADO!!!////
 
-.btn-adicionar{
+.btn-adicionar {
     background-color: #eda200;
     border: none;
     border-radius: 25px;
     width: 80%;
-    height: 20%;
+    height: 35px;
 }
 
-.ver-mais{
+.ver-mais {
     margin-bottom: 10px;
     background-color: #eda200;
-    border-radius: 25px ;
+    border-radius: 25px;
     width: 100%;
     height: 20%;
     display: flex;
     align-items: center;
     justify-content: center;
-    a{
+    a {
         color: black;
         list-style: none;
         text-decoration: none;
     }
-
 }
-.fundo{
+.fundo {
     height: 100px;
 }
-
-.btn-continuar{
+//page finalizar compra///
+.btn-continuar {
     background-color: #eda200;
     color: black;
     width: 80%;
@@ -364,19 +374,199 @@ button.d {
 
 #linha-horizontal {
     width: 100%;
-    border: 1px solid #eda200;
+    border: 2px solid #eda200;
 }
-.edit{
-    img{
-        padding-top: 35px;
+.edit {
+    position: absolute;
+    left: 85%;
+}
+
+.nome {
+    color: #eda200;
+    width: 80%;
+}
+.email {
+    color: white;
+    width: 80%;
+}
+.telefone {
+    color: white;
+    width: 80%;
+}
+
+.icones-back {
+    .icon-img {
+        width: 50px;
+        height: 50px;
+        background-color: white;
+        border-radius: 19px;
+        box-shadow: #eda200 0px 6px 3px 0px;
+    }
+    img {
+        margin-top: 12px;
     }
 }
-.nome{
+.fundo-branco {
+    .lata {
+        width: 120px;
+        height: 124px;
+        background-color: white;
+        border-radius: 19px;
+        box-shadow: #eda200 0px 6px 3px 0px;
+    }
+}
+.title {
+    padding-left: 10px;
+}
+
+.nome_ {
     color: #eda200;
+    width: 100%;
 }
-.email{
+.unid {
     color: white;
 }
-.telefone{
+.preco {
     color: white;
+}
+.identidade {
+    width: 85%;
+}
+.pagar {
+    width: 100%;
+    color: white;
+}
+.linha {
+    margin-top: 70px;
+}
+///page finaliar compra encerrada//
+
+///checkbox//
+.check-in {
+    color: white;
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 12px;
+    cursor: pointer;
+    font-size: 20px;
+    input {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+    }
+    .check {
+        left: 290px;
+        width: 35px;
+        height: 35px;
+        border-radius: 25px;
+        background: #ccc;
+        position: absolute;
+    }
+    input:checked ~ .check {
+        background: #eda200;
+    }
+    .check:after {
+        top: 6px;
+        left: 13px;
+        width: 10px;
+        height: 15px;
+
+        border: solid black;
+        border-width: 0 3px 3px 0;
+        -ms-transform: rotate(45deg);
+        -webkit-transform: rotate(45deg);
+        transform: rotate(45deg);
+    }
+    .check::after {
+        content: "";
+        position: absolute;
+    }
+    input:checked ~ .check:after {
+        display: block;
+    }
+}
+
+///checkbox fim//
+
+//page atualizar perfil///
+
+.foto-perfil {
+    img {
+        width: 50%;
+    }
+}
+.formulario {
+    .inputs {
+        color: #ccc;
+        input {
+            color: #ccc;
+            font-family: montserrat;
+            position: relative;
+            background-color: #333332;
+            border: none;
+            width: 60%;
+            height: 39px;
+            left: 141px;
+        }
+        label {
+            align-items: center;
+            display: flex;
+            width: 80%;
+            height: 40px;
+            background-color: #333332;
+            border: none;
+            position: absolute;
+            left: 30px;
+        }
+        ::-webkit-input-placeholder {
+            color: white !important;
+        }
+
+        :-moz-placeholder {
+            /* Firefox 18- */
+            color: white !important;
+        }
+
+        ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: white !important;
+        }
+
+        :-ms-input-placeholder {
+            color: white !important;
+        }
+    }
+}
+
+.inputs_ {
+    color: #ccc;
+    input {
+        color: #ccc;
+        font-family: montserrat;
+        background-color: #333332;
+        border: none;
+        height: 39px;
+        width: 100%;
+        display: flex;
+    }
+    label {
+        display: block;
+    }
+    ::-webkit-input-placeholder {
+        color: white !important;
+    }
+
+    :-moz-placeholder {
+        /* Firefox 18- */
+        color: white !important;
+    }
+
+    ::-moz-placeholder {
+        /* Firefox 19+ */
+        color: white !important;
+    }
+
+    :-ms-input-placeholder {
+        color: white !important;
+    }
 }

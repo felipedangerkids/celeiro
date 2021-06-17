@@ -36,7 +36,7 @@ Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [P
 
 //layouts e rotas provisorias
 
-Route::get('/idade', function () {
+Route::get('/', function () {
     return view('front.idade.idade');
 });
 Route::get('/inicio', function () {
@@ -54,6 +54,9 @@ Route::get('/kits', function () {
 Route::get('/embutidos', function () {
     return view('front.produtos.embutidos.embutidos');
 });
+Route::get('/produto-single', function () {
+    return view('front.produto-single.produto-single');
+});
 
 //carrinho//
 
@@ -63,7 +66,25 @@ Route::get('/adc-carrinho', function () {
 Route::get('/finalizar-compra', function () {
     return view('front.carrinho.finalizar-compra');
 });
-
-Route::get('/produto-single', function () {
-    return view('front.produto-single.produto-single');
+Route::get('/efetuar-pagamento', function () {
+    return view('front.carrinho.efetuar-pagamento');
 });
+Route::get('/pedido-concluido', function () {
+    return view('front.carrinho.pedido-concluido');
+});
+
+//Suas Preferencia//
+
+Route::get('/perfil', function () {
+    return view('front.suas-preferencia.perfil');
+});
+Route::get('/atualizar-perfil', function () {
+    return view('front.suas-preferencia.atualizar-perfil');
+});
+Route::get('/atualizar-endereco', function () {
+    return view('front.suas-preferencia.atualizar-endereco');
+});
+Route::get('/atualizado', function () {
+    return view('front.suas-preferencia.atualizado');
+});
+
