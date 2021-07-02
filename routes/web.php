@@ -43,6 +43,8 @@ Route::post('store/login/post', [LoginController::class, 'login'])->name('store.
 //checkout
 Route::middleware(['auth:cliente'])->group(function () {
     Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
+
+    Route::get('edit/perfil/{id}', [UserController::class, 'edit'])->name('perfil.edit');
 });
 
 
@@ -101,9 +103,9 @@ Route::get('/adc-carrinho', function () {
 Route::get('/perfil', function () {
     return view('front.suas-preferencia.perfil');
 });
-Route::get('/atualizar-perfil', function () {
-    return view('front.suas-preferencia.atualizar-perfil');
-});
+// Route::get('/atualizar-perfil', function () {
+//     return view('front.suas-preferencia.atualizar-perfil');
+// });
 Route::get('/atualizar-endereco', function () {
     return view('front.suas-preferencia.atualizar-endereco');
 });
