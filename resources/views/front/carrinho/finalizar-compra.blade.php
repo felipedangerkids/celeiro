@@ -6,18 +6,18 @@
         </div>
         <div class="profile mt-3">
             <div class="d-flex">
-                <div>
-                    <img src="{{ url('assets/img/Group 1.png') }}" alt="">
+                <div class="avatar">
+                    <img src="{{ url('assets/img/avatar.png') }}" alt="">
                 </div>
                 <div class="identidade">
                     <div class="nome">
-                        <span> Vilson Paulo Beckhauser</span>
+                        <span> {{ auth()->user()->name }}</span>
                     </div>
                     <div class="email">
-                        <span> caiojrtv@gmail.com</span>
+                        <span> {{ auth()->user()->email }}</span>
                     </div>
                     <div class="telefone">
-                        <span> 41 99949-8611</span>
+                        <span> {{ auth()->user()->whatsapp }}</span>
                     </div>
                 </div>
                 <div class="edit">
@@ -101,43 +101,49 @@
             <div class="mt-3" id="linha-horizontal"></div>
         </div>
         <div class="profile mt-3">
-            <div class="d-flex">
-                <div class="col-4">
-                    <div class="fundo-branco">
-                        <div class="text-center">
-                            <div class="lata">
-                                <a href="#">
-                                    <img src="{{ url('assets/img/mutum.png') }}" alt="">
-                                </a>
+            <div class="row">
+                @foreach (\Cart::getContent() as $item)
+
+
+                        <div class="col-4 my-2">
+                            <div class="fundo-branco">
+                                <div class="text-center">
+                                    <div class="lata">
+                                        <a href="#">
+                                            <img style="width: 100%; object-fit: cover;" src="{{ url('storage/produtos/'.$item->attributes->image) }}" alt="">
+                                        </a>
+                                    </div>
+                                </div>
                             </div>
                         </div>
-                    </div>
-                </div>
-                <div class="title col-6">
-                    <div class="nome_">
-                        <span>Mutum Cavalo <br> Lata 473 ml</span> <br>
-                    </div>
-                    <div class="unid">
-                        <span>10 UNID</span> <br>
-                    </div>
-                    <div class="preco">
-                        <h2>R$32,00</h2> <br>
-                    </div>
-                </div>
-                <div class="d-block col-2">
-                    <div class="edit">
-                        <button class="btn btn-edit">
-                            <img src="{{ url('assets/img/edit.png') }}" alt="">
-                        </button>
-                    </div>
-                    <div class="edit mt-5">
-                        <button class="btn btn-lixeira"> <img src="{{ url('assets/img/lixeira.png') }}" alt=""></button>
-                    </div>
-                </div>
+                        <div class="title col-6 my-2">
+                            <div class="nome_">
+                                <span>{{ $item->name }} <br> {{ $item->attributes->resume }}</span> <br>
+                            </div>
+                            <div class="unid">
+                                <span>{{ $item->quantity }} UNID</span> <br>
+                            </div>
+                            <div class="preco">
+                                <h2>{{  'R$ '.number_format($item->price, 2, ',', '.') }}  </h2> <br>
+                            </div>
+                        </div>
+                        <div class="d-block col-2">
+                            <div class="edit">
+                                <button class="btn btn-edit">
+                                    <img src="{{ url('assets/img/edit.png') }}" alt="">
+                                </button>
+                            </div>
+                            <div class="edit mt-5">
+                               <a href="{{ route('cart.remove', $item->id) }}"><button type="button" class="btn btn-lixeira"> <img src="{{ url('assets/img/lixeira.png') }}"
+                                        alt=""></button></a>
+                            </div>
+                        </div>
+
+                @endforeach
             </div>
             <div class="mt-3" id="linha-horizontal"></div>
         </div>
-        <div class="text-center mt-5">
+        <div class="text-center my-5">
             <button class="btn btn-adicionar">FECHAR PEDIDO</button>
         </div>
     </div>

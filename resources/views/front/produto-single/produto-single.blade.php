@@ -76,6 +76,7 @@
                     <input type="hidden" name="bitterness" value="{{ $produto->bitterness }}">
                     <input type="hidden" name="ibv" value="{{ $produto->ibv }}">
                     <input type="hidden" name="type" value="{{ $produto->type }}">
+                    <input type="hidden" name="resume" value="{{ $produto->resume }}">
                 </div>
                 <div>
                     <div class="text-center mt-4">

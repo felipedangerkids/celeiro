@@ -25,11 +25,18 @@ class CartController extends Controller
                 'ibv' => $product['ibv'],
                 'bitterness' => $product['bitterness'],
                 'type' => $product['type'],
+                'resume' => $product['resume']
 
 
             )
         ));
 
         return redirect('/adc-carrinho');
+    }
+    public function itemRemove($id)
+    {
+        \Cart::remove($id);
+
+        return redirect()->back();
     }
 }

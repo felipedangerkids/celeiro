@@ -8,6 +8,9 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\Shop\ShopController;
+use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\User\RegisterController;
+use App\Http\Controllers\User\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -30,10 +33,18 @@ Route::get('produto/{id}', [ShopController::class, 'single'])->name('shop.single
 
 //cart
 Route::post('cart-add', [CartController::class, 'cartAdd'])->name('cart.add');
+Route::any('cart-remove/{id}', [CartController::class, 'itemRemove'])->name('cart.remove');
 
+Route::get('store/register', [RegisterController::class, 'index'])->name('store.register');
+Route::post('store/register/post', [RegisterController::class, 'store'])->name('store.register.post');
 
+Route::get('store/login', [LoginController::class, 'index'])->name('store.login');
+Route::post('store/login/post', [LoginController::class, 'login'])->name('store.login.post');
 //checkout
-Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
+Route::middleware(['auth:cliente'])->group(function () {
+    Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
+});
+
 
 Route::post('user-store', [CapturaController::class, 'store']);
 Route::get('obrigado', [CapturaController::class, 'thanks'])->name('thanks');
