@@ -5,6 +5,9 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CapturaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\Shop\CartController;
+use App\Http\Controllers\Shop\CheckoutController;
+use App\Http\Controllers\Shop\ShopController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,9 +22,18 @@ use App\Http\Controllers\ProductController;
 
 
 
-Route::get('/', function () {
-    return view('front.index');
-});
+
+
+Route::get('/', [ShopController::class, 'index'])->name('shop');
+Route::get('produto/{id}', [ShopController::class, 'single'])->name('shop.single');
+
+
+//cart
+Route::post('cart-add', [CartController::class, 'cartAdd'])->name('cart.add');
+
+
+//checkout
+Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
 
 Route::post('user-store', [CapturaController::class, 'store']);
 Route::get('obrigado', [CapturaController::class, 'thanks'])->name('thanks');
@@ -36,9 +48,9 @@ Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [P
 
 //layouts e rotas provisorias
 
-Route::get('/', function () {
-    return view('front.idade.idade');
-});
+// Route::get('/', function () {
+//     return view('front.idade.idade');
+// });
 Route::get('/inicio', function () {
     return view('front.home.inicio');
 });
@@ -63,15 +75,15 @@ Route::get('/produto-single', function () {
 Route::get('/adc-carrinho', function () {
     return view('front.carrinho.adc-carrinho');
 });
-Route::get('/finalizar-compra', function () {
-    return view('front.carrinho.finalizar-compra');
-});
-Route::get('/efetuar-pagamento', function () {
-    return view('front.carrinho.efetuar-pagamento');
-});
-Route::get('/pedido-concluido', function () {
-    return view('front.carrinho.pedido-concluido');
-});
+// Route::get('/finalizar-compra', function () {
+//     return view('front.carrinho.finalizar-compra');
+// });
+// Route::get('/efetuar-pagamento', function () {
+//     return view('front.carrinho.efetuar-pagamento');
+// });
+// Route::get('/pedido-concluido', function () {
+//     return view('front.carrinho.pedido-concluido');
+// });
 
 //Suas Preferencia//
 

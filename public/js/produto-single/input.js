@@ -12,3 +12,10 @@ function menos() {
         document.getElementById("total").value = novo;
     }
 }
+function addMeiaDuzia() {
+
+    console.log('clicado')
+    // var atualget = document.getElementById("total").value;
+    // var novoSeis = atualget - -2; //Evitando Concatenacoes
+    // document.getElementById("total").value = novoSeis;
+}

@@ -1,6 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
+        @if (auth()->check())
         <div class="profile mt-5">
             <div class="d-flex">
                 <div>
@@ -20,7 +21,8 @@
                 </div>
             </div>
         </div>
-        <div class="sub-logo">
+        @endif
+        <div class="sub-logo mt-4">
             <img src="{{ url('assets/img/Camada x0020 3.png') }}" alt="">
         </div>
 
@@ -57,38 +59,18 @@
         <div class="destaque-produtos mt-5">
             <div class="text-center">
                 <div class="row">
+                    @foreach ($produtos as $produto)
+                    @if ($produto->spotlight == 1)
                     <div class="product col-5 mt-3 mb-5">
-                        <a href="/produto-single">
-                            <img src="{{ url('assets/img/Group 25.png') }}" alt="">
+                        <a href="{{ route('shop.single', $produto->id) }}">
+                            <img style="object-fit: cover;" src="{{ url('storage/produtos/'.$produto->image) }}" alt="">
                         </a>
                         <div class="caption">
-                            <span>wenski bier</span>
+                            <span>{{ $produto->name }}</span>
                         </div>
                     </div>
-                    <div class="product col-5 mt-3 mb-5">
-                        <a class="/produto-single">
-                            <img src="{{ url('assets/img/Group 25.png') }}" alt="">
-                        </a>
-                        <div class="caption">
-                            <span>wenski bier</span>
-                        </div>
-                    </div>
-                    <div class="product col-5 mt-3 mb-5">
-                        <a class="/produto-single">
-                            <img src="{{ url('assets/img/Group 25.png') }}" alt="">
-                        </a>
-                        <div class="caption">
-                            <span>wenski bier</span>
-                        </div>
-                    </div>
-                    <div class="product col-5 mt-3 mb-5">
-                        <a class="/produto-single">
-                            <img src="{{ url('assets/img/Group 25.png') }}" alt="">
-                        </a>
-                        <div class="caption">
-                            <span>wenski bier</span>
-                        </div>
-                    </div>
+                    @endif
+                    @endforeach
                 </div>
             </div>
         </div>
