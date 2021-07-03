@@ -88,12 +88,12 @@ Route::get('/produto-single', function () {
 Route::get('/adc-carrinho', function () {
     return view('front.carrinho.adc-carrinho');
 });
-// Route::get('/finalizar-compra', function () {
-//     return view('front.carrinho.finalizar-compra');
-// });
-// Route::get('/efetuar-pagamento', function () {
-//     return view('front.carrinho.efetuar-pagamento');
-// });
+Route::get('/finalizar-compra', function () {
+   return view('front.carrinho.finalizar-compra');
+ });
+ Route::get('/efetuar-pagamento', function () {
+   return view('front.carrinho.efetuar-pagamento');
+ });
 // Route::get('/pedido-concluido', function () {
 //     return view('front.carrinho.pedido-concluido');
 // });

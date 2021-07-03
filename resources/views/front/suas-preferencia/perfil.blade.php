@@ -67,27 +67,57 @@
                     </div>
                 </div>
                 <label class="check-in" for="1">Pedir agora
-                    <input class="form-check-input" id="1" type="checkbox">
+                    <input name="pedido" class="form-check-input" id="1" type="radio">
                     <span class="check"></span>
                 </label>
             </div>
             <div class="mt-3" id="linha-horizontal"></div>
         </div>
         <div class="profile mt-3">
-            <div class="d-flex">
-                <div>
-                    <div class="icones-back">
-                        <div class="text-center">
-                            <div class="icon-img">
-                                <img src="{{ url('assets/img/calendario.png') }}" alt="">
+            <div class="row">
+                <div class="d-flex">
+                    <div>
+                        <div class="icones-back">
+                            <div class="text-center">
+                                <div class="icon-img">
+                                    <img src="{{ url('assets/img/calendario.png') }}" alt="">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="wrapper">
+                        <div class="lista-item">
+                            <input name="pedido" class="form-check-input trigger-input" id="faq-titulo-1" type="radio">
+                            <div class="trigger-wrapper">
+                                <label class="check-in" for="faq-titulo-1">
+                                    AGENDAR PEDIDO
+                                    <span class="check"></span>
+                                </label>
+                                <div class="faq-conteudo">
+                                    <div class="horarios">
+                                        <div class="mt-3">
+                                            <input class="form-check-input" type="radio">
+                                            <label class="check-in" for="">7:00 ~ 8:00</label>
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="mt-3">
+                                            <input class="form-check-input"  type="radio">
+                                            <label  class="check-in" for="">7:00 ~ 8:00</label>
+                                            <span class="check"></span>
+                                        </div>
+                                        <div class="mt-3">
+                                            <input class="form-check-input"  type="radio">
+                                            <label  class="check-in" for="">7:00 ~ 8:00</label>
+                                            <span class="check"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <label class="check-in" for="2">Agendar pedido
-                    <input class="form-check-input" id="2" type="checkbox">
-                    <span class="check"></span>
-                </label>
             </div>
             <div class="mt-3" id="linha-horizontal"></div>
         </div>
@@ -103,7 +133,7 @@
                     </div>
                 </div>
                 <label class="check-in" for="3">Receber em casa
-                    <input class="form-check-input" id="3" type="checkbox">
+                    <input name="entrega" class="form-check-input" id="3" type="radio">
                     <span class="check"></span>
                 </label>
             </div>
@@ -121,7 +151,7 @@
                     </div>
                 </div>
                 <label class="check-in" for="4">retirar pedido
-                    <input class="form-check-input" id="4" type="checkbox">
+                    <input name="entrega" class="form-check-input" id="4" type="radio">
                     <span class="check"></span>
                 </label>
             </div>

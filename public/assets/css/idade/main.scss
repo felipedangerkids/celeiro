@@ -47,15 +47,13 @@
         font-size: 14px;
     }
     .endereco {
-        
-        a{
-            span{
+        a {
+            span {
                 color: #eda200 !important;
                 list-style: none;
                 font-size: 14px;
                 font-family: montserrat;
             }
-
         }
     }
 }
@@ -442,6 +440,10 @@ button.d {
 ///page finaliar compra encerrada//
 
 ///checkbox//
+.horarios{
+    text-align: center;
+}
+
 .check-in {
     color: white;
     position: relative;
@@ -449,41 +451,43 @@ button.d {
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 20px;
-    input {
-        position: absolute;
-        opacity: 0;
-        cursor: pointer;
-    }
-    .check {
-        left: 290px;
-        width: 35px;
-        height: 35px;
-        border-radius: 25px;
-        background: #ccc;
-        position: absolute;
-    }
-    input:checked ~ .check {
-        background: #eda200;
-    }
-    .check:after {
-        top: 6px;
-        left: 13px;
-        width: 10px;
-        height: 15px;
+}
+input {
+    position: absolute;
+    opacity: 0;
+    cursor: pointer;
+}
+.check {
+    left: 290px;
+    width: 35px;
+    height: 35px;
+    border-radius: 25px;
+    background: #ccc;
+    position: absolute;
+}
+input:checked ~ .check {
+    background-color: #eda200 !important;
+}
 
-        border: solid black;
-        border-width: 0 3px 3px 0;
-        -ms-transform: rotate(45deg);
-        -webkit-transform: rotate(45deg);
-        transform: rotate(45deg);
-    }
-    .check::after {
-        content: "";
-        position: absolute;
-    }
-    input:checked ~ .check:after {
-        display: block;
-    }
+
+.check:after {
+    top: 6px;
+    left: 13px;
+    width: 10px;
+    height: 15px;
+
+    border: solid black;
+    border-width: 0 3px 3px 0;
+    -ms-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.check::after {
+    content: "";
+    position: absolute;
+}
+input:checked ~ .check:after {
+    display: block;
 }
 
 ///checkbox fim//
@@ -569,4 +573,26 @@ button.d {
     :-ms-input-placeholder {
         color: white !important;
     }
+}
+
+///RADIOSSS//
+.faq-conteudo {
+    padding: 10px;
+    color: #6b7c93;
+    font-family: Helvetica;
+    font-size: 0.875em;
+    line-height: 1.4em;
+    display: none;
+}
+
+.trigger-input {
+    display: none;
+}
+
+.trigger-input:checked + .trigger-wrapper .faq-conteudo {
+    display: block;
+}
+
+.trigger-input:checked + .trigger-wrapper .faq-titulo::after {
+    transform: rotate(45deg) scale(1.08);
 }
