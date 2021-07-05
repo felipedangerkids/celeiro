@@ -84,7 +84,7 @@
                 <div class="spans">
                     <div class="email">
                         <span>{{ $ship->data ?? 'Escolha a Data da Entrega' }}</span> <br>
-                        <span>{{ $ship->horario }}</span> <br>
+                        <span>{{ $ship->horario ?? ''}}</span> <br>
                     </div>
                 </div>
                 <div class="edit">
