@@ -24,7 +24,7 @@
                     </div>
                     <div class="inputs pt-3">
                         <label for="">WHATSAPP:</label>
-                        <input type="text" name="whatsapp" placeholder="(00) 99999-9999">
+                        <input type="text" id="whatsapp" name="whatsapp" placeholder="00 00000-0000">
                     </div>
                 </div>
                 <div class="text-center pt-5">

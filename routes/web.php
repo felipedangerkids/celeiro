@@ -52,6 +52,7 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
 
     Route::get('edit/perfil/{id}', [UserController::class, 'edit'])->name('perfil.edit');
+    Route::post('update/perfil/{id}', [UserController::class, 'update'])->name('perfil.update');
     Route::get('perfil', [PerfilController::class, 'index'])->name('perfil');
 
     Route::get('adress', [AdressController::class, 'index'])->name('user.adress');

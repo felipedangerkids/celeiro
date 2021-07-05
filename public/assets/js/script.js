@@ -60,7 +60,8 @@ $('#segundo').on('click', function () {
         $('#money').removeClass("d-none");
         $('#card').addClass("d-none");
     }else{
-      
+
     }
 
 });
+$('#phone').mask('00 00000-0000');

@@ -15,7 +15,7 @@ class UserController extends Controller
      */
     public function index()
     {
-     
+
     }
 
     /**
@@ -71,7 +71,12 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $user = Cliente::find($id);
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->whatsapp = $request->whatsapp;
+        $user->save();
+        return redirect()->route('pre.checkout');
     }
 
     /**

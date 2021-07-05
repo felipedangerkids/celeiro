@@ -15,22 +15,25 @@
                 </button>
             </div>
         </div>
-        <div class="formulario">
-            <div class="inputs pt-3">
-                <label for="">NOME:</label>
-                <input type="nome" value="{{ $user->name }}">
+        <form action="{{ route('perfil.update', $user->id) }}" method="POST">
+            @csrf
+            <div class="formulario">
+                <div class="inputs pt-3">
+                    <label for="">NOME:</label>
+                    <input type="text" name="name" value="{{ $user->name }}">
+                </div>
+                <div class="inputs pt-3">
+                    <label for="">E-mail:</label>
+                    <input type="email" name="email" value="{{ $user->email }}">
+                </div>
+                <div class="inputs pt-3">
+                    <label for="">WhatsApp:</label>
+                    <input type="text" name="whatsapp" id="phone" value="{{ $user->whatsapp }}">
+                </div>
             </div>
-            <div class="inputs pt-3">
-                <label for="">E-mail:</label>
-                <input type="email" value="{{ $user->email }}">
+            <div class="text-center pt-5">
+                <button type="submit" class="btn btn-adicionar">ATUALIZAR</button>
             </div>
-            <div class="inputs pt-3">
-                <label for="">WhatsApp:</label>
-                <input type="number" value="{{ $user->whatsapp }}">
-            </div>
-        </div>
-        <div class="text-center pt-5">
-            <button class="btn btn-adicionar">ATUALIZAR</button>
-        </div>
+        </form>
     </div>
 @endsection
