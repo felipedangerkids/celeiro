@@ -60,7 +60,7 @@ $('#segundo').on('click', function () {
         $('#money').removeClass("d-none");
         $('#card').addClass("d-none");
     }else{
-        console.log('e falso');
+      
     }
 
 });
