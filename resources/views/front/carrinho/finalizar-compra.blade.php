@@ -83,7 +83,7 @@
                 </div>
                 <div class="spans">
                     <div class="email">
-                        <span>{{ $ship->data }}</span> <br>
+                        <span>{{ $ship->data ?? 'Escolha a Data da Entrega' }}</span> <br>
                         <span>{{ $ship->horario }}</span> <br>
                     </div>
                 </div>
@@ -108,7 +108,7 @@
                 </div>
                 <div class="spans">
                     <div class="email">
-                        <span>{{ $ship->tipo }}</span> <br>
+                        <span>{{ $ship->tipo ?? 'Retirar ou Entrega?' }}</span> <br>
                     </div>
                 </div>
                 <div class="edit">
