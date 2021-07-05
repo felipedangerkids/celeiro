@@ -8,6 +8,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\Shop\ShopController;
+use App\Http\Controllers\User\AdressController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\RegisterController;
@@ -47,6 +48,10 @@ Route::middleware(['auth:cliente'])->group(function () {
 
     Route::get('edit/perfil/{id}', [UserController::class, 'edit'])->name('perfil.edit');
     Route::get('perfil', [PerfilController::class, 'index'])->name('perfil');
+
+    Route::get('adress', [AdressController::class, 'index'])->name('user.adress');
+    Route::get('adress/get', [AdressController::class, 'buscaCep'])->name('user.adress.get');
+    Route::post('adress/post', [AdressController::class, 'store'])->name('user.adress.post');
 });
 
 

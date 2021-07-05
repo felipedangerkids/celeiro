@@ -31,6 +31,26 @@
 
     <script src="{{ url('assets/js/script.js') }}"></script>
     <script src="{{ url('assets/js/produto-single/input.js') }}"></script>
+    <script type="text/javascript">
+
+            $('#buscar').on('click', function() {
+                $value = $('#cep').val();
+                $.ajax({
+                    type: 'get',
+                    url: '{{ url('adress/get') }}',
+                    data: {
+                        'search': $value
+                    },
+                    success: function(data) {
+                          console.log(data);
+                        $('#endereco').val(data.street);
+                        $('#bairro').val(data.district);
+                        $('#cidade').val(data.city);
+                        $('#estado').val(data.uf);
+                    }
+                });
+            })
+        </script>
 </body>
 
 </html>

@@ -21,7 +21,8 @@
                     </div>
                 </div>
                 <div class="edit">
-                   <a href="{{ route('perfil.edit', auth()->user()->id) }}"><button class="btn btn-edit"><img src="{{ url('assets/img/edit.png') }}" alt=""></button></a>
+                    <a href="{{ route('perfil.edit', auth()->user()->id) }}"><button class="btn btn-edit"><img
+                                src="{{ url('assets/img/edit.png') }}" alt=""></button></a>
                 </div>
             </div>
             <div id="linha-horizontal"></div>
@@ -37,18 +38,34 @@
                         </div>
                     </div>
                 </div>
-                <div class="spans">
-                    <div class="nome">
-                        <span>Rua Valparaizo, 391 - Bacacheri - Curitiba</span> <br>
+                @if ($adress->count() >= 1)
+                        <div class="spans">
+                            <div class="nome">
+                                <span>{{ $adress->endereco }}, {{ $adress->numero }} - {{ $adress->bairro }} - {{ $adress->cidade }}</span> <br>
+                            </div>
+                        </div>
+                    <div class="edit">
+                        <div>
+                            <a href="{{ route('user.adress') }}">  <button class="btn btn-edit">
+                                <img src="{{ url('assets/img/edit.png') }}" alt="">
+                            </button></a>
+                        </div>
                     </div>
-                </div>
-                <div class="edit">
-                    <div>
-                        <button class="btn btn-edit">
-                            <img src="{{ url('assets/img/edit.png') }}" alt="">
-                        </button>
+                @else
+                    <div class="spans">
+                        <div class="nome">
+                            <span>Você não possui endereço cadastrado<br></span> <br>
+                        </div>
                     </div>
-                </div>
+                    <div class="edit">
+                        <div>
+                            <a href="{{ route('user.adress') }}"><button class="btn btn-edit">
+                                    <img src="{{ url('assets/img/edit.png') }}" alt="">
+                                </button></a>
+                        </div>
+                    </div>
+                @endif
+
             </div>
             <div class="mt-3" id="linha-horizontal"></div>
         </div>
@@ -105,39 +122,41 @@
                 @foreach (\Cart::getContent() as $item)
 
 
-                        <div class="col-4 my-2">
-                            <div class="fundo-branco">
-                                <div class="text-center">
-                                    <div class="lata">
-                                        <a href="#">
-                                            <img style="width: 100%; object-fit: cover;" src="{{ url('storage/produtos/'.$item->attributes->image) }}" alt="">
-                                        </a>
-                                    </div>
+                    <div class="col-4 my-2">
+                        <div class="fundo-branco">
+                            <div class="text-center">
+                                <div class="lata">
+                                    <a href="#">
+                                        <img style="width: 100%; object-fit: cover;"
+                                            src="{{ url('storage/produtos/' . $item->attributes->image) }}" alt="">
+                                    </a>
                                 </div>
                             </div>
                         </div>
-                        <div class="title col-6 my-2">
-                            <div class="nome_">
-                                <span>{{ $item->name }} <br> {{ $item->attributes->resume }}</span> <br>
-                            </div>
-                            <div class="unid">
-                                <span>{{ $item->quantity }} UNID</span> <br>
-                            </div>
-                            <div class="preco">
-                                <h2>{{  'R$ '.number_format($item->price, 2, ',', '.') }}  </h2> <br>
-                            </div>
+                    </div>
+                    <div class="title col-6 my-2">
+                        <div class="nome_">
+                            <span>{{ $item->name }} <br> {{ $item->attributes->resume }}</span> <br>
                         </div>
-                        <div class="d-block col-2">
-                            <div class="edit">
-                                <button class="btn btn-edit">
-                                    <img src="{{ url('assets/img/edit.png') }}" alt="">
-                                </button>
-                            </div>
-                            <div class="edit mt-5">
-                               <a href="{{ route('cart.remove', $item->id) }}"><button type="button" class="btn btn-lixeira"> <img src="{{ url('assets/img/lixeira.png') }}"
+                        <div class="unid">
+                            <span>{{ $item->quantity }} UNID</span> <br>
+                        </div>
+                        <div class="preco">
+                            <h2>{{ 'R$ ' . number_format($item->price, 2, ',', '.') }} </h2> <br>
+                        </div>
+                    </div>
+                    <div class="d-block col-2">
+                        <div class="edit">
+                            <button class="btn btn-edit">
+                                <img src="{{ url('assets/img/edit.png') }}" alt="">
+                            </button>
+                        </div>
+                        <div class="edit mt-5">
+                            <a href="{{ route('cart.remove', $item->id) }}"><button type="button"
+                                    class="btn btn-lixeira"> <img src="{{ url('assets/img/lixeira.png') }}"
                                         alt=""></button></a>
-                            </div>
                         </div>
+                    </div>
 
                 @endforeach
             </div>
