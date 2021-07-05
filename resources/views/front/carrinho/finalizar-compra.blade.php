@@ -165,7 +165,7 @@
             <div class="mt-3" id="linha-horizontal"></div>
         </div>
         <div class="text-center my-5">
-            <button class="btn btn-adicionar">FECHAR PEDIDO</button>
+         <a href="{{ route('checkout.process') }}">  <button class="btn btn-adicionar">FECHAR PEDIDO</button></a>
         </div>
     </div>
 @endsection

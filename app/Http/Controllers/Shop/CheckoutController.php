@@ -15,4 +15,9 @@ class CheckoutController extends Controller
         $ship = ShippMethod::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
         return view('front.carrinho.finalizar-compra', compact('adress', 'ship'));
     }
+
+    public function proccess()
+    {
+        return view('front.carrinho.efetuar-pagamento');
+    }
 }

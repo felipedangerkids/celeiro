@@ -57,6 +57,8 @@ Route::middleware(['auth:cliente'])->group(function () {
 
     Route::get('perfil/ship', [ShippMethodController::class, 'index'])->name('user.ship');
     Route::post('perfil/ship/store', [ShippMethodController::class, 'store'])->name('user.ship.store');
+
+    Route::get('process', [CheckoutController::class, 'proccess'])->name('checkout.process');
 });
 
 

@@ -38,3 +38,29 @@ $('.later').on('click', function () {
     }
 
 });
+$('#primeiro').on('click', function () {
+
+    var card = $('#primeiro').attr('checked', true);
+    if(card )
+    {
+        // console.log('e true');
+        $('#card').removeClass("d-none");
+        $('#money').addClass("d-none");
+    }else{
+        console.log('e falso');
+    }
+
+});
+$('#segundo').on('click', function () {
+
+    var money = $('#segundo').attr('checked', true);
+    if(money )
+    {
+        // console.log('e true');
+        $('#money').removeClass("d-none");
+        $('#card').addClass("d-none");
+    }else{
+        console.log('e falso');
+    }
+
+});
