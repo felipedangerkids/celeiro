@@ -36,7 +36,7 @@
             <div class="d-flex text-center">
                 <div class="beer">
                     <a href="{{ route('shop.cervejas') }}">
-                        <img src="{{ url('assets/img/beer 1.png') }}" alt="">
+                        <img src="{{ url('assets/img/beer 1.png') }}" alt="merg">
                     </a>
                 </div>
                 <div class="beer">
