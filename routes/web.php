@@ -84,7 +84,9 @@ Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [P
 Route::get('/inicio', function () {
     return view('front.home.inicio');
 });
-
+Route::get('/adc-carrinho', function () {
+    return view('front.carrinho.adc-carrinho');
+});
 //produtos//
 
 // Route::get('/cervejas', function () {
@@ -102,9 +104,7 @@ Route::get('/inicio', function () {
 
 //carrinho//
 
-// Route::get('/adc-carrinho', function () {
-//     return view('front.carrinho.adc-carrinho');
-// });
+
 // Route::get('/finalizar-compra', function () {
 //    return view('front.carrinho.finalizar-compra');
 //  });
