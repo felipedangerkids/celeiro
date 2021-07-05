@@ -38,7 +38,7 @@
                         </div>
                     </div>
                 </div>
-                @if ($adress->count() >= 1)
+                @if ($adress != null)
                     <div class="spans">
                         <div class="nome">
                             <span>{{ $adress->endereco }}, {{ $adress->numero }} - {{ $adress->bairro }} -
