@@ -83,7 +83,7 @@
                         <button type="submit" class="btn btn-adicionar">ADICIONAR</button>
                     </div>
                     <div class="text-center mt-4">
-                        <button type="button" class="btn btn-adicionar">ITENS ({{ \Cart::getTotalQuantity() }}) {{  'R$ '.number_format(\Cart::getTotal(), 2, ',', '.') }}  </button>
+                      <a href="{{ route('pre.checkout') }}"> <button type="button" class="btn btn-adicionar">ITENS ({{ \Cart::getTotalQuantity() }}) {{  'R$ '.number_format(\Cart::getTotal(), 2, ',', '.') }}  </button></a> 
                     </div>
                 </div>
             </div>
