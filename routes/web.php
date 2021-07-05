@@ -12,6 +12,8 @@ use App\Http\Controllers\User\AdressController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\RegisterController;
+use App\Http\Controllers\User\ShippMethod;
+use App\Http\Controllers\User\ShippMethodController;
 use App\Http\Controllers\User\UserController;
 
 /*
@@ -52,6 +54,9 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('adress', [AdressController::class, 'index'])->name('user.adress');
     Route::get('adress/get', [AdressController::class, 'buscaCep'])->name('user.adress.get');
     Route::post('adress/post', [AdressController::class, 'store'])->name('user.adress.post');
+
+    Route::get('perfil/ship', [ShippMethodController::class, 'index'])->name('user.ship');
+    Route::post('perfil/ship/store', [ShippMethodController::class, 'store'])->name('user.ship.store');
 });
 
 

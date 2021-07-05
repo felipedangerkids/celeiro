@@ -39,16 +39,17 @@
                     </div>
                 </div>
                 @if ($adress->count() >= 1)
-                        <div class="spans">
-                            <div class="nome">
-                                <span>{{ $adress->endereco }}, {{ $adress->numero }} - {{ $adress->bairro }} - {{ $adress->cidade }}</span> <br>
-                            </div>
+                    <div class="spans">
+                        <div class="nome">
+                            <span>{{ $adress->endereco }}, {{ $adress->numero }} - {{ $adress->bairro }} -
+                                {{ $adress->cidade }}</span> <br>
                         </div>
+                    </div>
                     <div class="edit">
                         <div>
-                            <a href="{{ route('user.adress') }}">  <button class="btn btn-edit">
-                                <img src="{{ url('assets/img/edit.png') }}" alt="">
-                            </button></a>
+                            <a href="{{ route('user.adress') }}"> <button class="btn btn-edit">
+                                    <img src="{{ url('assets/img/edit.png') }}" alt="">
+                                </button></a>
                         </div>
                     </div>
                 @else
@@ -82,13 +83,14 @@
                 </div>
                 <div class="spans">
                     <div class="email">
-                        <span>Pedir agora</span> <br>
+                        <span>{{ $ship->data }}</span> <br>
+                        <span>{{ $ship->horario }}</span> <br>
                     </div>
                 </div>
                 <div class="edit">
-                    <button class="btn btn-edit">
-                        <img src="{{ url('assets/img/edit.png') }}" alt="">
-                    </button>
+                    <a href="{{ route('user.ship') }}"> <button type="button" class="btn btn-edit">
+                            <img src="{{ url('assets/img/edit.png') }}" alt="">
+                        </button></a>
                 </div>
             </div>
             <div class="mt-3" id="linha-horizontal"></div>
@@ -106,13 +108,13 @@
                 </div>
                 <div class="spans">
                     <div class="email">
-                        <span>Receber em casa</span> <br>
+                        <span>{{ $ship->tipo }}</span> <br>
                     </div>
                 </div>
                 <div class="edit">
-                    <button class="btn btn-edit">
+                    <a href="{{ route('user.ship') }}"><button class="btn btn-edit">
                         <img src="{{ url('assets/img/edit.png') }}" alt="">
-                    </button>
+                    </button></a>
                 </div>
             </div>
             <div class="mt-3" id="linha-horizontal"></div>

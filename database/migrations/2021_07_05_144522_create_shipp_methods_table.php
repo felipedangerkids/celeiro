@@ -15,6 +15,10 @@ class CreateShippMethodsTable extends Migration
     {
         Schema::create('shipp_methods', function (Blueprint $table) {
             $table->id();
+            $table->integer('user_id');
+            $table->string('data');
+            $table->string('horario')->nullable();
+            $table->string('tipo')->nullable();
             $table->timestamps();
         });
     }
