@@ -31,7 +31,7 @@ class LoginController extends Controller
     {
         if (Auth::guard('cliente')->attempt(['email' => $request->email, 'password' => $request->password])) {
 
-            return redirect()->intended('/pre-check');
+            return redirect()->intended('/pre-checkout');
         }
         return redirect()->back();
     }
