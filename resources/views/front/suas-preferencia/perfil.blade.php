@@ -6,18 +6,18 @@
         </div>
         <div class="profile mt-3">
             <div class="d-flex">
-                <div>
-                    <img src="{{ url('assets/img/Group 1.png') }}" alt="">
+                <div class="avatar">
+                    <img src="{{ url('assets/img/avatar.png') }}" alt="">
                 </div>
                 <div class="identidade">
                     <div class="nome">
-                        <span> Vilson Paulo Beckhauser</span>
+                        <span> {{ auth()->user()->name }}</span>
                     </div>
                     <div class="email">
-                        <span> caiojrtv@gmail.com</span>
+                        <span> {{ auth()->user()->email }}</span>
                     </div>
                     <div class="telefone">
-                        <span> 41 99949-8611</span>
+                        <span> {{ auth()->user()->whatsapp }}</span>
                     </div>
                 </div>
                 <div class="edit">
@@ -164,7 +164,7 @@
             </div>
             <div class="mt-3" id="linha-horizontal"></div>
         </div>
-        <div class="text-center mt-5">
+        <div class="text-center my-5">
             <button class="btn btn-adicionar">salvar e fechar</button>
         </div>
     </div>

@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers\User;
 
-use App\Models\Cliente;
-use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 
-class UserController extends Controller
+class PerfilController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +14,7 @@ class UserController extends Controller
      */
     public function index()
     {
-     
+        return view('front.suas-preferencia.perfil');
     }
 
     /**
@@ -58,8 +57,7 @@ class UserController extends Controller
      */
     public function edit($id)
     {
-        $user = Cliente::find($id);
-        return view('front.suas-preferencia.atualizar-perfil', compact('user'));
+        //
     }
 
     /**

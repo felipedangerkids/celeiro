@@ -9,6 +9,7 @@ use App\Http\Controllers\Shop\CartController;
 use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\UserController;
 
@@ -45,6 +46,7 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
 
     Route::get('edit/perfil/{id}', [UserController::class, 'edit'])->name('perfil.edit');
+    Route::get('perfil', [PerfilController::class, 'index'])->name('perfil');
 });
 
 
@@ -100,9 +102,9 @@ Route::get('/finalizar-compra', function () {
 
 //Suas Preferencia//
 
-Route::get('/perfil', function () {
-    return view('front.suas-preferencia.perfil');
-});
+// Route::get('/perfil', function () {
+//     return view('front.suas-preferencia.perfil');
+// });
 // Route::get('/atualizar-perfil', function () {
 //     return view('front.suas-preferencia.atualizar-perfil');
 // });
