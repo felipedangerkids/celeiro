@@ -37,7 +37,7 @@
                   <img width="100" height="120" class="mt-2" src="{{ url('storage/produtos/'. $product->image) }}" alt="">
             </div>
             <div class="form-group col-md-3">
-                  @php 
+                  @php
                   $sellprice = str_replace([',', '.'], ['', ','], $product->sellprice);
                   $buyprice = str_replace([',', '.'], ['', ','], $product->buyprice);
                   @endphp
@@ -59,6 +59,15 @@
 
                   <input type="text" class="form-control" value="{{ $product->ibv }}" name="ibv" placeholder="ABV">
             </div>
+            <div class="form-group col-md-6">
+                <select class="form-control" name="categoria" id="exampleFormControlSelect1">
+                  <option value="sem-categoria">Sem Categoria</option>
+                  <option value="cerveja">Cerveja</option>
+                  <option value="kit">kit</option>
+                  <option value="embutido">Embutidos</option>
+
+                </select>
+              </div>
             <div class="form-group col-md-3">
 
                   <input type="text" class="form-control" value="{{ $product->type }}" name="type" placeholder="Tipo">
@@ -78,7 +87,7 @@
                         </div>
                   </div>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6 mt-5">
                   <button type="submit" class="btn btn-orange">Alterar Produto</button>
             </div>
             <div class="col-md-6">

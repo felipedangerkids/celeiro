@@ -35,17 +35,17 @@
         <div class="icones-gerais mt-4">
             <div class="d-flex text-center">
                 <div class="beer">
-                    <a href="/cervejas">
+                    <a href="{{ route('shop.cervejas') }}">
                         <img src="{{ url('assets/img/beer 1.png') }}" alt="">
                     </a>
                 </div>
                 <div class="beer">
-                    <a href="/kits">
+                    <a href="{{ route('shop.kits') }}">
                         <img src="{{ url('assets/img/beer-box 1.png') }}" alt="">
                     </a>
                 </div>
                 <div class="beer">
-                    <a href="/embutidos">
+                    <a href="{{ route('shop.embutidos') }}">
                         <img src="{{ url('assets/img/sausage 1.png') }}" alt="">
                     </a>
                 </div>

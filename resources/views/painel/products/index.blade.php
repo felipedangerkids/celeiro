@@ -72,9 +72,9 @@
                               <span aria-hidden="true">&times;</span>
                         </button>
                   </div>
-        
+
                   <div class="modal-body">
-                
+
                         <form method="POST" action="{{ url('/produtos-store') }}" enctype="multipart/form-data">
                               @csrf
                               <div class="row">
@@ -94,6 +94,15 @@
                                           <input type="text" class="form-control" name="provider"
                                                 placeholder="Fornecedor">
                                     </div>
+                                    <div class="form-group col-md-6">
+                                        <select class="form-control" name="categoria" id="exampleFormControlSelect1">
+                                          <option value="sem-categoria">Sem Categoria</option>
+                                          <option value="cerveja">Cerveja</option>
+                                          <option value="kit">kit</option>
+                                          <option value="embutido">Embutidos</option>
+
+                                        </select>
+                                      </div>
                                     <div class="form-group col-md-6">
 
                                           <textarea type="text" class="form-control" name="description"
@@ -177,9 +186,9 @@
 </div>
 <script type="application/javascript">
       function deleteItem(e) {
-        
+
                     let id = e.getAttribute('data-id');
-        
+
                     const swalWithBootstrapButtons = Swal.mixin({
                           customClass: {
                                 confirmButton: 'btn btn-success',
@@ -187,7 +196,7 @@
                           },
                           buttonsStyling: false
                     });
-        
+
                     swalWithBootstrapButtons.fire({
                           title: 'Você tem certeza?',
                           text: "Está deletando permanentemente!",
@@ -199,7 +208,7 @@
                     }).then((result) => {
                           if (result.value) {
                                 if (result.isConfirmed) {
-        
+
                                       $.ajax({
                                             type: 'DELETE',
                                             url: '{{url('produtosDelete')}}/' + id,
@@ -212,14 +221,14 @@
                                                               'Deletado!',
                                                               'Seu produto foi deletado!',
                                                               "success"
-                                                           
+
                                                         );
-                                                     
+
                                                   }
-        
+
                                             }
                                       });
-        
+
                                 }
         location.reload();
                           } else if (
@@ -232,9 +241,9 @@
                                 );
                           }
                     });
-        
+
               }
-        
+
 </script>
 
 

@@ -89,6 +89,7 @@ class ProductController extends Controller
             'ibv' => $data['ibv'],
             'type' => $data['type'],
             'image' => $name,
+            'categoria' => $data['categoria'],
             'description' => $data['description'],
             'spotlight' => $data['spotlight'],
 
@@ -173,6 +174,7 @@ class ProductController extends Controller
         $produto->temperature = $request->get('temperature');
         $produto->ibv = $request->get('ibv');
         $produto->type = $request->get('type');
+        $produto->categoria = $request->get('categoria');
         $produto->description = $request->get('description');
         $produto->spotlight = $request->get('spotlight');
         $produto->save();

@@ -32,6 +32,9 @@ use App\Http\Controllers\User\UserController;
 
 
 Route::get('/', [ShopController::class, 'index'])->name('shop');
+Route::get('cervejas', [ShopController::class, 'cervejas'])->name('shop.cervejas');
+Route::get('kits', [ShopController::class, 'kits'])->name('shop.kits');
+Route::get('embutidos', [ShopController::class, 'embutidos'])->name('shop.embutidos');
 Route::get('produto/{id}', [ShopController::class, 'single'])->name('shop.single');
 
 
@@ -84,30 +87,30 @@ Route::get('/inicio', function () {
 
 //produtos//
 
-Route::get('/cervejas', function () {
-    return view('front.produtos.cervejas.cervejas');
-});
-Route::get('/kits', function () {
-    return view('front.produtos.kits.kits');
-});
-Route::get('/embutidos', function () {
-    return view('front.produtos.embutidos.embutidos');
-});
-Route::get('/produto-single', function () {
-    return view('front.produto-single.produto-single');
-});
+// Route::get('/cervejas', function () {
+//     return view('front.produtos.cervejas.cervejas');
+// });
+// Route::get('/kits', function () {
+//     return view('front.produtos.kits.kits');
+// });
+// Route::get('/embutidos', function () {
+//     return view('front.produtos.embutidos.embutidos');
+// });
+// Route::get('/produto-single', function () {
+//     return view('front.produto-single.produto-single');
+// });
 
 //carrinho//
 
-Route::get('/adc-carrinho', function () {
-    return view('front.carrinho.adc-carrinho');
-});
-Route::get('/finalizar-compra', function () {
-   return view('front.carrinho.finalizar-compra');
- });
- Route::get('/efetuar-pagamento', function () {
-   return view('front.carrinho.efetuar-pagamento');
- });
+// Route::get('/adc-carrinho', function () {
+//     return view('front.carrinho.adc-carrinho');
+// });
+// Route::get('/finalizar-compra', function () {
+//    return view('front.carrinho.finalizar-compra');
+//  });
+//  Route::get('/efetuar-pagamento', function () {
+//    return view('front.carrinho.efetuar-pagamento');
+//  });
 // Route::get('/pedido-concluido', function () {
 //     return view('front.carrinho.pedido-concluido');
 // });
@@ -120,10 +123,10 @@ Route::get('/finalizar-compra', function () {
 // Route::get('/atualizar-perfil', function () {
 //     return view('front.suas-preferencia.atualizar-perfil');
 // });
-Route::get('/atualizar-endereco', function () {
-    return view('front.suas-preferencia.atualizar-endereco');
-});
-Route::get('/atualizado', function () {
-    return view('front.suas-preferencia.atualizado');
-});
+// Route::get('/atualizar-endereco', function () {
+//     return view('front.suas-preferencia.atualizar-endereco');
+// });
+// Route::get('/atualizado', function () {
+//     return view('front.suas-preferencia.atualizado');
+// });
 

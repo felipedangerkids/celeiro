@@ -32,6 +32,7 @@ class Product extends Model
         'ibv',
         'type',
         'image',
+        'categoria',
         'description',
         'spotlight',
         'status',

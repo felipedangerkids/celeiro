@@ -28,6 +28,7 @@ class CreateProductsTable extends Migration
             $table->string('ibv')->nullable();
             $table->string('type')->nullable();
             $table->string('image')->nullable();
+            $table->string('categoria')->nullable();
             $table->text('description')->nullable();
             $table->integer('spotlight')->nullable();
             $table->integer('status')->default(1);
