@@ -67,7 +67,7 @@
                     </div>
                 </div>
                 <label class="check-in" for="1">Pedir agora
-                    <input name="pedido" class="form-check-input" id="1" type="radio">
+                    <input name="pedido" value="Pedir Agora" class="form-check-input later" id="1" type="radio">
                     <span class="check"></span>
                 </label>
             </div>
@@ -87,31 +87,38 @@
                     </div>
                     <div class="wrapper">
                         <div class="lista-item">
-                            <input name="pedido" class="form-check-input trigger-input" id="faq-titulo-1" type="radio">
-                            <div class="trigger-wrapper">
-                                <label class="check-in" for="faq-titulo-1">
-                                    AGENDAR PEDIDO
-                                    <span class="check"></span>
-                                </label>
-                                <div class="faq-conteudo">
-                                    <div class="horarios">
-                                        <div class="mt-3">
-                                            <input class="form-check-input" type="radio">
-                                            <label class="check-in" for="">7:00 ~ 8:00</label>
-                                            <span class="check"></span>
-                                        </div>
-                                        <div class="mt-3">
-                                            <input class="form-check-input"  type="radio">
-                                            <label  class="check-in" for="">7:00 ~ 8:00</label>
-                                            <span class="check"></span>
-                                        </div>
-                                        <div class="mt-3">
-                                            <input class="form-check-input"  type="radio">
-                                            <label  class="check-in" for="">7:00 ~ 8:00</label>
-                                            <span class="check"></span>
-                                        </div>
+                            <label class="check-in" for="6">Pedir agora
+                                <input name="pedido" value="Pedir Agora" class="form-check-input now" id="6" type="radio">
+                                <span class="check "></span>
+                            </label>
 
+                            <div class="times d-none">
+                                <div class="horarios">
+                                    <div class="mt-3 row ">
+                                        <div class="col-12">
+                                            <label class="check-in" for="7">
+                                                <input class="form-check-input" name="horario" id="7" type="radio">
+                                                7:00 - 8:00
+                                                <span class="check"></span>
+                                            </label>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="check-in" for="8">
+                                                <input class="form-check-input" name="horario" id="8" type="radio">
+                                                7:00 - 8:00
+                                                <span class="check"></span>
+                                            </label>
+                                        </div>
+                                        <div class="col-12">
+                                            <label class="check-in" for="9">
+                                                <input class="form-check-input" name="horario" id="9" type="radio">
+                                                7:00 - 8:00
+                                                <span class="check"></span>
+                                            </label>
+                                        </div>
                                     </div>
+
+
                                 </div>
 
                             </div>
