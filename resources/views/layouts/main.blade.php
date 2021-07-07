@@ -16,7 +16,7 @@
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('assets/css/main.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/main.css') }}">
-    {{-- <link rel="stylesheet" href="{{ url('assets/css/idade/main.css') }}"> --}}
+    <link rel="stylesheet" href="{{ url('assets/css/idade/main.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/idade/main.min.css') }}">
 
     <title>CELEIRO DO MALTE</title>
