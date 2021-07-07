@@ -64,7 +64,7 @@
                 <div class="row">
                     @foreach ($produtos as $produto)
                         @if ($produto->spotlight == 1)
-                            <div class="product col-5 mt-3 mb-5">
+                            <div style="margin-bottom: 9rem !important;" class="product col-5 mt-3 mb-5">
                                 <a href="{{ route('shop.single', $produto->id) }}">
                                     <img style="object-fit: cover;" src="{{ url('storage/produtos/' . $produto->image) }}"
                                         alt="">
