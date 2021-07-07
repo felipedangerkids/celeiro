@@ -37,7 +37,7 @@ Route::get('kits', [ShopController::class, 'kits'])->name('shop.kits');
 Route::get('embutidos', [ShopController::class, 'embutidos'])->name('shop.embutidos');
 Route::get('produto/{id}', [ShopController::class, 'single'])->name('shop.single');
 
-
+Route::post('search', [ShopController::class, 'search'])->name('search');
 //cart
 Route::post('cart-add', [CartController::class, 'cartAdd'])->name('cart.add');
 Route::any('cart-remove/{id}', [CartController::class, 'itemRemove'])->name('cart.remove');

@@ -21,7 +21,7 @@
                     </div>
                 </div>
                 <div class="edit">
-                    <button class="btn btn-edit"><img src="{{ url('assets/img/edit.png') }}" alt=""></button>
+                   <a href="{{ route('perfil.edit', auth()->user()->id) }}"> <button class="btn btn-edit"><img src="{{ url('assets/img/edit.png') }}" alt=""></button></a>
                 </div>
             </div>
             <div class="mt-3 text-center">

@@ -35,4 +35,12 @@ class ShopController extends Controller
         $produtos = Product::where('categoria', 'embutido')->get();
         return view('front.produtos.embutidos.embutidos', compact('produtos'));
     }
+    public function search(Request $request)
+    {
+        $pesquisa = $request->search;
+
+        $produtos = Product::where('name', 'like', '%' . $pesquisa . '%')->get();
+
+        return view('front.home.pesquisa', compact('pesquisa', 'produtos'));
+    }
 }
