@@ -1,3 +1,9 @@
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 $('#whatsapp').mask('00 00000-0000');
 
 function face() {
@@ -65,3 +71,24 @@ $('#segundo').on('click', function () {
 
 });
 $('#phone').mask('00 00000-0000');
+
+
+$(document).on('click', '#enviar', function(){
+
+    var dados = $('#form-checkout').serialize();
+    $.ajax({
+        url: 'checkout',
+        type: 'POST',
+        data: dados,
+        success: (data) => {
+            console.log(data);
+            if(data[0] == 'success'){
+                window.location.href= 'pedido-concluido';
+            }
+
+        },
+        error: (err) => {
+          console.log(err.responseJSON);
+        }
+    });
+});

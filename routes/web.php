@@ -2,19 +2,20 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\CapturaController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\Shop\CartController;
-use App\Http\Controllers\Shop\CheckoutController;
-use App\Http\Controllers\Shop\ShopController;
-use App\Http\Controllers\User\AdressController;
-use App\Http\Controllers\User\LoginController;
-use App\Http\Controllers\User\PerfilController;
-use App\Http\Controllers\User\RegisterController;
+use App\Http\Controllers\TesteController;
 use App\Http\Controllers\User\ShippMethod;
-use App\Http\Controllers\User\ShippMethodController;
+use App\Http\Controllers\CapturaController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\Shop\CartController;
+use App\Http\Controllers\Shop\ShopController;
 use App\Http\Controllers\User\UserController;
+use App\Http\Controllers\User\LoginController;
+use App\Http\Controllers\User\AdressController;
+use App\Http\Controllers\User\PerfilController;
+use App\Http\Controllers\Shop\CheckoutController;
+use App\Http\Controllers\User\RegisterController;
+use App\Http\Controllers\User\ShippMethodController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,7 +30,7 @@ use App\Http\Controllers\User\UserController;
 
 
 
-
+Route::get('teste', [TesteController::class, 'index']);
 
 Route::get('/', [ShopController::class, 'index'])->name('shop');
 Route::get('cervejas', [ShopController::class, 'cervejas'])->name('shop.cervejas');
@@ -63,6 +64,7 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::post('perfil/ship/store', [ShippMethodController::class, 'store'])->name('user.ship.store');
 
     Route::get('process', [CheckoutController::class, 'proccess'])->name('checkout.process');
+    Route::post('checkout', [CheckoutController::class, 'checkout'])->name('finish');
 });
 
 
@@ -112,9 +114,9 @@ Route::get('/adc-carrinho', function () {
 //  Route::get('/efetuar-pagamento', function () {
 //    return view('front.carrinho.efetuar-pagamento');
 //  });
-// Route::get('/pedido-concluido', function () {
-//     return view('front.carrinho.pedido-concluido');
-// });
+Route::get('/pedido-concluido', function () {
+    return view('front.carrinho.pedido-concluido');
+})->name('pedido.concluido');
 
 //Suas Preferencia//
 
