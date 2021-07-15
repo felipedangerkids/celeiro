@@ -12,7 +12,7 @@
         </div>
         <div class="mt-3">
             <div class="text-center">
-                <a href="/inicio" class="btn btn-continuar">ACOMPANHAR PEDIDO</a>
+                <a href="{{ route('user.pedidos') }}" class="btn btn-continuar">ACOMPANHAR PEDIDO</a>
             </div>
         </div>
     </div>

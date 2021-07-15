@@ -25,7 +25,7 @@
                 </div>
             </div>
             <div class="mt-3 text-center">
-                <button class="btn btn-adicionar">MEUS PEDIDOS</button>
+               <a href="{{ route('user.pedidos') }}"><button class="btn btn-adicionar">MEUS PEDIDOS</button></a>
             </div>
             <div class="mt-4" id="linha-horizontal"></div>
         </div>

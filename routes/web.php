@@ -13,7 +13,9 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\AdressController;
 use App\Http\Controllers\User\PerfilController;
+use App\Http\Controllers\Painel\PainelController;
 use App\Http\Controllers\Shop\CheckoutController;
+use App\Http\Controllers\User\PedidoController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\ShippMethodController;
 
@@ -65,6 +67,12 @@ Route::middleware(['auth:cliente'])->group(function () {
 
     Route::get('process', [CheckoutController::class, 'proccess'])->name('checkout.process');
     Route::post('checkout', [CheckoutController::class, 'checkout'])->name('finish');
+
+    Route::get('/pedido-concluido', function () {
+        return view('front.carrinho.pedido-concluido');
+    })->name('pedido.concluido');
+
+    Route::get('user/pedidos', [PedidoController::class, 'index'])->name('user.pedidos');
 });
 
 
@@ -78,6 +86,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/produtos-edit/{id}', [Pro
 Route::middleware(['auth:sanctum', 'verified'])->post('/produtos-store', [ProductController::class, 'store']);
 Route::middleware(['auth:sanctum', 'verified'])->any('/produtosDelete/{id}', [ProductController::class, 'destroy']);
 Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [ProductController::class, 'update']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/painel/pedidos', [PainelController::class, 'index']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/painel/pedidos/ver/{id}', [PainelController::class, 'ver']);
 
 //layouts e rotas provisorias
 
@@ -114,9 +124,6 @@ Route::get('/adc-carrinho', function () {
 //  Route::get('/efetuar-pagamento', function () {
 //    return view('front.carrinho.efetuar-pagamento');
 //  });
-Route::get('/pedido-concluido', function () {
-    return view('front.carrinho.pedido-concluido');
-})->name('pedido.concluido');
 
 //Suas Preferencia//
 

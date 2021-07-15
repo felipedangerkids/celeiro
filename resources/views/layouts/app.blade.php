@@ -51,7 +51,7 @@
                     <a href="{{ url('produtos') }}">Produtos</a>
                 </li>
                 <li>
-                    <a href="#">Vendas</a>
+                    <a href="{{ url('painel/pedidos') }}">Vendas</a>
                 </li>
                 <li>
                     <a href="#">Configurações</a>
@@ -122,14 +122,14 @@
                       icon: 'success',
                       title: 'Muito bom!',
                       text: "{{Session::get('success')}}",
-                      
+
                       }).then((value) => {
                       location.reload();
                       }).catch(swal.noop);
         </script>
         @endif
 
-   
+
 </body>
 
 </html>

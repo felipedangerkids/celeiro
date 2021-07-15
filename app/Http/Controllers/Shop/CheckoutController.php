@@ -3,7 +3,9 @@
 namespace App\Http\Controllers\Shop;
 
 use PagarMe\Client;
+use App\Models\Item;
 use App\Models\Adress;
+use App\Models\Pedido;
 use App\Models\ShippMethod;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
@@ -31,7 +33,9 @@ class CheckoutController extends Controller
 
         $valor = number_format(\Cart::getTotal(), 2, '.', '');
         $valor = str_replace('.', '', $valor);
+        $ship = ShippMethod::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
         $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        $validade = str_replace('/', '', $request->validade);
 
         $items = [];
         foreach (\Cart::getContent() as $key => $value) {
@@ -44,16 +48,50 @@ class CheckoutController extends Controller
                 'tangible' => true
             ];
         }
+
+
+        $pedido = Pedido::create([
+            'user_id' => auth()->user()->id,
+            'adress_id' => $adress->id,
+            'produto_id' => 1,
+            'pagamento' => $request->metodo,
+            'troco' => $request->troco,
+            'ship_id' => $ship->id,
+        ]);
+
+        foreach (\Cart::getContent() as $key => $value) {
+
+            $items[] = [
+                'id' => (string)$value->id,
+                'title' => $value->name,
+                'unit_price' => (str_replace('.', '', number_format($value->price, 2, '.', ''))),
+                'quantity' => (int)$value->quantity,
+                'tangible' => true
+            ];
+
+            $produtos = Item::create([
+                'user_id' => auth()->user()->id,
+                'pedido_id' => $pedido->id,
+                'title' => $value->name,
+                'unit_price' => $value->price,
+                'quantity' => $value->quantity,
+            ]);
+        }
+
+
         if ($request->metodo == 'dinheiro') {
+            \Cart::clear();
             return response()->json(['success'], 200);
         }
+
+
         $transaction = $pagarme->transactions()->create([
             'amount' =>  $valor,
             'payment_method' => 'credit_card',
             'card_holder_name' => $request->name,
             'card_cvv' => $request->cvv,
             'card_number' => $request->numero,
-            'card_expiration_date' => $request->validade,
+            'card_expiration_date' =>  $validade,
             'customer' => [
                 'external_id' => (string)auth()->user()->id,
                 'name' => auth()->user()->name,
@@ -97,8 +135,13 @@ class CheckoutController extends Controller
             ],
             'items' =>
             $items
+
+
+
+
         ]);
         if ($transaction->status == 'paid') {
+            \Cart::clear();
             return response()->json(['success'], 200);
         }
         return response()->json(['rejected'], 412);

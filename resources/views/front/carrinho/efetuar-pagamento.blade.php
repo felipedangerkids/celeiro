@@ -38,11 +38,11 @@
                     </div>
                     <div class="form-group col-5 my-2">
                         <label class="text-white" for="">Validade</label>
-                        <input type="text" name="validade" class="form-control">
+                        <input type="text" name="validade" id="validade" class="form-control">
                     </div>
                     <div class="form-group col-5 my-2">
                         <label class="text-white" for="">CVV</label>
-                        <input type="text" name="cvv" class="form-control">
+                        <input type="text" name="cvv" id="cvv" class="form-control">
                     </div>
                     <div class="form-group col-12 my-2">
                         <label class="text-white" for="">CPF do Titular</label>
@@ -72,7 +72,7 @@
                 <div class="row justify-content-between my-4 mx-3">
                     <div class="form-group col-12 my-2">
                         <label class="text-white" for="">Troco Para:</label>
-                        <input type="text" class="form-control">
+                        <input type="text" name="troco" id="dinheiro" class="form-control">
                     </div>
 
                 </div>

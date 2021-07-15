@@ -5,6 +5,15 @@ $.ajaxSetup({
 });
 
 $('#whatsapp').mask('00 00000-0000');
+$('#numero').mask('0000000000000000');
+$('#validade').mask('00/00');
+$('#cvv').mask('000');
+
+$('#dinheiro').maskMoney({
+    allowNegative: false,
+    thousands: '.',
+    decimal: ','
+});
 
 function face() {
       $("#face").addClass("heartbeat");
