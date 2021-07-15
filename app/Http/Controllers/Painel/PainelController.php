@@ -18,7 +18,7 @@ class PainelController extends Controller
     public function ver($id)
     {
         $items = Item::where('pedido_id', $id)->get();
-        $pedido = Pedido::with('users', 'adress')->find($id);
+        $pedido = Pedido::with('users', 'adress', 'ship')->find($id);
         return view('painel.pedidos.ver', compact('pedido', 'items'));
     }
 }

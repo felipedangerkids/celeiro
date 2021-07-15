@@ -15,6 +15,20 @@
             <p>CEP: {{ $pedido->adress->cep }}</p>
         </div>
         <div class="text-center text-white">
+            <h3>Entrega</h3>
+        </div>
+        <div class="text-white">
+            @if ( $pedido->ship->data == 'Agendar Pedido')
+            <p>Data: {{ $pedido->ship->horario }}</p>
+            <p>Horario: {{ $pedido->ship->data }}</p>
+            @else
+            <p>Data: {{ $pedido->ship->data }}</p>
+            @endif
+           
+            <p>Tipo: {{ $pedido->ship->tipo }}</p>
+
+        </div>
+        <div class="text-center text-white">
             <h3>Comprador</h3>
         </div>
         <div class="text-white">
@@ -52,7 +66,7 @@
                   <option>Saiu Para Entrega</option>
                   <option>Entregue</option>
                   <option>Cancelado</option>
-         
+
                 </select>
               </div>
               <div class="form-group col-md-6">

@@ -28,4 +28,9 @@ class Pedido extends Model
     {
         return $this->hasMany(Item::class);
     }
+
+    public function ship()
+    {
+        return $this->belongsTo(ShippMethod::class, 'ship_id');
+    }
 }

@@ -10,7 +10,7 @@ class TesteController extends Controller
 {
     public function index()
     {
-        $pedidos = Pedido::with('pedidos')->get();
+        $pedidos = Pedido::with('ship')->get();
         dd($pedidos);
     }
 }
