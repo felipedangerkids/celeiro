@@ -18,13 +18,13 @@
             <h3>Entrega</h3>
         </div>
         <div class="text-white">
-            @if ( $pedido->ship->data == 'Agendar Pedido')
-            <p>Data: {{ $pedido->ship->horario }}</p>
-            <p>Horario: {{ $pedido->ship->data }}</p>
+            @if ($pedido->ship->data == 'Agendar Pedido')
+                <p>Data: {{ $pedido->ship->horario }}</p>
+                <p>Horario: {{ $pedido->ship->data }}</p>
             @else
-            <p>Data: {{ $pedido->ship->data }}</p>
+                <p>Data: {{ $pedido->ship->data }}</p>
             @endif
-           
+
             <p>Tipo: {{ $pedido->ship->tipo }}</p>
 
         </div>
@@ -43,7 +43,7 @@
             @foreach ($items as $item)
                 <div>
                     <p>Title: {{ $item->title }}</p>
-                    <p>Preço: {{  'R$ '.number_format($item->unit_price, 2, ',', '.') }}  </p>
+                    <p>Preço: {{ 'R$ ' . number_format($item->unit_price, 2, ',', '.') }} </p>
                     <p>Quantidade: {{ $item->quantity }}</p>
                 </div>
             @endforeach
@@ -59,20 +59,23 @@
         <div class="text-center text-white">
             <h3>Status</h3>
         </div>
+        <form action="{{ url('painel/pedidos/status/'. $pedido->id) }}" method="POST">
         <div class="row">
-            <div class="form-group col-md-6">
-                <select class="form-control" id="exampleFormControlSelect1">
-                  <option>Preparando</option>
-                  <option>Saiu Para Entrega</option>
-                  <option>Entregue</option>
-                  <option>Cancelado</option>
+                @csrf
+                <div class="form-group col-md-6">
+                    <select class="form-control" name="status" id="exampleFormControlSelect1">
+                        <option value="1">Preparando</option>
+                        <option value="2">Saiu Para Entrega</option>
+                        <option value="3">Entregue</option>
+                        <option value="4">Cancelado</option>
 
-                </select>
-              </div>
-              <div class="form-group col-md-6">
-                <button type="submit" class="btn btn-success">Atualizar</button>
-              </div>
+                    </select>
+                </div>
+                <div class="form-group col-md-6">
+                    <button type="submit" class="btn btn-success">Atualizar</button>
+                </div>
         </div>
+    </form>
     </div>
 
 

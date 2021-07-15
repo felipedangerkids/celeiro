@@ -21,4 +21,12 @@ class PainelController extends Controller
         $pedido = Pedido::with('users', 'adress', 'ship')->find($id);
         return view('painel.pedidos.ver', compact('pedido', 'items'));
     }
+
+    public function status(Request $request, $id)
+    {
+        $status = Pedido::find($id);
+        $status->status = $request->status;
+        $status->save();
+        return redirect()->back();
+    }
 }

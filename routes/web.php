@@ -88,6 +88,7 @@ Route::middleware(['auth:sanctum', 'verified'])->any('/produtosDelete/{id}', [Pr
 Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [ProductController::class, 'update']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/painel/pedidos', [PainelController::class, 'index']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/painel/pedidos/ver/{id}', [PainelController::class, 'ver']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/painel/pedidos/status/{id}', [PainelController::class, 'status']);
 
 //layouts e rotas provisorias
 
