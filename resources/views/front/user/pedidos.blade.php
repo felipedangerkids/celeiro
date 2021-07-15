@@ -22,7 +22,7 @@
             <td>Aguardando</td>
             <td>
                 <div>
-                    <button type="button" class="btn btn-dark">Detalhes</button>
+                    <button type="button" class="btn btn-warning">Detalhes</button>
                 </div>
             </td>
           </tr>
