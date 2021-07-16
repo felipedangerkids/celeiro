@@ -7,6 +7,9 @@
         <div class="linha" id="linha-horizontal">
 
         </div>
+
+
+
         <form id="form-checkout">
             <div class="profile mt-5">
                 <div class="d-flex">
@@ -30,11 +33,14 @@
                 <div class="row justify-content-between my-4 mx-3">
                     <div class="form-group col-12 my-2">
                         <label class="text-white" for="">Numero do Cartão</label>
-                        <input type="text" name="numero" id="numero"class="form-control">
+                        <input type="text" name="numero" id="numero" class="form-control">
                     </div>
                     <div class="form-group col-12 my-2">
                         <label class="text-white" for="">Nome do Titular</label>
-                        <input type="text" name="name" class="form-control">
+                        <input type="text" name="name" class="form-control" required>
+                        <div class="valid-feedback">
+                            Looks good!
+                        </div>
                     </div>
                     <div class="form-group col-5 my-2">
                         <label class="text-white" for="">Validade</label>

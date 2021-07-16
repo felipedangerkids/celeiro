@@ -211,12 +211,19 @@
 .single {
     margin-left: 25px;
     .product {
+        background: blue;
         margin-left: 5px;
         width: 45%;
         height: 289px;
         background-color: white;
         border-radius: 19px;
         box-shadow: #eda200 0px 6px 3px 0px;
+        img{
+            width: 100%;
+            height: auto;
+            min-height: 200px;
+            max-height: 230px;
+        }
     }
     img {
         position: relative;
@@ -406,19 +413,31 @@ button.d {
     }
 }
 .fundo-branco {
+    background: red;
+    border-radius: 19px;
+    width: 100%;
+    height: 100%;
     .lata {
         width: 120px;
-        height: 124px;
+        height: 200px;
         background-color: white;
         border-radius: 19px;
         box-shadow: #eda200 0px 6px 3px 0px;
+        img{
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 19px;
+        }
     }
 }
 .title {
     padding-left: 10px;
+
 }
 
 .nome_ {
+    margin-top: 50px;
     color: #eda200;
     width: 100%;
 }

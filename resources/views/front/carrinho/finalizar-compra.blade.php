@@ -124,8 +124,8 @@
                 @foreach (\Cart::getContent() as $item)
 
 
-                    <div class="col-4 my-2">
-                        <div class="fundo-branco">
+                    <div class="col-4 my-2 mt-3">
+                        <div class="fundo-branco ">
                             <div class="text-center">
                                 <div class="lata">
                                     <a href="#">
