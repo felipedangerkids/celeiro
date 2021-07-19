@@ -38,21 +38,18 @@
                     <div class="form-group col-12 my-2">
                         <label class="text-white" for="">Nome do Titular</label>
                         <input type="text" name="name" class="form-control" required>
-                        <div class="valid-feedback">
-                            Looks good!
-                        </div>
                     </div>
                     <div class="form-group col-5 my-2">
                         <label class="text-white" for="">Validade</label>
-                        <input type="text" name="validade" id="validade" class="form-control">
+                        <input type="text" name="validade" id="validade" class="form-control" required>
                     </div>
                     <div class="form-group col-5 my-2">
                         <label class="text-white" for="">CVV</label>
-                        <input type="text" name="cvv" id="cvv" class="form-control">
+                        <input type="text" name="cvv" id="cvv" class="form-control" required>
                     </div>
                     <div class="form-group col-12 my-2">
                         <label class="text-white" for="">CPF do Titular</label>
-                        <input type="text" name="cpf" class="form-control">
+                        <input type="text" name="cpf" class="form-control" required>
                     </div>
                 </div>
             </div>
