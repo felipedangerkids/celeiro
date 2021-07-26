@@ -84,6 +84,7 @@ class CheckoutController extends Controller
             return response()->json(['success'], 200);
         }
 
+        $cpf = str_replace(['.', '-',], '', $request->cpf);
 
         $transaction = $pagarme->transactions()->create([
             'amount' =>  $valor,
@@ -100,7 +101,7 @@ class CheckoutController extends Controller
                 'documents' => [
                     [
                         'type' => 'cpf',
-                        'number' => $request->cpf
+                        'number' => $cpf
                     ]
                 ],
                 'phone_numbers' => ['+55' . $telefone],
@@ -144,6 +145,6 @@ class CheckoutController extends Controller
             \Cart::clear();
             return response()->json(['success'], 200);
         }
-        return response()->json(['rejected'], 412);
+        return response()->json($transaction->status, 412);
     }
 }
