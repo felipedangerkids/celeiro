@@ -48,7 +48,7 @@
             <div class="text-center mt-3">
                 <button class="btn btn-american-ipa">{{ $produto->type }}</button>
             </div>
-            <div class="desc text-center mt-5">
+            <div class="desc text-center mt-5 font">
                 <p>Descrição
                     {{ $produto->description }}</p>
             </div>
@@ -83,7 +83,7 @@
                         <button type="submit" class="btn btn-adicionar">ADICIONAR</button>
                     </div>
                     <div class="text-center mt-4">
-                      <a href="{{ route('pre.checkout') }}"> <button type="button" class="btn btn-adicionar">ITENS ({{ \Cart::getTotalQuantity() }}) {{  'R$ '.number_format(\Cart::getTotal(), 2, ',', '.') }}  </button></a> 
+                      <a href="{{ route('pre.checkout') }}"> <button type="button" class="btn btn-adicionar">ITENS ({{ \Cart::getTotalQuantity() }}) {{  'R$ '.number_format(\Cart::getTotal(), 2, ',', '.') }}  </button></a>
                     </div>
                 </div>
             </div>
