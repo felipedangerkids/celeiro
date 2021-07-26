@@ -16,7 +16,14 @@ body {
             width: 100%;
       }
 }
-
+.pedido{
+    background: #eda200;
+    padding: 15px 0;
+    a{
+        text-decoration:none;
+        color: #333332;
+    }
+}
 .swal2-container{
     font-family: system-ui !important;
 }
