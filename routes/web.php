@@ -73,6 +73,7 @@ Route::middleware(['auth:cliente'])->group(function () {
     })->name('pedido.concluido');
 
     Route::get('user/pedidos', [PedidoController::class, 'index'])->name('user.pedidos');
+    Route::get('user/pedidos/ver/{id}', [PedidoController::class, 'indexVer'])->name('user.pedidos.ver');
 });
 
 

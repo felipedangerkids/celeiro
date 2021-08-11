@@ -10,7 +10,7 @@
         </div>
         <div class="text-white">
             <p>Rua: {{ $pedido->adress->endereco }}, {{ $pedido->adress->numero }}</p>
-            <p>Bairo: {{ $pedido->adress->bairro }}</p>
+            <p>Bairro: {{ $pedido->adress->bairro }}</p>
             <p>Cidade: {{ $pedido->adress->cidade }}</p>
             <p>CEP: {{ $pedido->adress->cep }}</p>
         </div>
@@ -64,10 +64,10 @@
                 @csrf
                 <div class="form-group col-md-6">
                     <select class="form-control" name="status" id="exampleFormControlSelect1">
-                        <option value="1">Preparando</option>
-                        <option value="2">Saiu Para Entrega</option>
-                        <option value="3">Entregue</option>
-                        <option value="4">Cancelado</option>
+                        <option value="1" @if($pedido->status == '1') selected @endif>Preparando</option>
+                        <option value="2" @if($pedido->status == '2') selected @endif>Saiu Para Entrega</option>
+                        <option value="3" @if($pedido->status == '3') selected @endif>Entregue</option>
+                        <option value="4" @if($pedido->status == '4') selected @endif>Cancelado</option>
 
                     </select>
                 </div>

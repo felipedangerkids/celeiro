@@ -58,6 +58,7 @@
             </tbody>
       </table>
 
+      {{$pedidos->links()}}
 </div>
 
 

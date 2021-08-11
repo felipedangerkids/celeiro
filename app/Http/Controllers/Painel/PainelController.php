@@ -11,7 +11,7 @@ class PainelController extends Controller
 {
     public function index()
     {
-        $pedidos = Pedido::with('users', 'adress')->get();
+        $pedidos = Pedido::with('users', 'adress')->paginate(15);
         return view('painel.pedidos.index', compact('pedidos'));
     }
 

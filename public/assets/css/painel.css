@@ -301,6 +301,10 @@ a.article:hover {
   color: white !important;
 }
 
+.form-control {
+  padding: 0 10px;
+}
+
 ::placeholder {
   /* Most modern browsers support this now. */
   color: white !important;
