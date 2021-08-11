@@ -24,8 +24,30 @@
 </head>
 
 <body>
+
+    <div class="div-btn-login">
+        <button type="button" class="btn btn-dark btn-open-lr"><i class="fa fa-user"></i></button>
+    </div>
+
+    <div class="aba-lr">
+        <div class="div-aba">
+            @if (auth()->check())
+                <div class="links">{{explode(' ', auth()->user()->name)[0]}}</div>
+                <div class="links">|</div>
+                <div class="links"><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></div>
+            @else
+                <div class="links"><a href="{{route('store.login')}}">Login</a></div>
+                <div class="links">|</div>
+                <div class="links"><a href="{{route('store.register')}}">Registrar</a></div>
+            @endif
+            <div class="links" style="margin-left: auto"><button type="button" class="btn btn-close btn-close-lr"></button></div>
+        </div>
+    </div>
     @yield('content')
 
+    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+        @csrf
+    </form>
 
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
@@ -37,6 +59,17 @@
     <script src="{{ url('assets/js/jquery.maskMoney.min.js') }}"></script>
     <script src="{{ url('assets/js/script.js') }}"></script>
     <script type="text/javascript">
+        $(document).on('click', '.btn-open-lr', function(){
+            $('.aba-lr').css({
+                'width': '320px'
+            });
+        });
+        $(document).on('click', '.btn-close-lr', function(){
+            $('.aba-lr').css({
+                'width': '0'
+            });
+        });
+
         $('#buscar').on('click', function() {
             $value = $('#cep').val();
             $.ajax({

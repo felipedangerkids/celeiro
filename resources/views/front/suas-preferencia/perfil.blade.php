@@ -41,7 +41,7 @@
                             </div>
                         </div>
                     </div>
-                    @if ($adress->count() >= 1)
+                    @if ($adress)
                     <div class="spans">
                         <div class="nome">
                             <span>{{ $adress->endereco }}, {{ $adress->numero }} - {{ $adress->bairro }} -

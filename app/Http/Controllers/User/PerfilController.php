@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Adress;
+
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
@@ -14,7 +16,8 @@ class PerfilController extends Controller
      */
     public function index()
     {
-        return view('front.suas-preferencia.perfil');
+        $adress = Adress::where('user_id', auth()->user()->id)->first();
+        return view('front.suas-preferencia.perfil', compact('adress'));
     }
 
     /**

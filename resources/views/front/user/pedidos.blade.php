@@ -5,7 +5,7 @@
             <h1>SEUS <br> PEDIDOS</h1>
         </div>
         <div class="text-center pt-4">
-            <button class="btn btn-continuar">Voltar</button>
+            <a href="{{route('perfil')}}" class="btn btn-continuar">Voltar</a>
         </div>
     </div>
     @foreach ($pedidos as $pedido)
