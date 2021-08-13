@@ -16,8 +16,6 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url('assets/css/main.min.css') }}">
-    <link rel="stylesheet" href="{{ url('assets/css/main.css') }}">
-    <link rel="stylesheet" href="{{ url('assets/css/idade/main.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/idade/main.min.css') }}">
 
     <title>CELEIRO DO MALTE</title>
@@ -25,9 +23,11 @@
 
 <body>
 
-    <div class="div-btn-login">
-        <button type="button" class="btn btn-dark btn-open-lr"><i class="fa fa-user"></i></button>
-    </div>
+    @if (Request::is('store/login') == false && Request::is('store/register') == false)
+        <div class="div-btn-login">
+            <button type="button" class="btn btn-dark btn-open-lr"><i class="fa fa-user"></i></button>
+        </div>
+    @endif
 
     <div class="aba-lr">
         <div class="div-aba">
