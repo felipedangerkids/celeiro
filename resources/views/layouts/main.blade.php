@@ -32,7 +32,7 @@
     <div class="aba-lr">
         <div class="div-aba">
             @if (auth()->check())
-                <div class="links">{{explode(' ', auth()->user()->name)[0]}}</div>
+                <div class="links"><a href="{{route('perfil')}}">{{explode(' ', auth()->user()->name)[0]}}</a></div>
                 <div class="links">|</div>
                 <div class="links"><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></div>
             @else
