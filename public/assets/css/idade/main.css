@@ -453,6 +453,16 @@ button.d {
   color: white;
 }
 
+.avatar {
+  width: 15%;
+}
+
+@media (max-width: 900px){
+  .avatar {
+    width: 30%;
+  }
+}
+
 .identidade {
   width: 85%;
 }
