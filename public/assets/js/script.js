@@ -204,4 +204,35 @@ $(document).ready(function(){
             }
         });
     });
+
+    $(document).on('click', '.btn-edit-img', function(){
+        $('#file-custom').trigger('click');
+    });
+    $(document).on('change', '#file-custom', function(){
+        $('.foto-perfil').empty();
+        var preview = $('.foto-perfil');
+        var files   = $(this).prop('files');
+
+        function readAndPreview(file) {
+            // Make sure `file.name` matches our extensions criteria
+            if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+                var reader = new FileReader();
+
+                reader.addEventListener("load", function () {
+                var image = new Image();
+                image.classList = 'mx-auto';
+                image.width = '100%';
+                image.title = file.name;
+                image.src = this.result;
+                preview.append( image );
+                }, false);
+
+                reader.readAsDataURL(file);
+            }
+        }
+
+        if (files) {
+            [].forEach.call(files, readAndPreview);
+        }
+    });
 });

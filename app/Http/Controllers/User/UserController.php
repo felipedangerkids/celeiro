@@ -5,6 +5,10 @@ namespace App\Http\Controllers\User;
 use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
+
+use Illuminate\Support\Facades\Storage;
 
 class UserController extends Controller
 {
@@ -71,12 +75,24 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
+        if($request->img_profile){
+            $img = Image::make($request->img_profile);
+    
+            $name = Str::random() . '.jpg';
+    
+            $originalPath = storage_path('app/public/profile_path/');
+    
+            $img->save($originalPath . $name);
+        }
+
+
         $user = Cliente::find($id);
         $user->name = $request->name;
         $user->email = $request->email;
         $user->whatsapp = $request->whatsapp;
+        if($request->img_profile) $user->profile_photo_path = $name;
         $user->save();
-        return redirect()->route('pre.checkout');
+        return redirect()->route('perfil');
     }
 
     /**

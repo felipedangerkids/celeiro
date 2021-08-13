@@ -7,7 +7,7 @@
         <div class="profile mt-3">
             <div class="d-flex">
                 <div class="avatar">
-                    <img src="{{ url('assets/img/avatar.png') }}" alt="">
+                    <img class="img-fluid" src="{{ url('assets/img/avatar.png') }}" alt="">
                 </div>
                 <div class="identidade">
                     <div class="nome">

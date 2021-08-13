@@ -453,6 +453,10 @@ button.d {
   color: white;
 }
 
+#file-custom {
+  display: none;
+}
+
 .avatar {
   width: 15%;
 }

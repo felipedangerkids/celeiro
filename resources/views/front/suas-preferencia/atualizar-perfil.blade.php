@@ -10,13 +10,14 @@
                 <img style="width: 100%;" class="mx-auto" src="{{ url('assets/img/avatar.png') }}" alt="">
             </div>
             <div class="editar-foto text-center">
-                <button class="btn btn-edit">
+                <button class="btn btn-edit btn-edit-img">
                     <img src="{{ url('assets/img/edit.png') }}" alt="">
                 </button>
             </div>
         </div>
-        <form action="{{ route('perfil.update', $user->id) }}" method="POST">
+        <form action="{{ route('perfil.update', $user->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
+            <input type="file" name="img_profile" id="file-custom">
             <div class="formulario">
                 <div class="inputs pt-3">
                     <label for="">NOME:</label>
