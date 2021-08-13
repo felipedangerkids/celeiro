@@ -5,6 +5,7 @@ namespace App\Http\Controllers\User;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
+use Darryldecode\Cart\Cart;
 
 class LoginController extends Controller
 {
@@ -29,11 +30,20 @@ class LoginController extends Controller
     }
     public function login(Request $request)
     {
-        if (Auth::guard('cliente')->attempt(['email' => $request->email, 'password' => $request->password])) {
+        $authValid = Auth::guard('cliente')->validate(['email' => $request->email, 'password' => $request->password]);
 
-            return redirect()->intended('/pre-checkout');
+        if($authValid){
+            if (Auth::guard('cliente')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+                if(\Cart::getContent()->count() > 0){
+                    return response()->json(route('pre.checkout'), 200);
+                }else{
+                    return response()->json(route('perfil'), 200);
+                }
+            }
+        }else{
+            return response()->json(['invalid' => 'Email ou senha invalidos'], 422);
         }
-        return redirect()->back();
     }
 
     public function store(Request $request)
