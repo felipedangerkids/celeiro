@@ -517,9 +517,16 @@ button.d {
   width: 50%;
 }
 
+.formulario .invalid-feedbeck {
+  padding: 6px 0 0 0;
+  color: #ff0909;
+  font-family: system-ui;
+}
+
 .formulario .inputs {
   color: #ccc;
   display: flex;
+  flex-wrap: wrap;
 }
 
 .formulario .inputs input {
@@ -527,17 +534,18 @@ button.d {
   font-family: montserrat;
   background-color: #333332;
   border: none;
-  width: 100%;
-  height: 39px;
+  width: 61%;
+  height: auto;
+  padding: 12px 1px;
 }
 
 .formulario .inputs label {
   align-items: center;
   display: flex;
-  width: 30%;
-  height: 40px;
+  width: 35%;
   background-color: #333332;
   border: none;
+  height: auto;
 }
 
 .formulario .inputs ::-webkit-input-placeholder {

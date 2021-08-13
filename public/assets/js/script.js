@@ -171,6 +171,7 @@ $(document).ready(function(){
         btn.html('<div class="spinner-border text-light" role="status"></div>');
         btn.prop('disabled', true);
         $('#form-login').find('input').prop('disabled', true);
+        $('#form-login').find('.invalid-feedbeck').remove();
 
         $.ajax({
             url: url,
@@ -183,14 +184,23 @@ $(document).ready(function(){
             },
             error: (err) => {
                 // console.log(err);
+                var errors = err.responseJSON.errors;
+
                 btn.html('ENTRAR');
                 btn.prop('disabled', false);
                 $('#form-login').find('input').prop('disabled', false);
 
-                Swal.fire({
-                    icon: 'error',
-                    title: 'Email ou Senha invalidos'
-                });
+                if(errors){
+                    console.log(errors);
+                    $.each(errors, (key, value) => {
+                        $('#form-login').find('[name="'+key+'"]').parent().append('<span class="invalid-feedbeck">'+value[0]+'</span>');
+                    });
+                }else{
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Email ou Senha invalidos'
+                    });
+                }
             }
         });
     });

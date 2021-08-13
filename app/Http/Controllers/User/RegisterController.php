@@ -6,6 +6,8 @@ use App\Models\Cliente;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\Auth;
 
 class RegisterController extends Controller
 {
@@ -37,6 +39,13 @@ class RegisterController extends Controller
      */
     public function store(Request $request)
     {
+        $request->validate([
+            'name' => 'required|string',
+            'email' => 'required|string|email|unique:users',
+            'password' => 'required|string|min:8|confirmed',
+            'whatsapp' => 'required',
+        ]);
+
         $save = Cliente::create([
             'name' => $request->name,
             'email' => $request->email,
@@ -44,7 +53,14 @@ class RegisterController extends Controller
             'whatsapp' => $request->whatsapp,
         ]);
 
-        return redirect()->route('store.login');
+        if (Auth::guard('cliente')->attempt(['email' => $request->email, 'password' => $request->password])) {
+
+            if(\Cart::getContent()->count() > 0){
+                return response()->json(route('pre.checkout'), 200);
+            }else{
+                return response()->json(route('perfil'), 200);
+            }
+        }
     }
 
     /**
