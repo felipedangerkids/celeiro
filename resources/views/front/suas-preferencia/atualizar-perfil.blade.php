@@ -31,6 +31,10 @@
                     <label for="">WhatsApp:</label>
                     <input type="text" name="whatsapp" id="phone" value="{{ $user->whatsapp }}">
                 </div>
+                <div class="inputs pt-3">
+                    <label for="">SENHA:</label>
+                    <input type="password" name="password" id="password" placeholder="************">
+                </div>
             </div>
             <div class="text-center pt-5">
                 <button type="submit" class="btn btn-adicionar">ATUALIZAR</button>

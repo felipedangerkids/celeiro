@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Str;
 use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Hash;
 
 use Illuminate\Support\Facades\Storage;
 
@@ -90,6 +91,7 @@ class UserController extends Controller
         $user->name = $request->name;
         $user->email = $request->email;
         $user->whatsapp = $request->whatsapp;
+        if($request->password) $user->password = Hash::make($request->password);
         if($request->img_profile) $user->profile_photo_path = $name;
         $user->save();
         return redirect()->route('perfil');
