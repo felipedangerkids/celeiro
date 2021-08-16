@@ -389,6 +389,7 @@ button.d {
   color: black;
   width: 80%;
   height: 40px;
+  font-family: 'arial black';
 }
 
 #linha-horizontal {
