@@ -35,6 +35,8 @@
                 <div class="links"><a href="{{route('perfil')}}">{{explode(' ', auth()->user()->name)[0]}}</a></div>
                 <div class="links">|</div>
                 <div class="links"><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></div>
+                <div class="links">|</div>
+                <div class="links"><a href="{{route('shop')}}">Home</a></div>
             @else
                 <div class="links"><a href="{{route('store.login')}}">Login</a></div>
                 <div class="links">|</div>

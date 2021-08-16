@@ -31,6 +31,16 @@ function instaOut() {
     $("#insta").removeClass("heartbeat");
 }
 
+setTimeout(() => {
+    $(function(){
+        var dados = JSON.parse($('#shipjson').val());
+
+        $.each(dados, (key, value) => {
+            $('[value="'+value+'"]').trigger('click');
+        });
+    })
+}, 1000);
+
 $('.now').on('click', function () {
 
     var now = $('.now').attr('checked', true);
@@ -45,7 +55,7 @@ $('.now').on('click', function () {
 
 $('.later').on('click', function () {
 
-    var later = $('.now').attr('checked', true);
+    var later = $('.now').attr('checked');
     if (later) {
         // console.log('e true');
         $('.times').addClass("d-none");

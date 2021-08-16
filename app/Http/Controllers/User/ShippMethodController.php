@@ -37,7 +37,9 @@ class ShippMethodController extends Controller
      */
     public function store(Request $request)
     {
-        $ship = ShippMethod::create($request->all());
+        if($request->data){
+            $ship = ShippMethod::create($request->all());
+        }
 
         return redirect()->route('pre.checkout');
     }

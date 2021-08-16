@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\User;
 
 use App\Models\Adress;
+use App\Models\ShippMethod;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -17,7 +18,9 @@ class PerfilController extends Controller
     public function index()
     {
         $adress = Adress::where('user_id', auth()->user()->id)->first();
-        return view('front.suas-preferencia.perfil', compact('adress'));
+        $ship = ShippMethod::where('user_id', auth()->user()->id)->max('id');
+        $ship = ShippMethod::find($ship);
+        return view('front.suas-preferencia.perfil', compact('adress', 'ship'));
     }
 
     /**
