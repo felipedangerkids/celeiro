@@ -15,8 +15,12 @@ class ShippMethodController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
-        return view('front.suas-preferencia.perfil', compact('adress'));
+    {    
+        $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        $ship = ShippMethod::where('user_id', auth()->user()->id)->max('id');
+        $ship = ShippMethod::find($ship);
+
+        return view('front.suas-preferencia.perfil', compact('adress', 'ship'));
     }
 
     /**
