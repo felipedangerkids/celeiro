@@ -9,6 +9,70 @@ body {
       font-family: "Bungee Inline", cursive;
 }
 
+.container-login-register {
+      height: 100vh;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      align-items: center;
+      width: 90%;
+
+      .store {
+            width: 40%;
+      }
+}
+@media (max-width: 1100px){
+      .container-login-register .store {
+            width: 50%;
+      }
+}
+@media (max-width: 900px){
+      .container-login-register .store {
+            width: 60%;
+      }
+}
+@media (max-width: 750px){
+      .container-login-register .store {
+            width: 100%;
+      }
+}
+
+.div-btn-login {
+      position: fixed;
+      top: 3%;
+
+      button {
+            background-color: #fff;
+            color: #000;
+            border-radius: 0 10px 10px 0;
+            padding: 5px 12px 10px 15px;
+            font-size: 1.2rem;
+      }
+}
+.aba-lr {
+      position: fixed;
+      top: 3%;
+      background-color: #fff;
+      transition: .3s width;
+      width: 0;
+      overflow: hidden;
+      border-radius: 0 10px 10px 0;
+
+      .div-aba{
+            display: flex;
+            padding: 5px 12px 5px 15px;
+
+            .links {
+                  padding: 0 10px;
+
+                  a{
+                        color: #000;
+                        text-decoration: none;
+                  }
+            }
+      }
+}
+
 .logo {
       max-width: 150px;
       width: 100%;
@@ -17,12 +81,12 @@ body {
       }
 }
 .pedido{
-    background: #eda200;
-    padding: 15px 0;
-    a{
-        text-decoration:none;
-        color: #333332;
-    }
+      background: #eda200;
+      padding: 15px 0;
+      a{
+            text-decoration:none;
+            color: #333332;
+      }
 }
 .swal2-container{
     font-family: system-ui !important;
