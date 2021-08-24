@@ -3,8 +3,8 @@
 */
 
 body {
-    font-family: "Bungee Inline", cursive;
 
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     background: #191919 !important;
 }
 th{
@@ -65,8 +65,11 @@ a:focus {
         width: 100%;
     }
 }
-
+.font-bungeo{
+    font-family: "Bungee Inline", cursive !important;
+}
 #sidebar {
+    font-family: "Bungee Inline", cursive;
     min-width: 250px;
     max-width: 250px;
     background: #333332;
