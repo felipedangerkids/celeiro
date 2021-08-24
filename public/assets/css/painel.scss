@@ -23,7 +23,9 @@ a:focus {
     text-decoration: none;
     transition: all 0.3s;
 }
-
+.modal-content{
+    top: 10px !important;
+}
 .navbar {
     padding: 15px 10px;
     background: transparent;
@@ -362,5 +364,5 @@ a.article:hover {
     font-family: "Montserrat", sans-serif !important;
 }
 .table-tr{
-   font-family: "Montserrat", sans-serif !important; 
+   font-family: "Montserrat", sans-serif !important;
 }
