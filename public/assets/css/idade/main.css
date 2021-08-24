@@ -642,8 +642,6 @@ input:checked ~ .check:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -ms-flex-wrap: wrap;
-      flex-wrap: wrap;
 }
 
 .formulario .inputs input {
@@ -663,7 +661,7 @@ input:checked ~ .check:after {
   display: -ms-flexbox;
   display: flex;
   width: 30%;
-  height: 40px;
+  height: auto;
   background-color: #333332;
   border: none;
 }

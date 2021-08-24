@@ -537,7 +537,6 @@ input:checked ~ .check:after {
     .inputs {
         color: #ccc;
         display: flex;
-        flex-wrap: wrap;
         input {
             color: #ccc;
             font-family: montserrat;
@@ -550,7 +549,7 @@ input:checked ~ .check:after {
             align-items: center;
             display: flex;
             width: 30%;
-            height: 40px;
+            height: auto;
             background-color: #333332;
             border: none;
         }
