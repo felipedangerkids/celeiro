@@ -642,6 +642,8 @@ input:checked ~ .check:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
 }
 
 .formulario .inputs input {
@@ -649,7 +651,7 @@ input:checked ~ .check:after {
   font-family: montserrat;
   background-color: #333332;
   border: none;
-  width: 100%;
+  width: 61%;
   height: 39px;
 }
 
@@ -660,7 +662,7 @@ input:checked ~ .check:after {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  width: 30%;
+  width: 35%;
   height: auto;
   background-color: #333332;
   border: none;
