@@ -67,21 +67,49 @@ $(document).ready(function(){
             success: (data) => {
                 // console.log(data);
                 if(data.length == 0){
-                      $('.bairro_select').addClass('d-none').removeAttr('name');
-                      $('.bairro_input').removeClass('d-none').attr('name', 'bairro');
+                    $('.bairro_select').addClass('d-none').removeAttr('name');
+                    $('.bairro_input').removeClass('d-none').attr('name', 'bairro');
                 }else{
-                      $('.bairro_select').removeClass('d-none').attr('name');
-                      $('.bairro_input').addClass('d-none').removeAttr('name', 'bairro');
+                    $('.bairro_select').removeClass('d-none').attr('name');
+                    $('.bairro_input').addClass('d-none').removeAttr('name', 'bairro');
                 }
 
-                  $('.bairro_select').empty();
-                  $('.bairro_select').append('<option value="">- Selecione um Bairro -</option>');
+                $('.bairro_select').empty();
+                $('.bairro_select').append('<option value="">- Selecione um Bairro -</option>');
 
-                  for(var i=0; data.length>i; i++){
-                        $('.bairro_select').append('<option value="'+data[i].desc_bairro+'">'+data[i].desc_bairro+'</option>');
-                  }
+                for(var i=0; data.length>i; i++){
+                    $('.bairro_select').append('<option value="'+data[i].desc_bairro+'">'+data[i].desc_bairro+'</option>');
+                }
             }
         });
     });
+
+    $(function(){
+        var transportes = JSON.parse($('.transportes_json').val());
+        if(ObjectLength(transportes) > 0){
+            setTimeout(() => {
+                $('[name="estado"]').val(transportes.estado);
+                $('[name="estado"]').trigger('change');
+
+                setTimeout(() => {
+                    $('[name="cidade"]').val(transportes.cidade);
+                    $('[name="cidade"]').trigger('change');
+
+                    setTimeout(() => {
+                        $('[name="bairro"]').val(transportes.bairro);
+                    }, 500);
+                }, 500);
+            }, 500);
+        }
+    });
 });
 
+function ObjectLength( object ) {
+    var length = 0;
+    for( var key in object ) {
+        if( object.hasOwnProperty(key) ) {
+            ++length;
+        }
+    }
+    return length;
+};

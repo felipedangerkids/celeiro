@@ -97,6 +97,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/painel/transportes', [Pai
 Route::middleware(['auth:sanctum', 'verified'])->get('/painel/transportes-id/{id}', [PainelController::class, 'transportesId']);
 
 Route::middleware(['auth:sanctum', 'verified'])->post('/painel/cadastrarTransporte', [PainelController::class, 'cadastrarTransporte']);
+Route::middleware(['auth:sanctum', 'verified'])->post('/painel/transportadorEdit', [PainelController::class, 'transportadorEdit']);
+Route::middleware(['auth:sanctum', 'verified'])->any('/painel/transportadorDelete/{id}', [PainelController::class, 'transportadorDelete']);
 
 //layouts e rotas provisorias
 

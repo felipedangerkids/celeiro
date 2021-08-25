@@ -67,4 +67,32 @@ class PainelController extends Controller
 
         return redirect('/painel/transportes')->with('success', 'Transporte cadastrado com sucesso');
     }
+
+    public function transportadorEdit(Request $request)
+    {
+        Transporte::find($request->id)->update([
+            'estado' => $request->estado,
+            'cidade' => $request->cidade,
+            'bairro' => $request->bairro,
+            'valor_frete' => str_replace(['.',','],['','.'], $request->valor_frete),
+            'tempo_entrega' => $request->tempo_entrega,
+        ]);
+
+        return redirect('/painel/transportes')->with('success', 'Transporte atualizado com sucesso');
+    }
+
+    public function transportadorDelete(Request $request, $id)
+    {
+        if ($request->ajax()) {
+
+            $transportes = Transporte::findOrFail($id);
+
+            if ($transportes) {
+
+                $transportes->delete();
+
+                return response()->json(array('success' => true));
+            }
+        }
+    }
 }

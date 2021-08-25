@@ -110,4 +110,55 @@
         </div>
     </div>
 </div>
+
+<script type="application/javascript">
+    function deleteItem(e) {
+        let id = e.getAttribute('data-id');
+        const swalWithBootstrapButtons = Swal.mixin({
+            customClass: {
+                confirmButton: 'btn btn-success',
+                cancelButton: 'btn btn-danger'
+            },
+            buttonsStyling: false
+        });
+
+        swalWithBootstrapButtons.fire({
+            title: 'Você tem certeza?',
+            text: "Está deletando permanentemente!",
+            icon: 'warning',
+            showCancelButton: true,
+            confirmButtonText: 'Sim, delete!',
+            cancelButtonText: 'Não, cancelar!',
+            reverseButtons: true
+        }).then((result) => {
+            if (result.value) {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        type: 'DELETE',
+                        url: '{{url('painel/transportadorDelete')}}/' + id,
+                        data: {
+                            "_token": "{{ csrf_token() }}",
+                        },
+                        success: function (data) {
+                            if (data.success) {
+                                swalWithBootstrapButtons.fire(
+                                    'Deletado!',
+                                    'Tranporte foi deletado!',
+                                    "success"
+                                );
+                            }
+                        }
+                    });
+                }
+                location.reload();
+            } else if (result.dismiss === Swal.DismissReason.cancel) {
+                swalWithBootstrapButtons.fire(
+                    'Cancelado',
+                    'Transportadora está seguro!)',
+                    'error'
+                );
+            }
+        });
+    }
+</script>
 @endsection
