@@ -31,8 +31,8 @@
 
     <div class="aba-lr">
         <div class="div-aba">
-            @if (auth()->check())
-                <div class="links"><a href="{{route('perfil')}}">{{explode(' ', auth()->user()->name)[0]}}</a></div>
+            @if (auth()->guard('cliente')->check())
+                <div class="links"><a href="{{route('perfil')}}">{{explode(' ', auth()->guard('cliente')->user()->name)[0]}}</a></div>
                 <div class="links">|</div>
                 <div class="links"><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></div>
                 <div class="links">|</div>
