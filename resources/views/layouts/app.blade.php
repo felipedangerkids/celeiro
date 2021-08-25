@@ -54,6 +54,9 @@
                     <a href="{{ url('painel/pedidos') }}">Vendas</a>
                 </li>
                 <li>
+                    <a href="{{ url('painel/transportes') }}">Transportes</a>
+                </li>
+                <li>
                     <a href="#">Configurações</a>
                 </li>
             </ul>
