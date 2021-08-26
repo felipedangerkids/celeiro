@@ -91,6 +91,19 @@ $('#segundo').on('click', function () {
 $('#phone').mask('00 00000-0000');
 
 
+$(document).on('click', '.btn-verificar', function(e){
+    if($('.tipo_entrega span').text() == 'Receber em Casa'){
+        if($('.transportes').val() == ''){
+            e.preventDefault();
+            Swal.fire({
+                icon: 'error',
+                title: 'Endereço Invalido!',
+                text: "Por gentileza, coloque um endereço valido para receber ou escolha a opção de retirar em loja."
+            });
+        }
+    }
+});
+
 $(document).on('click', '#enviar', function () {
 
     var dados = $('#form-checkout').serialize();

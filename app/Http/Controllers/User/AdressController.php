@@ -16,8 +16,8 @@ class AdressController extends Controller
      */
     public function index()
     {
-
-        return view('front.suas-preferencia.atualizar-endereco');
+        $address = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        return view('front.suas-preferencia.atualizar-endereco', compact('address'));
     }
     public function buscaCep(Request $request)
     {

@@ -15,6 +15,8 @@ class Pedido extends Model
         'pagamento',
         'troco',
         'ship_id',
+        'valor_frete',
+        'tempo_entrega',
     ];
     public function users()
     {
