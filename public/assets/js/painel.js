@@ -70,8 +70,8 @@ $(document).ready(function(){
                     $('.bairro_select').addClass('d-none').removeAttr('name');
                     $('.bairro_input').removeClass('d-none').attr('name', 'bairro');
                 }else{
-                    $('.bairro_select').removeClass('d-none').attr('name');
-                    $('.bairro_input').addClass('d-none').removeAttr('name', 'bairro');
+                    $('.bairro_select').removeClass('d-none').attr('name', 'bairro');
+                    $('.bairro_input').addClass('d-none').removeAttr('name');
                 }
 
                 $('.bairro_select').empty();
@@ -97,9 +97,9 @@ $(document).ready(function(){
 
                     setTimeout(() => {
                         $('[name="bairro"]').val(transportes.bairro);
-                    }, 500);
-                }, 500);
-            }, 500);
+                    }, 800);
+                }, 700);
+            }, 600);
         }
     });
 });
