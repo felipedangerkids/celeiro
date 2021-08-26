@@ -9,10 +9,5 @@ class Cidade extends Model
 {
     use HasFactory;
 
-    protected $table = 'cidades';
-
-    public function bairros()
-    {
-        return $this->hasMany(Bairro::class, 'cidade_id', 'cidade_id');
-    }
+    protected $table = 'm2_localidade_municipio';
 }

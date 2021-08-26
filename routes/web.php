@@ -91,7 +91,8 @@ Route::middleware(['auth:sanctum', 'verified'])->get('/painel/pedidos', [PainelC
 Route::middleware(['auth:sanctum', 'verified'])->get('/painel/pedidos/ver/{id}', [PainelController::class, 'ver']);
 Route::middleware(['auth:sanctum', 'verified'])->post('/painel/pedidos/status/{id}', [PainelController::class, 'status']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/painel/buscaCidade/{sigla}', [PainelController::class, 'buscaCidade']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/painel/buscaEstado', [PainelController::class, 'buscaEstado']);
+Route::middleware(['auth:sanctum', 'verified'])->get('/painel/buscaCidade/{id}', [PainelController::class, 'buscaCidade']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/painel/buscaBairro/{id}', [PainelController::class, 'buscaBairro']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/painel/transportes', [PainelController::class, 'transportes']);
 Route::middleware(['auth:sanctum', 'verified'])->get('/painel/transportes-id/{id}', [PainelController::class, 'transportesId']);

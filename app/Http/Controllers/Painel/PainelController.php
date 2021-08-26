@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Painel;
 
 use App\Models\Item;
 use App\Models\Pedido;
+use App\Models\Estado;
 use App\Models\Cidade;
 use App\Models\Bairro;
 use App\Models\Transporte;
@@ -44,14 +45,19 @@ class PainelController extends Controller
         return view('painel.transportes.edit', compact('transportes'));
     }
 
-    public function buscaCidade($sigla)
+    public function buscaEstado()
     {
-        $cidades = Cidade::where('flg_estado', $sigla)->get();
+        $estados = Estado::get();
+        return response()->json($estados);
+    }
+    public function buscaCidade($id)
+    {
+        $cidades = Cidade::where('localidade_estado_id', $id)->get();
         return response()->json($cidades);
     }
     public function buscaBairro($id)
     {
-        $bairros = Bairro::where('cidade_id', $id)->get();
+        $bairros = Bairro::where('localidade_municipio_id', $id)->get();
         return response()->json($bairros);
     }
 

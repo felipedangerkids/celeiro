@@ -25,12 +25,12 @@ $(document).ready(function(){
     $(function(){
         if($('[name="estado"]')){
             $.ajax({
-                url: 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/',
+                url: '/painel/buscaEstado',
                 type: 'GET',
                 success: (data) => {
                     // console.log(data);
                     for(var i=0; data.length>i; i++){
-                        $('[name="estado"]').append('<option value="'+data[i].sigla+'">'+data[i].sigla+' - '+data[i].nome+'</option>');
+                        $('[name="estado"]').append('<option value="'+data[i].sigla+'" data-estado_id="'+data[i].id+'">'+data[i].sigla+' - '+data[i].titulo+'</option>');
                     }
                 }
             });
@@ -39,11 +39,11 @@ $(document).ready(function(){
 
     // Busca das cidades/municipios
     $(document).on('change', '[name="estado"]', function(){
-        let sigla = $(this).val();
+        let estado_id = $(this).find(':selected').data('estado_id');
         let select = $(this).parent().parent().find('select[name="cidade"]');
 
         $.ajax({
-            url: '/painel/buscaCidade/'+sigla,
+            url: '/painel/buscaCidade/'+estado_id,
             type: 'GET',
             success: (data) => {
                 // console.log(data);
@@ -51,7 +51,7 @@ $(document).ready(function(){
                 select.append('<option value="">- Selecione uma Cidade -</option>');
 
                 for(var i=0; data.length>i; i++){
-                    select.append('<option value="'+data[i].desc_cidade+'" data-cidade_id="'+data[i].cidade_id+'">'+data[i].desc_cidade+'</option>');
+                    select.append('<option value="'+data[i].titulo+'" data-cidade_id="'+data[i].id+'">'+data[i].titulo+'</option>');
                 }
             }
         });
@@ -78,7 +78,7 @@ $(document).ready(function(){
                 $('.bairro_select').append('<option value="">- Selecione um Bairro -</option>');
 
                 for(var i=0; data.length>i; i++){
-                    $('.bairro_select').append('<option value="'+data[i].desc_bairro+'">'+data[i].desc_bairro+'</option>');
+                    $('.bairro_select').append('<option value="'+data[i].titulo+'">'+data[i].titulo+'</option>');
                 }
             }
         });
