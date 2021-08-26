@@ -126,17 +126,19 @@
                 <div class="mt-5" id="linha-horizontal"></div>
             </div>
             <div class="profile mt-5">
-                <div class="row">
-                    <div class="col-6 my-2 mb-3">
-                        <div class="spans text-center"><div class="nome"><span>Valor de Entrega</span></div></div>
-                        <div class="spans text-center"><div class="email"><span>R$ {{number_format($transporte->valor_frete, 2, ',', '.')}}</span></div></div>
+                @if ($transporte)
+                    <div class="row">
+                        <div class="col-6 my-2 mb-3">
+                            <div class="spans text-center"><div class="nome"><span>Valor de Entrega</span></div></div>
+                            <div class="spans text-center"><div class="email"><span>R$ {{number_format($transporte->valor_frete, 2, ',', '.')}}</span></div></div>
+                        </div>
+                        <div class="col-6 my-2 mb-3">
+                            <div class="spans text-center"><div class="nome"><span>Tempo de Entrega</span></div></div>
+                            <div class="spans text-center"><div class="email"><span>{{$transporte->tempo_entrega}} Dias</span></div></div>
+                        </div>
                     </div>
-                    <div class="col-6 my-2 mb-3">
-                        <div class="spans text-center"><div class="nome"><span>Tempo de Entrega</span></div></div>
-                        <div class="spans text-center"><div class="email"><span>{{$transporte->tempo_entrega}} Dias</span></div></div>
-                    </div>
-                </div>
-                <div class="mt-3" id="linha-horizontal"></div>
+                    <div class="mt-3" id="linha-horizontal"></div>
+                @endif
                 <div class="d-flex mt-5 justify-content-center">
                     <div>
                         <div class="icones-back text-white text-center">
