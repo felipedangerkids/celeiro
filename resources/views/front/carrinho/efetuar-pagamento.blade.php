@@ -134,7 +134,7 @@
                         </div>
                         <div class="col-6 my-2 mb-3">
                             <div class="spans text-center"><div class="nome"><span>Tempo de Entrega</span></div></div>
-                            <div class="spans text-center"><div class="email"><span>{{$transporte->tempo_entrega}} Dias</span></div></div>
+                            <div class="spans text-center"><div class="email"><span>{{$transporte->tempo_entrega}} Minutos</span></div></div>
                         </div>
                     </div>
                     <div class="mt-3" id="linha-horizontal"></div>
