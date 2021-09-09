@@ -38,7 +38,7 @@
 
                         @if ($pedido->ship->tipo = 'Receber em Casa')
                             <p>Valor do Frete: R$ {{number_format($pedido->valor_frete, 2, ',', '.')}}</p>
-                            <p>Tempo d Entrega: {{$pedido->tempo_entrega}} dias</p>
+                            <p>Tempo d Entrega: {{$pedido->tempo_entrega}} minutos</p>
                         @endif
             
                     </div>
