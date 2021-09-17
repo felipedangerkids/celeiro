@@ -17,7 +17,21 @@ class ProductController extends Controller
      */
     public function index()
     {
-        $products = Product::paginate(15);
+        if(!empty($_GET['name'])){
+            switch($_GET['coluna']){
+                case 'produto':
+                    $products = Product::where('name', 'like', '%'.$_GET['name'].'%')->paginate(15);
+                break;
+                case 'fornecedor':
+                    $products = Product::where('provider', 'like', '%'.$_GET['name'].'%')->paginate(15);
+                break;
+                case 'contato':
+                    $products = Product::where('provname', 'like', '%'.$_GET['name'].'%')->paginate(15);
+                break;
+            }
+        }else{
+            $products = Product::paginate(15);
+        }
         return view('painel.products.index', compact('products'));
     }
 

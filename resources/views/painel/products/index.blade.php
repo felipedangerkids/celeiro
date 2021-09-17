@@ -10,14 +10,30 @@
                   @endforeach
             </ul>
       </div>
-      @endif
-<div class="my-4 float-right">
-      <button data-toggle="modal" data-target="#staticBackdrop" class="btn btn-add"><i class="fas fa-plus"></i>
-            Adicionar</button>
+@endif
+
+<div class="row my-4">
+      <div class="col-6 col-md-5">
+            <form action="" method="get">
+                  <div class="input-group">
+                        <input type="search" name="name" class="form-control" value="@isset($_GET['name']){{$_GET['name']}}@endisset" placeholder="buscar">
+                        <select name="coluna" class="form-control">
+                              <option value="produto" @isset($_GET['coluna']) @if($_GET['coluna'] == 'produto') selected @endif @endisset>Produto</option>
+                              <option value="fornecedor" @isset($_GET['coluna']) @if($_GET['coluna'] == 'fornecedor') selected @endif @endisset>Fornecedor</option>
+                              <option value="contato" @isset($_GET['coluna']) @if($_GET['coluna'] == 'contato') selected @endif @endisset>Contato</option>
+                        </select>
+                        <div class="input-group-append">
+                              <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
+                        </div>
+                  </div>
+            </form>
+      </div>
+      <div class="col-6 col-md-7 text-right">
+            <button data-toggle="modal" data-target="#staticBackdrop" class="btn btn-add"><i class="fas fa-plus"></i> Adicionar</button>
+      </div>
 </div>
 
 <div>
-
       <table class="table table-dark">
             <thead>
                   <tr class="table-th">
@@ -59,7 +75,11 @@
             </tbody>
       </table>
 
-      {{ $products->links() }}
+      @if (isset($_GET['name']))
+            {{ $products->appends(['name' => $_GET['name'], 'coluna' => $_GET['coluna']])->links()  }}
+      @else
+            {{ $products->links()  }}
+      @endif
 </div>
 
 {{-- modal --}}
@@ -246,8 +266,5 @@
               }
 
 </script>
-
-
-
 
 @endsection
