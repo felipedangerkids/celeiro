@@ -59,6 +59,7 @@
             </tbody>
       </table>
 
+      {{ $products->links() }}
 </div>
 
 {{-- modal --}}

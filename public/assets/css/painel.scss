@@ -320,6 +320,22 @@ a.article:hover {
     padding: 0 10px;
 }
 
+.pagination {
+    .page-item {
+        .page-link {
+            color: #fff;
+            background-color: #343a40;
+            border-color: #191919;
+        }
+    }
+    .page-item.active {
+        .page-link {
+            color: #343a40 !important;
+            background-color: #fff !important;
+        }
+    }
+}
+
 ::placeholder {
     /* Most modern browsers support this now. */
     color: white !important;
