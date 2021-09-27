@@ -54,7 +54,13 @@
     </div>
 
     <div class="container font">
+        @php
+            $valor_pedido = 0;
+        @endphp
         @foreach ($items as $item)
+        @php
+            $valor_pedido += ($item->quantity * $item->unit_price);
+        @endphp
             <div class="row justify-content-center">
                 <div class="col-5 my-2 mt-3">
                     <div class="fundo-branco ">
@@ -107,13 +113,13 @@
             <div class="col-10 col-md-6 sub-title-white">
                 <div class="row">
                     <div class="col-6">Pedido</div>
-                    <div class="col-6">R${{number_format(str_replace(',', '.', $pedido->troco), 2, ',', '.')}}</div>
+                    <div class="col-6">R${{number_format($valor_pedido, 2, ',', '.')}}</div>
                     @if ($pedido->status !== 2)
                         <div class="col-6">Entrega</div>
                         <div class="col-6">R$ {{number_format($pedido->valor_frete, 2, ',', '.')}}</div>
                     @endif
                     <div class="col-6">Total</div>
-                    <div class="col-6">R$ {{number_format((($pedido->valor_frete ?? 0) + str_replace(',', '.', $pedido->troco)), 2, ',', '.')}}</div>
+                    <div class="col-6">R$ {{number_format((($pedido->valor_frete ?? 0) + $valor_pedido), 2, ',', '.')}}</div>
                     <div class="col-12">Forma de Pagamento</div>
                     <div class="col-12 title-orange">{{mb_convert_case($pedido->pagamento, MB_CASE_TITLE)}}</div>
                 </div>
