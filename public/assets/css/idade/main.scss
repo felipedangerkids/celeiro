@@ -414,7 +414,7 @@ button.d {
     }
 }
 .fundo-branco {
-    background: red;
+    background: transparent;
     border-radius: 19px;
     width: 100%;
     height: 100%;
@@ -470,6 +470,10 @@ button.d {
     margin-bottom: 12px;
     cursor: pointer;
     font-size: 20px;
+
+    [type=radio] {
+        display: none;
+    }
 }
 
 .check {
@@ -537,18 +541,19 @@ input:checked ~ .check:after {
     .inputs {
         color: #ccc;
         display: flex;
+        flex-wrap: wrap;
         input {
             color: #ccc;
             font-family: montserrat;
             background-color: #333332;
             border: none;
-            width: 100%;
+            width: 61%;
             height: 39px;
         }
         label {
             align-items: center;
             display: flex;
-            width: 30%;
+            width: 35%;
             height: auto;
             background-color: #333332;
             border: none;

@@ -37,6 +37,10 @@ body {
       }
 }
 
+.form-check-input[type=radio] {
+      display: none;
+}
+
 .div-btn-login {
       position: fixed;
       top: 3%;

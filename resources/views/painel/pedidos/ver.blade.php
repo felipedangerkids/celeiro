@@ -27,6 +27,11 @@
 
             <p>Tipo: {{ $pedido->ship->tipo }}</p>
 
+            @if ($pedido->ship->tipo == 'Receber em Casa')
+                <p>Valor de Entrega: R$ {{number_format($pedido->valor_frete, 2, ',', '.')}}</p>
+                <p>Tempo de Entrega: {{$pedido->tempo_entrega}} dias</p>
+            @endif
+
         </div>
         <div class="text-center text-white">
             <h3>Comprador</h3>

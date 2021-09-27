@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
 <div class="container">
-    @if (auth()->guard('cliente')->check())
+    {{-- @if (auth()->guard('cliente')->check())
         <div class="container">
             <div class="profile mt-5">
                 <div class="d-flex">
@@ -36,7 +36,7 @@
                     </div>
                 </div>
             </div>
-    @endif
+    @endif --}}
     <div class="sub-logo mt-4">
         <img src="{{ url('assets/img/Camada x0020 3.png') }}" alt="">
     </div>

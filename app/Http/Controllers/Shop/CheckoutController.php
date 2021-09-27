@@ -6,6 +6,7 @@ use PagarMe\Client;
 use App\Models\Item;
 use App\Models\Adress;
 use App\Models\Pedido;
+use App\Models\Transporte;
 use App\Models\ShippMethod;
 use Darryldecode\Cart\Cart;
 use Illuminate\Http\Request;
@@ -16,13 +17,20 @@ class CheckoutController extends Controller
     public function preCheck()
     {
         $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        if($adress){
+            $transporte = Transporte::where('estado', $adress->estado)->where('cidade', $adress->cidade)->where('bairro', 'like', '%'.$adress->bairro.'%')->first();
+        }else{
+            $transporte = '';
+        }
         $ship = ShippMethod::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
-        return view('front.carrinho.finalizar-compra', compact('adress', 'ship'));
+        return view('front.carrinho.finalizar-compra', compact('adress', 'ship', 'transporte'));
     }
 
     public function proccess()
     {
-        return view('front.carrinho.efetuar-pagamento');
+        $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        $transporte = Transporte::where('estado', $adress->estado)->where('cidade', $adress->cidade)->where('bairro', 'like', '%'.$adress->bairro.'%')->first();
+        return view('front.carrinho.efetuar-pagamento', compact('transporte'));
     }
 
     public function checkout(Request $request)
@@ -31,10 +39,12 @@ class CheckoutController extends Controller
 
         $telefone = str_replace([' ', '-'], '', auth()->user()->whatsapp);
 
-        $valor = number_format(\Cart::getTotal(), 2, '.', '');
+        $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        $transporte = Transporte::where('estado', $adress->estado)->where('cidade', $adress->cidade)->where('bairro', 'like', '%'.$adress->bairro.'%')->first();
+
+        $valor = number_format((\Cart::getTotal()+($transporte->valor_frete ?? 0)), 2, '.', '');
         $valor = str_replace('.', '', $valor);
         $ship = ShippMethod::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
-        $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
         $validade = str_replace('/', '', $request->validade);
 
         $items = [];
@@ -57,6 +67,8 @@ class CheckoutController extends Controller
             'pagamento' => $request->metodo,
             'troco' => $request->troco,
             'ship_id' => $ship->id,
+            'valor_frete' => $ship->tipo == 'Receber em Casa' ? $transporte->valor_frete : null,
+            'tempo_entrega' => $ship->tipo == 'Receber em Casa' ? $transporte->tempo_entrega : null,
         ]);
 
         foreach (\Cart::getContent() as $key => $value) {
