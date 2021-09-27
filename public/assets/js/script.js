@@ -234,8 +234,8 @@ $(document).ready(function(){
         $('#file-custom').trigger('click');
     });
     $(document).on('change', '#file-custom', function(){
-        $('.foto-perfil').empty();
-        var preview = $('.foto-perfil');
+        // $('.foto-perfil').empty();
+        var preview = '';
         var files   = $(this).prop('files');
 
         function readAndPreview(file) {
@@ -244,12 +244,12 @@ $(document).ready(function(){
                 var reader = new FileReader();
 
                 reader.addEventListener("load", function () {
-                var image = new Image();
-                image.classList = 'mx-auto';
-                image.width = '100%';
-                image.title = file.name;
-                image.src = this.result;
-                preview.append( image );
+                // var image = new Image();
+                // image.classList = 'mx-auto';
+                // image.width = '100%';
+                // image.title = file.name;
+                // image.src = this.result;
+                preview = this.result;
                 }, false);
 
                 reader.readAsDataURL(file);
@@ -259,5 +259,11 @@ $(document).ready(function(){
         if (files) {
             [].forEach.call(files, readAndPreview);
         }
+
+        setTimeout(() => {
+            $('.profile-photo-edit').css({
+                'background-image': 'url('+preview+')',
+            });
+        }, 500)
     });
 });

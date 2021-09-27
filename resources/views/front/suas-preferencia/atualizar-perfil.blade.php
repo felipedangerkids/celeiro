@@ -7,7 +7,7 @@
         <div class="mt-4" id="linha-horizontal"></div>
         <div class="profile mt-5">
             <div style="width: 100px;" class="foto-perfil mx-auto  text-center">
-                <div class="profile-photo-edit" @if (auth()->user()->profile_photo_path) style="background-image: url('{{asset('storage/profile_path/'.auth()->user()->profile_photo_path)}}');" @endif></div>
+                <div class="profile-photo" @if (auth()->user()->profile_photo_path) style="background-image: url('{{asset('storage/profile_path/'.auth()->user()->profile_photo_path)}}');" @endif></div>
                 {{-- @if (auth()->user()->profile_photo_path)
                     <img style="width: 100%;" class="mx-auto" src="{{ asset('storage/profile_path/'.auth()->user()->profile_photo_path) }}" alt="">
                 @else

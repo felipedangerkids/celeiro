@@ -29,13 +29,13 @@ class CheckoutController extends Controller
     public function proccess()
     {
         $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
-        $transporte = Transporte::where('estado', $adress->estado)->where('cidade', $adress->cidade)->where('bairro', 'like', '%'.$adress->bairro.'%')->first();
+        $transporte = Transporte::where('estado', ($adress->estado ?? ''))->where('cidade', ($adress->cidade ?? ''))->where('bairro', 'like', '%'.($adress->bairro ?? '').'%')->first();
         return view('front.carrinho.efetuar-pagamento', compact('transporte'));
     }
 
     public function checkout(Request $request)
     {
-        $pagarme = new Client('ak_test_RiK4hmGIp7sIB3PCClAEnKZwNPwxrm');
+        $pagarme = new Client('ak_live_3JqrpLWWF1I18UEdu2YBy0lFNcStp2');
 
         $telefone = str_replace([' ', '-'], '', auth()->user()->whatsapp);
 

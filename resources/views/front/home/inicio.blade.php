@@ -55,16 +55,19 @@
             <div class="beer">
                 <a href="{{ route('shop.cervejas') }}">
                     <img src="{{ url('assets/img/beer 1.png') }}" alt="merg">
+                    <p class="home-p">Cervejas</p>
                 </a>
             </div>
             <div class="beer">
                 <a href="{{ route('shop.kits') }}">
                     <img src="{{ url('assets/img/beer-box 1.png') }}" alt="">
+                    <p class="home-p">Kits</p>
                 </a>
             </div>
             <div class="beer">
                 <a href="{{ route('shop.embutidos') }}">
                     <img src="{{ url('assets/img/sausage 1.png') }}" alt="">
+                    <p class="home-p">embutidos</p>
                 </a>
             </div>
         </div>
@@ -86,6 +89,12 @@
                             </a>
                             <div class="caption">
                                 <span>{{ $produto->name }}</span>
+                            </div>
+                            <div class="caption price">
+                                <span>{{  'R$ '.number_format($produto->sellprice, 2, ',', '.') }}  </span>
+                            </div>
+                            <div class="caption price">
+                                <a href="{{ route('shop.single', $produto->id) }}">  <button class="btn btn-adicionar">Ver Mais</button></a>
                             </div>
                         </div>
                     @endif

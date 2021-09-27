@@ -9,8 +9,8 @@
         <div class="profile mt-3">
             <div class="d-flex">
                 <div class="avatar">
-                    {{-- <img class="img-fluid" src="{{ url('storage/profile_path/' . auth()->user()->profile_photo_path) }}" alt=""> --}}
-                    <img class="img-fluid" src="{{ url('assets/img/avatar.png') }}" alt="">
+                    <div class="profile-photo" @if (auth()->user()->profile_photo_path) style="background-image: url('{{asset('storage/profile_path/'.auth()->user()->profile_photo_path)}}');" @endif></div>
+                    {{-- <img class="img-fluid" src="{{ url('assets/img/avatar.png') }}" alt=""> --}}
                 </div>
                 <div class="identidade">
                     <div class="nome">

@@ -7,8 +7,8 @@
         </div>
         <div class="profile mt-3">
             <div class="d-flex">
-                <div class="avatar">
-                    <img class="img-fluid" src="{{ url('assets/img/avatar.png') }}" alt="">
+                <div class="avatar mb-2">
+                    <div class="profile-photo" @if (auth()->user()->profile_photo_path) style="background-image: url('{{asset('storage/profile_path/'.auth()->user()->profile_photo_path)}}');" @endif></div>
                 </div>
                 <div class="identidade">
                     <div class="nome">
@@ -163,25 +163,27 @@
 
                 @endforeach
             </div>
-            @if ($ship->tipo == 'Receber em Casa')
-                <div class="mt-3" id="linha-horizontal"></div>
-                <div class="row">
-                    @if ($transporte)
-                        <div class="col-6 my-2 mt-3">
-                            <div class="spans text-center"><div class="nome"><span>Valor de Entrega</span></div></div>
-                            <div class="spans text-center"><div class="email"><span>R$ {{number_format($transporte->valor_frete, 2, ',', '.')}}</span></div></div>
-                        </div>
-                        <div class="col-6 my-2 mt-3">
-                            <div class="spans text-center"><div class="nome"><span>Tempo de Entrega</span></div></div>
-                            <div class="spans text-center"><div class="email"><span>{{$transporte->tempo_entrega}} Minutos</span></div></div>
-                        </div>
-                    @else
-                        <div class="col-12 my-2 mt-3">
-                            <div class="spans d-flex justify-content-center"><div class="nome text-center"><span>Entrega Indisponivel Para o Endereço cadastrado.</span></div></div>
-                        </div>
-                    @endif
-                </div>
-            @endif
+            @isset ($ship->tipo)
+                @if ($ship->tipo == 'Receber em Casa')
+                    <div class="mt-3" id="linha-horizontal"></div>
+                    <div class="row">
+                        @if ($transporte)
+                            <div class="col-6 my-2 mt-3">
+                                <div class="spans text-center"><div class="nome"><span>Valor de Entrega</span></div></div>
+                                <div class="spans text-center"><div class="email"><span>R$ {{number_format($transporte->valor_frete, 2, ',', '.')}}</span></div></div>
+                            </div>
+                            <div class="col-6 my-2 mt-3">
+                                <div class="spans text-center"><div class="nome"><span>Tempo de Entrega</span></div></div>
+                                <div class="spans text-center"><div class="email"><span>{{$transporte->tempo_entrega}} Minutos</span></div></div>
+                            </div>
+                        @else
+                            <div class="col-12 my-2 mt-3">
+                                <div class="spans d-flex justify-content-center"><div class="nome text-center"><span>Entrega Indisponivel Para o Endereço cadastrado.</span></div></div>
+                            </div>
+                        @endif
+                    </div>
+                @endif
+            @endisset
             <div class="mt-3" id="linha-horizontal"></div>
         </div>
         <div class="text-center my-5">

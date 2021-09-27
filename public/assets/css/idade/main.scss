@@ -509,6 +509,10 @@ input:checked ~ .check:after {
     display: block;
 }
 
+h1 {
+    color: #eda200 !important;
+}
+
 ///checkbox fim//
 
 //page atualizar perfil///
@@ -517,8 +521,8 @@ input:checked ~ .check:after {
     display: none;
 }
 
-.profile-photo-edit {
-    background-image: url(assets/img/avatar.png);
+.profile-photo {
+    background-image: url(../../img/avatar.png);
     width: 100px;
     height: 100px;
     background-repeat: no-repeat;
@@ -532,7 +536,7 @@ input:checked ~ .check:after {
     }
 }
 .avatar {
-    width: 15%;
+    width: 12%;
 }
 
 @media (max-width: 900px){
