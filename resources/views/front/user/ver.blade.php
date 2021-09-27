@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-    <div class="container-fluid py-4 top-header">
+    <div class="container-fluid py-4 font top-header">
         <div class="container">
             @if ($pedido->status !== 5)
                 @if ($pedido->ship->tipo == 'Receber em Casa')
@@ -53,7 +53,7 @@
         </div>
     </div>
 
-    <div class="container">
+    <div class="container font">
         @foreach ($items as $item)
             <div class="row justify-content-center">
                 <div class="col-5 my-2 mt-3">
@@ -87,7 +87,7 @@
         @endforeach
     </div>
 
-    <div class="container my-5">
+    <div class="container font my-5">
         <div class="row justify-content-center">
             @if ($pedido->status !== 2)
                 <div class="col-10"><h3 class="title-orange">DETALHES DA ENTREGA</h3></div>
