@@ -517,6 +517,15 @@ input:checked ~ .check:after {
     display: none;
 }
 
+.profile-photo-edit {
+    background-image: url(assets/img/avatar.png);
+    width: 100px;
+    height: 100px;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-radius: 50%;
+}
+
 .foto-perfil {
     img {
         width: 50%;

@@ -33,11 +33,13 @@ function instaOut() {
 
 setTimeout(() => {
     $(function(){
-        var dados = JSON.parse($('#shipjson').val());
+        if($('#shipjson').val()){
+            var dados = JSON.parse($('#shipjson').val());
 
-        $.each(dados, (key, value) => {
-            $('[value="'+value+'"]').trigger('click');
-        });
+            $.each(dados, (key, value) => {
+                $('[value="'+value+'"]').trigger('click');
+            });
+        }
     })
 }, 1000);
 
