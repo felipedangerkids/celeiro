@@ -9,6 +9,55 @@ body {
       font-family: "Bungee Inline", cursive;
 }
 
+.top-header {
+      background-color: #ffc244;
+
+      .pedido-step {
+            background-color: #fff;
+            width: 100%;
+            height: 15px;
+      }
+
+      .pedido-step.active {
+            background-color: #000;
+      }
+
+      .pedido-step-text {
+            text-align: center;
+            font-size: .8rem;
+            padding-top: 10px;
+      }
+}
+
+.title-orange {
+      color: #eda200;
+}
+
+.sub-title-white {
+      color: #fff;
+}
+
+.line-product {
+      div {
+            border: 2px solid #ffc244;
+            width: 90%;
+            margin-top: 10px;
+      }
+}
+
+.preco-pedido {
+      color: #fff;
+      font-size: 1.2rem;
+
+      div:first-child {
+            color: #eda200;
+      }
+
+      div:nth-child(2) {
+            margin-left: auto;
+      }
+}
+
 .container-login-register {
       height: 100vh;
       display: flex;

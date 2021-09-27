@@ -1,6 +1,126 @@
 @extends('layouts.main')
+
 @section('content')
+    <div class="container-fluid py-4 top-header">
+        <div class="container">
+            @if ($pedido->status !== 5)
+                @if ($pedido->ship->tipo == 'Receber em Casa')
+                    <div class="text-center mt-2 mb-4">
+                        <span>Estimativa de Entrega</span> <br>
+                        <span>{{$pedido->tempo_entrega}} min</span>
+                    </div>
+                @endif
+            @endif
+
+            <div class="text-center my-4">
+                <img src="{{asset('assets/img/group-18.png')}}" alt="">
+            </div>
+
+            @if ($pedido->status == 5)
+                <div class="text-center mt-2 mb-4">
+                    <span>ENTREGUE</span> <br>
+                    <span>{{date('d/m/Y - H:i', strtotime($pedido->updated_at))}}</span>
+                </div>
+            @else
+                @if ($pedido->ship->tipo == 'Receber em Casa')
+                    <div class="row">
+                        <div class="col-4 text-center">
+                            <div class="pedido-step @if($pedido->status >= 1) active @endif"></div>
+                            <div class="pedido-step-text">Preparando seu Pedido</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="pedido-step @if($pedido->status >= 3) active @endif"></div>
+                            <div class="pedido-step-text">Aguardando Entregador</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="pedido-step @if($pedido->status >= 4) active @endif"></div>
+                            <div class="pedido-step-text">Saiu para Entrega</div>
+                        </div>
+                    </div>
+                @else
+                    <div class="row justify-content-center">
+                        <div class="col-4 text-center">
+                            <div class="pedido-step @if($pedido->status >= 1) active @endif"></div>
+                            <div class="pedido-step-text">Preparando seu Pedido</div>
+                        </div>
+                        <div class="col-4">
+                            <div class="pedido-step @if($pedido->status >= 2) active @endif"></div>
+                            <div class="pedido-step-text">Liberado para Retirada</div>
+                        </div>
+                    </div>
+                @endif
+            @endif
+        </div>
+    </div>
+
     <div class="container">
+        @foreach ($items as $item)
+            <div class="row justify-content-center">
+                <div class="col-5 my-2 mt-3">
+                    <div class="fundo-branco ">
+                        <div class="text-center">
+                            <div class="lata">
+                                <a href="#">
+                                    <img style="width: 100%; object-fit: cover;"
+                                        src="{{ url('storage/produtos/' . $item->produto->image) }}" alt="">
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="title col-6 d-flex flex-column">
+                    <div class="nome_">
+                        <span>{{ $item->produto->name }}</span>
+                    </div>
+                    <div class="unid">
+                        <span>R$ {{ number_format($item->unit_price, 2, ',', '.') }} UNID</span> <br>
+                    </div>
+                    <div class="preco-pedido mt-4 d-flex">
+                        <div>{{$item->quantity}}</div>
+                        <div>{{ 'R$ ' . number_format(($item->quantity * $item->unit_price), 2, ',', '.') }}</div>
+                    </div>
+                </div>
+            </div>
+            <div class="d-flex justify-content-center line-product">
+                <div></div>
+            </div>
+        @endforeach
+    </div>
+
+    <div class="container my-5">
+        <div class="row justify-content-center">
+            @if ($pedido->status !== 2)
+                <div class="col-10"><h3 class="title-orange">DETALHES DA ENTREGA</h3></div>
+
+                <div class="col-10 col-md-6 sub-title-white">
+                    <strong>Rua:</strong> {{ $pedido->adress->endereco }}, {{ $pedido->adress->numero }} <br>
+                    <strong>Bairro:</strong> {{ $pedido->adress->bairro }}<br>
+                    <strong>Cidade:</strong> {{ $pedido->adress->cidade }}<br>
+                    <strong>CEP:</strong> {{ $pedido->adress->cep }}
+                </div>
+
+                <div class="col-10 mt-3"><h3 class="title-orange">TAXA DE ENTREGA</h3></div>
+                <div class="col-10 col-md-6 sub-title-white">R$ {{number_format($pedido->valor_frete, 2, ',', '.')}}</div>
+            @endif
+
+            <div class="col-10 mt-3"><h3 class="title-orange">RESUMO</h3></div>
+            <div class="col-10 col-md-6 sub-title-white">
+                <div class="row">
+                    <div class="col-6">Pedido</div>
+                    <div class="col-6">R${{number_format(str_replace(',', '.', $pedido->troco), 2, ',', '.')}}</div>
+                    @if ($pedido->status !== 2)
+                        <div class="col-6">Entrega</div>
+                        <div class="col-6">R$ {{number_format($pedido->valor_frete, 2, ',', '.')}}</div>
+                    @endif
+                    <div class="col-6">Total</div>
+                    <div class="col-6">R$ {{number_format((($pedido->valor_frete ?? 0) + str_replace(',', '.', $pedido->troco)), 2, ',', '.')}}</div>
+                    <div class="col-12">Forma de Pagamento</div>
+                    <div class="col-12 title-orange">{{mb_convert_case($pedido->pagamento, MB_CASE_TITLE)}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    {{-- <div class="container">
         <div class="text-center pt-4">
             <h1>SEUS <br> PEDIDOS</h1>
         </div>
@@ -83,8 +203,5 @@
                     </div>
                 </div>
             </div>
-    </div>
-
-
-
+    </div> --}}
 @endsection

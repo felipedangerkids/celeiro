@@ -70,9 +70,11 @@
                 <div class="form-group col-md-6">
                     <select class="form-control" name="status" id="exampleFormControlSelect1">
                         <option value="1" @if($pedido->status == '1') selected @endif>Preparando</option>
-                        <option value="2" @if($pedido->status == '2') selected @endif>Saiu Para Entrega</option>
-                        <option value="3" @if($pedido->status == '3') selected @endif>Entregue</option>
-                        <option value="4" @if($pedido->status == '4') selected @endif>Cancelado</option>
+                        <option value="2" @if($pedido->status == '2') selected @endif>Liberado para Retirada</option>
+                        <option value="3" @if($pedido->status == '3') selected @endif>Aguardando Entrega</option>
+                        <option value="4" @if($pedido->status == '4') selected @endif>Saiu Para Entrega</option>
+                        <option value="5" @if($pedido->status == '5') selected @endif>Entregue</option>
+                        <option value="6" @if($pedido->status == '6') selected @endif>Cancelado</option>
 
                     </select>
                 </div>
