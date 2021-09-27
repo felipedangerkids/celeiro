@@ -276,3 +276,21 @@ display: none;
         object-fit: cover;
     }
 }
+a{
+    text-decoration: none !important;
+}
+.home-p{
+    padding-top: 25px;
+    text-align: center;
+    color: #EDA200;
+
+}
+.price{
+    span{
+        color: #EDA200 !important;
+    }
+
+}
+input:focus, textarea:focus, select:focus{
+    outline: none;
+}
