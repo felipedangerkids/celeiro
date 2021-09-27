@@ -27,7 +27,7 @@ class CheckoutController extends Controller
 
     public function checkout(Request $request)
     {
-        $pagarme = new Client('ak_test_RiK4hmGIp7sIB3PCClAEnKZwNPwxrm');
+        $pagarme = new Client('ak_live_3JqrpLWWF1I18UEdu2YBy0lFNcStp2');
 
         $telefone = str_replace([' ', '-'], '', auth()->user()->whatsapp);
 
