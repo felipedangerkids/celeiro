@@ -94,7 +94,7 @@
                                 <span>{{  'R$ '.number_format($produto->sellprice, 2, ',', '.') }}  </span>
                             </div>
                             <div class="caption price">
-                                <button class="btn btn-adicionar">Ver Mais</button>
+                                <a href="{{ route('shop.single', $produto->id) }}">  <button class="btn btn-adicionar">Ver Mais</button></a>
                             </div>
                         </div>
                     @endif
