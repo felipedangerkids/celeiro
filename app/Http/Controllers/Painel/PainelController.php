@@ -15,7 +15,7 @@ class PainelController extends Controller
 {
     public function index()
     {
-        $pedidos = Item::with('adress')->orderBy('created_at', 'desc')->paginate(15);
+        $pedidos = Item::orderBy('created_at', 'desc')->paginate(15);
         return view('painel.pedidos.index', compact('pedidos'));
     }
 
