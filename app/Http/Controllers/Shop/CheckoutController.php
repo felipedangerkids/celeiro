@@ -83,6 +83,7 @@ class CheckoutController extends Controller
 
             $produtos = Item::create([
                 'user_id' => auth()->user()->id,
+                'produto_id' => $value->id,
                 'pedido_id' => $pedido->id,
                 'title' => $value->name,
                 'unit_price' => $value->price,

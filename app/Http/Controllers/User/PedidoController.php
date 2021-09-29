@@ -20,7 +20,7 @@ class PedidoController extends Controller
     public function indexVer($id)
     {
         $pedido = Pedido::where('user_id', auth()->user()->id)->where('id', $id)->with('adress', 'ship')->first();
-        $items = Item::where('user_id', auth()->user()->id)->where('pedido_id', $id)->get();
+        $items = Item::with('produto')->where('user_id', auth()->user()->id)->where('pedido_id', $id)->get();
         return view('front.user.ver', compact('pedido', 'items'));
 
     }
