@@ -32,7 +32,7 @@
                   @foreach ($pedidos as $pedido)
                   <tr class="table-tr">
                         <th>{{ $pedido->id }}</th>
-                        <td>{{ $pedido->users->name }}</td>
+                        <td>{{ $pedido->users->name ?? ''}}</td>
                         <td>{{ $pedido->pagamento }}</td>
                         <td>{{ $pedido->adress->endereco }}, {{ $pedido->adress->numero }}</td>
 
