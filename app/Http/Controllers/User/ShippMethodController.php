@@ -15,7 +15,7 @@ class ShippMethodController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {    
+    {
         $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
         $ship = ShippMethod::where('user_id', auth()->user()->id)->max('id');
         $ship = ShippMethod::find($ship);
@@ -41,11 +41,14 @@ class ShippMethodController extends Controller
      */
     public function store(Request $request)
     {
-        if($request->data){
+        if ($request->data) {
             $ship = ShippMethod::create($request->all());
         }
-
-        return redirect()->route('pre.checkout');
+        if (\Cart::isEmpty()) {
+            return redirect()->route('shop');
+        } else {
+            return redirect()->route('pre.checkout');
+        }
     }
 
     /**
