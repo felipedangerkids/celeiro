@@ -63,7 +63,7 @@ class CheckoutController extends Controller
         $pedido = Pedido::create([
             'user_id' => auth()->user()->id,
             'adress_id' => $adress->id,
-            'produto_id' => 1,
+            'produto_id' => null,
             'pagamento' => $request->metodo,
             'troco' => $request->troco,
             'ship_id' => $ship->id,

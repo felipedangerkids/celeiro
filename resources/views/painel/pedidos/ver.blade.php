@@ -59,7 +59,7 @@
         </div>
         <div class="text-white">
             <p>Forma de Pagamento: {{ $pedido->pagamento }}</p>
-            <p>Troco: R${{ $pedido->troco ?? 'Cartão' }} </p>
+            <p>Troco: {{ $pedido->troco ?  : ($pedido->troco ?? 'Sem troco')}} </p>
         </div>
         <div class="text-center text-white">
             <h3>Status</h3>

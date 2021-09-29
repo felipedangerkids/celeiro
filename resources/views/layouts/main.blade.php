@@ -15,6 +15,7 @@
         rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/0ab2bcde1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ url('assets/css/main.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/idade/main.min.css') }}">
 
@@ -32,17 +33,25 @@
     <div class="aba-lr">
         <div class="div-aba">
             @if (auth()->guard('cliente')->check())
-                <div class="links"><a href="{{route('perfil')}}">{{explode(' ', auth()->guard('cliente')->user()->name)[0]}}</a></div>
+                <div class="links"><a
+                        href="{{ route('perfil') }}">{{ explode(
+    ' ',
+    auth()->guard('cliente')->user()->name,
+)[0] }}</a>
+                </div>
                 <div class="links">|</div>
-                <div class="links"><a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a></div>
+                <div class="links"><a href="#"
+                        onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
+                </div>
                 <div class="links">|</div>
-                <div class="links"><a href="{{route('shop')}}">Home</a></div>
+                <div class="links"><a href="{{ route('shop') }}">Home</a></div>
             @else
-                <div class="links"><a href="{{route('store.login')}}">Login</a></div>
+                <div class="links"><a href="{{ route('store.login') }}">Login</a></div>
                 <div class="links">|</div>
-                <div class="links"><a href="{{route('store.register')}}">Registrar</a></div>
+                <div class="links"><a href="{{ route('store.register') }}">Registrar</a></div>
             @endif
-            <div class="links" style="margin-left: auto"><button type="button" class="btn btn-close btn-close-lr"></button></div>
+            <div class="links" style="margin-left: auto"><button type="button"
+                    class="btn btn-close btn-close-lr"></button></div>
         </div>
     </div>
     @yield('content')
@@ -50,7 +59,14 @@
     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
-
+ @if (!Cart::isEmpty())
+ <div class="float-btn">
+    <a href="{{ route('pre.checkout') }}"> <span class="span-cart">{{ \Cart::getTotalQuantity() }}</span>
+        <button class="btn btn-cart"><i class="fas fa-shopping-cart icon"></i>
+        </button>
+    </a>
+</div>
+ @endif
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 
@@ -61,12 +77,12 @@
     <script src="{{ url('assets/js/jquery.maskMoney.min.js') }}"></script>
     <script src="{{ url('assets/js/script.js') }}"></script>
     <script type="text/javascript">
-        $(document).on('click', '.btn-open-lr', function(){
+        $(document).on('click', '.btn-open-lr', function() {
             $('.aba-lr').css({
                 'width': '320px'
             });
         });
-        $(document).on('click', '.btn-close-lr', function(){
+        $(document).on('click', '.btn-close-lr', function() {
             $('.aba-lr').css({
                 'width': '0'
             });
