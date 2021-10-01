@@ -32,7 +32,7 @@ class CheckoutController extends Controller
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => json_encode($dados),
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Basic '.base64_encode('sk_Od29W0EhVZCD1gQ0:'),
+                'Authorization: Basic '.base64_encode('sk_test_LEMb9qDTxMTvbQ2O:'),
                 'Content-Type: application/json'
             ),
         ));
@@ -239,14 +239,14 @@ class CheckoutController extends Controller
                         'pix' =>
                         array(
                             'expires_in' => '52134613',
-                            'additional_information' =>
-                            array(
-                                0 =>
-                                array(
-                                    'name' => 'Quantidade',
-                                    'value' => '2',
-                                ),
-                            ),
+                            // 'additional_information' =>
+                            // array(
+                            //     0 =>
+                            //     array(
+                            //         'name' => 'Quantidade',
+                            //         'value' => '2',
+                            //     ),
+                            // ),
                         ),
                     ),
                 ),
