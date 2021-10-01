@@ -18,6 +18,7 @@ use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\User\PedidoController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\ShippMethodController;
+use Intervention\Image\Commands\ChecksumCommand;
 
 /*
 |--------------------------------------------------------------------------
@@ -68,9 +69,7 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('process', [CheckoutController::class, 'proccess'])->name('checkout.process');
     Route::post('checkout', [CheckoutController::class, 'checkout'])->name('finish');
 
-    Route::get('/pedido-concluido', function () {
-        return view('front.carrinho.pedido-concluido');
-    })->name('pedido.concluido');
+    Route::get('/pedido-concluido/{id}', [CheckoutController::class, 'pedidoConcluido'])->name('pedido.concluido');
 
     Route::get('user/pedidos', [PedidoController::class, 'index'])->name('user.pedidos');
     Route::get('user/pedidos/ver/{id}', [PedidoController::class, 'indexVer'])->name('user.pedidos.ver');

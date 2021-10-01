@@ -75,6 +75,9 @@
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
 
     <script src="{{ url('assets/js/jquery.maskMoney.min.js') }}"></script>
+    {{-- <script src="{{ url('assets/js/qr-scanner.min.js') }}"></script>
+    <script src="{{ url('assets/js/qr-scanner-worker.min.js') }}"></script> --}}
+    <script type="module" src="{{ url('assets/js/code.js') }}"></script>
     <script src="{{ url('assets/js/script.js') }}"></script>
     <script type="text/javascript">
         $(document).on('click', '.btn-open-lr', function() {

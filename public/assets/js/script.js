@@ -32,12 +32,12 @@ function instaOut() {
 }
 
 setTimeout(() => {
-    $(function(){
-        if($('#shipjson').val()){
+    $(function () {
+        if ($('#shipjson').val()) {
             var dados = JSON.parse($('#shipjson').val());
 
             $.each(dados, (key, value) => {
-                $('[value="'+value+'"]').trigger('click');
+                $('[value="' + value + '"]').trigger('click');
             });
         }
     })
@@ -93,9 +93,9 @@ $('#segundo').on('click', function () {
 $('#phone').mask('00 00000-0000');
 
 
-$(document).on('click', '.btn-verificar', function(e){
-    if($('.tipo_entrega span').text() == 'Receber em Casa'){
-        if($('.transportes').val() == ''){
+$(document).on('click', '.btn-verificar', function (e) {
+    if ($('.tipo_entrega span').text() == 'Receber em Casa') {
+        if ($('.transportes').val() == '') {
             e.preventDefault();
             Swal.fire({
                 icon: 'error',
@@ -133,7 +133,7 @@ $(document).on('click', '#enviar', function () {
                     console.log(data);
                     if (data[0] == 'success') {
 
-                        window.location.href = 'pedido-concluido';
+                        window.location.href = 'pedido-concluido/'+data[1];
                     }
 
                 },
@@ -152,7 +152,7 @@ $(document).on('click', '#enviar', function () {
 
             });
         }
-    }else{
+    } else {
         $.ajax({
             url: 'checkout',
             type: 'POST',
@@ -161,7 +161,7 @@ $(document).on('click', '#enviar', function () {
                 console.log(data);
                 if (data[0] == 'success') {
 
-                    window.location.href = 'pedido-concluido';
+                    window.location.href = 'pedido-concluido/'+data[1];
                 }
 
             },
@@ -182,14 +182,14 @@ $(document).on('click', '#enviar', function () {
     }
 });
 
-$(document).ready(function(){
-    $('#form-login').find('input').on('keyup', function(e){
-        if(e.keyCode == 13){
+$(document).ready(function () {
+    $('#form-login').find('input').on('keyup', function (e) {
+        if (e.keyCode == 13) {
             $('#btn-login').trigger('click');
         }
     });
 
-    $(document).on('click', '#btn-login', function(){
+    $(document).on('click', '#btn-login', function () {
         var btn = $(this);
         var form = $('#form-login').serialize();
         var url = $('#form-login').attr('action');
@@ -215,12 +215,12 @@ $(document).ready(function(){
                 btn.prop('disabled', false);
                 $('#form-login').find('input').prop('disabled', false);
 
-                if(errors){
+                if (errors) {
                     console.log(errors);
                     $.each(errors, (key, value) => {
-                        $('#form-login').find('[name="'+key+'"]').parent().append('<span class="invalid-feedbeck">'+value[0]+'</span>');
+                        $('#form-login').find('[name="' + key + '"]').parent().append('<span class="invalid-feedbeck">' + value[0] + '</span>');
                     });
-                }else{
+                } else {
                     Swal.fire({
                         icon: 'error',
                         title: 'Email ou Senha invalidos'
@@ -230,26 +230,26 @@ $(document).ready(function(){
         });
     });
 
-    $(document).on('click', '.btn-edit-img', function(){
+    $(document).on('click', '.btn-edit-img', function () {
         $('#file-custom').trigger('click');
     });
-    $(document).on('change', '#file-custom', function(){
+    $(document).on('change', '#file-custom', function () {
         // $('.foto-perfil').empty();
         var preview = '';
-        var files   = $(this).prop('files');
+        var files = $(this).prop('files');
 
         function readAndPreview(file) {
             // Make sure `file.name` matches our extensions criteria
-            if ( /\.(jpe?g|png|gif)$/i.test(file.name) ) {
+            if (/\.(jpe?g|png|gif)$/i.test(file.name)) {
                 var reader = new FileReader();
 
                 reader.addEventListener("load", function () {
-                // var image = new Image();
-                // image.classList = 'mx-auto';
-                // image.width = '100%';
-                // image.title = file.name;
-                // image.src = this.result;
-                preview = this.result;
+                    // var image = new Image();
+                    // image.classList = 'mx-auto';
+                    // image.width = '100%';
+                    // image.title = file.name;
+                    // image.src = this.result;
+                    preview = this.result;
                 }, false);
 
                 reader.readAsDataURL(file);
@@ -262,7 +262,7 @@ $(document).ready(function(){
 
         setTimeout(() => {
             $('.profile-photo-edit').css({
-                'background-image': 'url('+preview+')',
+                'background-image': 'url(' + preview + ')',
             });
         }, 500)
     });
