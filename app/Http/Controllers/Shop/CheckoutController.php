@@ -32,7 +32,7 @@ class CheckoutController extends Controller
             CURLOPT_CUSTOMREQUEST => 'POST',
             CURLOPT_POSTFIELDS => json_encode($dados),
             CURLOPT_HTTPHEADER => array(
-                'Authorization: Basic '.base64_encode('sk_test_LEMb9qDTxMTvbQ2O:'),
+                'Authorization: Basic '.base64_encode('sk_Od29W0EhVZCD1gQ0:'),
                 'Content-Type: application/json'
             ),
         ));
@@ -330,5 +330,11 @@ class CheckoutController extends Controller
 
         curl_close($curl);
         return $image = 'data:' . $info['content_type'] . ';base64,' . base64_encode($response);
+    }
+
+
+    public function webhook(Request $request)
+    {
+        \Log::info(json_encode($request->getContent()));
     }
 }
