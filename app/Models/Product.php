@@ -35,6 +35,14 @@ class Product extends Model
         'categoria',
         'description',
         'spotlight',
+        'delivery',
+        'location',
+        'stock',
         'status',
     ];
+
+    public function stock()
+    {
+        return $this->hasMany(Stock::class, 'product_id');
+    }
 }

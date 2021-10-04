@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Product;
+use App\Models\Stock;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic;
@@ -20,29 +21,28 @@ class ProductController extends Controller
         if(!empty($_GET['name'])){
             switch($_GET['coluna']){
                 case 'produto':
-                    $products = Product::where('name', 'like', '%'.$_GET['name'].'%')->paginate(15);
+                    $products = Product::where('name', 'like', '%'.$_GET['name'].'%')->with(['stock' => function($query) {
+                        return $query->orderBy('created_at', 'DESC');
+                    }])->paginate(15);
                 break;
                 case 'fornecedor':
-                    $products = Product::where('provider', 'like', '%'.$_GET['name'].'%')->paginate(15);
+                    $products = Product::where('provider', 'like', '%'.$_GET['name'].'%')->with(['stock' => function($query) {
+                        return $query->orderBy('created_at', 'DESC');
+                    }])->paginate(15);
                 break;
                 case 'contato':
-                    $products = Product::where('provname', 'like', '%'.$_GET['name'].'%')->paginate(15);
+                    $products = Product::where('provname', 'like', '%'.$_GET['name'].'%')->with(['stock' => function($query) {
+                        return $query->orderBy('created_at', 'DESC');
+                    }])->paginate(15);
                 break;
             }
         }else{
-            $products = Product::paginate(15);
+            $products = Product::with(['stock' => function($query) {
+                return $query->orderBy('created_at', 'DESC');
+            }])->paginate(15);
         }
-        return view('painel.products.index', compact('products'));
-    }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
+        return view('painel.products.index', compact('products'));
     }
 
     /**
@@ -73,7 +73,6 @@ class ProductController extends Controller
 
         $this->validate($request, $rules, $customMessages);
 
-
         $data = $request->all();
 
         // $price = str_replace(['.', ','], ['', '.'], $data['price']);
@@ -88,9 +87,7 @@ class ProductController extends Controller
         $sellprice = str_replace(['.', ','], ['', '.'], $data['sellprice']);
         $buyprice = str_replace(['.', ','], ['', '.'], $data['buyprice']);
 
-
         $product = Product::create([
-
             'name' => $data['name'],
             'resume' => $data['resume'],
             'provider' => $data['provider'],
@@ -106,22 +103,19 @@ class ProductController extends Controller
             'categoria' => $data['categoria'],
             'description' => $data['description'],
             'spotlight' => $data['spotlight'],
+            'delivery' => $data['delivery'],
+            'location' => $data['location'],
+            'stock' => $data['stock'],
+        ]);
 
-
+        Stock::create([
+            'product_id' => $product->id,
+            'type' => 'E',
+            'value' => $data['stock'],
+            'description' => 'Entrada inicial!'
         ]);
 
         return redirect()->back()->with('success', 'Produto criado com sucesso!');
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Product  $product
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Product $product)
-    {
-        //
     }
 
     /**
@@ -143,7 +137,7 @@ class ProductController extends Controller
      * @param  \App\Models\Product  $product
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Product $product, $id)
+    public function update(Request $request, $id)
     {
         $produto = Product::find($id);
 
@@ -191,6 +185,8 @@ class ProductController extends Controller
         $produto->categoria = $request->get('categoria');
         $produto->description = $request->get('description');
         $produto->spotlight = $request->get('spotlight');
+        $produto->delivery = $request->get('delivery');
+        $produto->location = $request->get('location');
         $produto->save();
 
 
@@ -217,5 +213,36 @@ class ProductController extends Controller
                 return response()->json(array('success' => true));
             }
         }
+    }
+
+    /**
+     * Atualização do Stock
+     * @param  \Illuminate\Http\Request  $request
+     * @param \App\Models\Stock $stock
+     * @param  \App\Models\Product  $product
+     * @return \Illuminate\Http\Response
+     */
+    public function stockUpdate(Request $request)
+    {
+        $product = Product::find($request->id);
+        $new_stock = 0;
+        if($request->stock_type == 'E'){
+            $new_stock = ($product->stock ?? 0) + $request->new_stock;
+        }elseif($request->stock_type == 'S'){
+            $new_stock = ($product->stock ?? 0) - $request->new_stock;
+        }
+
+        $product->update([
+            'stock' => $new_stock
+        ]);
+
+        Stock::create([
+            'product_id' => $product->id,
+            'type' => $request->stock_type,
+            'value' => $request->new_stock,
+            'description' => $request->description ?? ($request->stock_type == 'E' ? '(Entrada no Estoque)' : '(Saída no Estoque)'),
+        ]);
+
+        return redirect()->route('products')->with('success', 'Estoque adicionado ao produto "'.$product->name.'"');
     }
 }

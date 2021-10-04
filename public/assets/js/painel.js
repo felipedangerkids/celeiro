@@ -1,22 +1,22 @@
 $('#radioBtn a').on('click', function () {
-      var sel = $(this).data('title');
-      var tog = $(this).data('toggle');
-      $('#' + tog).prop('value', sel);
+    var sel = $(this).data('title');
+    var tog = $(this).data('toggle');
+    $('#' + tog).prop('value', sel);
 
-      $('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
-      $('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
+    $('a[data-toggle="' + tog + '"]').not('[data-title="' + sel + '"]').removeClass('active').addClass('notActive');
+    $('a[data-toggle="' + tog + '"][data-title="' + sel + '"]').removeClass('notActive').addClass('active');
 });
 
 
 $('#buyprice').maskMoney({
-      allowNegative: false,
-      thousands: '.',
-      decimal: ','
+    allowNegative: false,
+    thousands: '.',
+    decimal: ','
 });
 $('#sellprice').maskMoney({
-      allowNegative: false,
-      thousands: '.',
-      decimal: ','
+    allowNegative: false,
+    thousands: '.',
+    decimal: ','
 });
 $('#phone').mask('00 00000-0000');
 
@@ -85,21 +85,58 @@ $(document).ready(function(){
     });
 
     $(function(){
-        var transportes = JSON.parse($('.transportes_json').val());
-        if(ObjectLength(transportes) > 0){
-            setTimeout(() => {
-                $('[name="estado"]').val(transportes.estado);
-                $('[name="estado"]').trigger('change');
-
+        if($('.transportes_json').val()){
+            var transportes = JSON.parse($('.transportes_json').val());
+            if(ObjectLength(transportes) > 0){
                 setTimeout(() => {
-                    $('[name="cidade"]').val(transportes.cidade);
-                    $('[name="cidade"]').trigger('change');
+                    $('[name="estado"]').val(transportes.estado);
+                    $('[name="estado"]').trigger('change');
 
                     setTimeout(() => {
-                        $('[name="bairro"]').val(transportes.bairro);
-                    }, 800);
-                }, 700);
-            }, 600);
+                        $('[name="cidade"]').val(transportes.cidade);
+                        $('[name="cidade"]').trigger('change');
+
+                        setTimeout(() => {
+                            $('[name="bairro"]').val(transportes.bairro);
+                        }, 800);
+                    }, 700);
+                }, 600);
+            }
+        }
+    });
+
+    $(document).on('click','.btn-edit-stock', function(){
+        var dados = $(this).data('dados');
+
+        $('#editStock').find('._name').html(dados.name);
+        $('#editStock').find('[name="id"]').val(dados.id);
+
+        $('#editStock').find('.table-stock').empty();
+
+        for(var i=0; dados.stock.length>i; i++){
+            var classs = dados.stock[i].type == 'E' ? 'text-success' : 'text-danger';
+            var name_type = dados.stock[i].type == 'E' ? 'ENTRADA' : 'SAÍDA';
+
+            var date = new Date(dados.stock[i].created_at);
+                dia  = date.getDate().toString().padStart(2, '0'),
+                mes  = (date.getMonth()+1).toString().padStart(2, '0'), //+1 pois no getMonth Janeiro começa com zero.
+                ano  = date.getFullYear();
+                hora = date.getHours().toString();
+                minuto = date.getMinutes().toString();
+            date = dia+'/'+mes+'/'+ano+' '+hora+':'+minuto;
+
+            // var dataTime = dados.stock[i].created_at.split(' ');
+            // var date = dataTime[0].split('-');
+            // date = date[2]+'/'+date[1]+'/'+date[0];
+
+            $('#editStock').find('.table-stock').append(
+                '<tr>'+
+                    '<td class="'+classs+'">'+name_type+'</td>'+
+                    '<td class="text-white">'+(dados.stock[i].value ?? '')+'</td>'+
+                    '<td class="text-white">'+(dados.stock[i].description ?? '')+'</td>'+
+                    '<td class="text-white">'+date+'</td>'+
+                '</tr>'
+            );
         }
     });
 });

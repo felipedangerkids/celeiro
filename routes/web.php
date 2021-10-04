@@ -31,11 +31,14 @@ use Intervention\Image\Commands\ChecksumCommand;
 |
 */
 
-
-
 Route::get('teste', [TesteController::class, 'index']);
 
-Route::get('/', [ShopController::class, 'index'])->name('shop');
+Route::get('/', function (){
+    
+});
+
+// Delivery App
+Route::get('/shop', [ShopController::class, 'index'])->name('shop');
 Route::get('cervejas', [ShopController::class, 'cervejas'])->name('shop.cervejas');
 Route::get('kits', [ShopController::class, 'kits'])->name('shop.kits');
 Route::get('embutidos', [ShopController::class, 'embutidos'])->name('shop.embutidos');
@@ -75,30 +78,39 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('user/pedidos/ver/{id}', [PedidoController::class, 'indexVer'])->name('user.pedidos.ver');
 });
 
-
 Route::post('user-store', [CapturaController::class, 'store']);
 Route::get('obrigado', [CapturaController::class, 'thanks'])->name('thanks');
-Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', [DashboardController::class, 'index']
-)->name('dashboard');
-Route::middleware(['auth:sanctum', 'verified'])->get('/clientes', [DashboardController::class, 'clientes']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/produtos', [ProductController::class, 'index'])->name('products');
-Route::middleware(['auth:sanctum', 'verified'])->get('/produtos-edit/{id}', [ProductController::class, 'edit']);
-Route::middleware(['auth:sanctum', 'verified'])->post('/produtos-store', [ProductController::class, 'store']);
-Route::middleware(['auth:sanctum', 'verified'])->any('/produtosDelete/{id}', [ProductController::class, 'destroy']);
-Route::middleware(['auth:sanctum', 'verified'])->any('/produtos-update/{id}', [ProductController::class, 'update']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/painel/pedidos', [PainelController::class, 'index']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/painel/pedidos/ver/{id}', [PainelController::class, 'ver']);
-Route::middleware(['auth:sanctum', 'verified'])->post('/painel/pedidos/status/{id}', [PainelController::class, 'status']);
 
-Route::middleware(['auth:sanctum', 'verified'])->get('/painel/buscaEstado', [PainelController::class, 'buscaEstado']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/painel/buscaCidade/{id}', [PainelController::class, 'buscaCidade']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/painel/buscaBairro/{id}', [PainelController::class, 'buscaBairro']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/painel/transportes', [PainelController::class, 'transportes']);
-Route::middleware(['auth:sanctum', 'verified'])->get('/painel/transportes-id/{id}', [PainelController::class, 'transportesId']);
+// Local App
 
-Route::middleware(['auth:sanctum', 'verified'])->post('/painel/cadastrarTransporte', [PainelController::class, 'cadastrarTransporte']);
-Route::middleware(['auth:sanctum', 'verified'])->post('/painel/transportadorEdit', [PainelController::class, 'transportadorEdit']);
-Route::middleware(['auth:sanctum', 'verified'])->any('/painel/transportadorDelete/{id}', [PainelController::class, 'transportadorDelete']);
+
+Route::middleware(['auth:sanctum', 'verified'])->group(function(){
+    Route::get('/dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+    Route::get('/clientes', [DashboardController::class, 'clientes']);
+
+    Route::get('/produtos', [ProductController::class, 'index'])->name('products');
+    Route::get('/produtos-edit/{id}', [ProductController::class, 'edit']);
+    Route::post('/produtos-store', [ProductController::class, 'store']);
+    Route::any('/produtosDelete/{id}', [ProductController::class, 'destroy']);
+    Route::any('/produtos-update/{id}', [ProductController::class, 'update']);
+
+    Route::post('/atualizar-stock', [ProductController::class, 'stockUpdate'])->name('stockUpdate');
+
+    Route::get('/painel/pedidos', [PainelController::class, 'index']);
+    Route::get('/painel/pedidos/ver/{id}', [PainelController::class, 'ver']);
+    Route::post('/painel/pedidos/status/{id}', [PainelController::class, 'status']);
+
+    Route::get('/painel/buscaEstado', [PainelController::class, 'buscaEstado']);
+    Route::get('/painel/buscaCidade/{id}', [PainelController::class, 'buscaCidade']);
+    Route::get('/painel/buscaBairro/{id}', [PainelController::class, 'buscaBairro']);
+    Route::get('/painel/transportes', [PainelController::class, 'transportes']);
+    Route::get('/painel/transportes-id/{id}', [PainelController::class, 'transportesId']);
+
+    Route::post('/painel/cadastrarTransporte', [PainelController::class, 'cadastrarTransporte']);
+    Route::post('/painel/transportadorEdit', [PainelController::class, 'transportadorEdit']);
+    Route::any('/painel/transportadorDelete/{id}', [PainelController::class, 'transportadorDelete']);
+});
 
 //layouts e rotas provisorias
 
