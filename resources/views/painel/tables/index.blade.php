@@ -55,21 +55,7 @@
 </div>
 
 <div class="row my-4">
-    <div class="col-6 col-md-5">
-        {{-- <form action="" method="get">
-                <div class="input-group">
-                    <input type="search" name="name" class="form-control" value="@isset($_GET['name']){{$_GET['name']}}@endisset" placeholder="buscar">
-                    <select name="coluna" class="form-control">
-                            <option value="produto" @isset($_GET['coluna']) @if($_GET['coluna'] == 'produto') selected @endif @endisset>Produto</option>
-                            <option value="fornecedor" @isset($_GET['coluna']) @if($_GET['coluna'] == 'fornecedor') selected @endif @endisset>Fornecedor</option>
-                            <option value="contato" @isset($_GET['coluna']) @if($_GET['coluna'] == 'contato') selected @endif @endisset>Contato</option>
-                    </select>
-                    <div class="input-group-append">
-                            <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
-                    </div>
-                </div>
-        </form> --}}
-    </div>
+    <div class="col-6 col-md-5"></div>
     <div class="col-6 col-md-7 text-right">
         <button data-toggle="modal" data-target="#addTable" class="btn btn-add"><i class="fas fa-plus"></i> Adicionar Mesa</button>
     </div>
@@ -111,12 +97,6 @@
             @endforeach
         </tbody>
     </table>
-    {{-- 
-    @if (isset($_GET['name']))
-        {{ $products->appends(['name' => $_GET['name'], 'coluna' => $_GET['coluna']])->links()  }}
-    @else
-        {{ $products->links()  }}
-    @endif --}}
 </div>
 
 <script type="application/javascript">
