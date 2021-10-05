@@ -42,6 +42,9 @@
                     <a href="{{ url('produtos') }}">Produtos</a>
                 </li>
                 <li>
+                    <a href="{{ url('mesas') }}">Mesas</a>
+                </li>
+                <li>
                     <a href="{{ url('painel/pedidos') }}">Vendas</a>
                 </li>
                 <li>

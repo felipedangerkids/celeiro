@@ -18,6 +18,7 @@ use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\User\PedidoController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\ShippMethodController;
+use App\Http\Controllers\TableController;
 use Intervention\Image\Commands\ChecksumCommand;
 
 /*
@@ -110,6 +111,19 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::post('/painel/cadastrarTransporte', [PainelController::class, 'cadastrarTransporte']);
     Route::post('/painel/transportadorEdit', [PainelController::class, 'transportadorEdit']);
     Route::any('/painel/transportadorDelete/{id}', [PainelController::class, 'transportadorDelete']);
+
+    Route::get('/mesas', [TableController::class, 'index'])->name('table');
+    Route::post('/mesa/store', [TableController::class, 'store'])->name('table.store');
+    Route::get('/mesa/edit/{id}', [TableController::class, 'edit'])->name('table.edit');
+    Route::post('/mesa/update/{id}', [TableController::class, 'update'])->name('table.update');
+    Route::delete('/mesa/delete/{id?}', [TableController::class, 'destroy'])->name('table.delete');
+
+    Route::post('/unity/store', [TableController::class, 'storeUnity'])->name('table.store.unity');
+    Route::get('/unity/edit/{id}', [TableController::class, 'editUnity'])->name('table.edit.unity');
+    Route::post('/unity/update/{id}', [TableController::class, 'updateUnity'])->name('table.update.unity');
+    Route::delete('/unity/delete/{id?}', [TableController::class, 'destroyUnity'])->name('table.delete.unity');
+
+    Route::get('/buscaCep', [AdressController::class, 'buscaCep'])->name('painel.cep');
 });
 
 //layouts e rotas provisorias

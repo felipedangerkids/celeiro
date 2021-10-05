@@ -139,6 +139,25 @@ $(document).ready(function(){
             );
         }
     });
+
+    $(document).on('click', '.btn-search-cep', function(){
+        var cep = $(this).closest('.input-group').find('[name="zip_code"]').val();
+        $.ajax({
+            url: '/buscaCep',
+            type: 'GET',
+            data: {search: cep},
+            success: (data) => {
+                // console.log(data);
+                $('#addUnity').find('[name="zip_code"]').val(data.zipcode);
+                $('#addUnity').find('[name="state"]').val(data.uf);
+                $('#addUnity').find('[name="city"]').val(data.city);
+                $('#addUnity').find('[name="address2"]').val(data.district);
+                $('#addUnity').find('[name="address"]').val(data.street);
+
+                $('#addUnity').find('[name="number"]').focus();
+            }
+        });
+    });
 });
 
 function ObjectLength( object ) {
