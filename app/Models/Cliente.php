@@ -13,6 +13,11 @@ class Cliente extends Authenticatable
     use Notifiable;
 
     protected $fillable = [
-        'name', 'email', 'password','whatsapp'
+        'name', 'email', 'cpf', 'password','whatsapp',
+    ];
+
+    protected $hidden = [
+        'password',
+        'remember_token',
     ];
 }

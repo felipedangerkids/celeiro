@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TesteController;
 use App\Http\Controllers\User\ShippMethod;
 use App\Http\Controllers\CapturaController;
@@ -34,29 +35,29 @@ use Intervention\Image\Commands\ChecksumCommand;
 
 Route::get('teste', [TesteController::class, 'index']);
 
-Route::get('/', function (){
-    
-});
-
-// Delivery App
-Route::get('/shop', [ShopController::class, 'index'])->name('shop');
-Route::get('cervejas', [ShopController::class, 'cervejas'])->name('shop.cervejas');
-Route::get('kits', [ShopController::class, 'kits'])->name('shop.kits');
-Route::get('embutidos', [ShopController::class, 'embutidos'])->name('shop.embutidos');
-Route::get('produto/{id}', [ShopController::class, 'single'])->name('shop.single');
-
-Route::post('search', [ShopController::class, 'search'])->name('search');
-//cart
-Route::post('cart-add', [CartController::class, 'cartAdd'])->name('cart.add');
-Route::any('cart-remove/{id}', [CartController::class, 'itemRemove'])->name('cart.remove');
-
 Route::get('store/register', [RegisterController::class, 'index'])->name('store.register');
-Route::post('store/register/post', [RegisterController::class, 'store'])->name('store.register.post');
+Route::post('store/register', [RegisterController::class, 'store'])->name('store.register');
 
 Route::get('store/login', [LoginController::class, 'index'])->name('store.login');
-Route::post('store/login/post', [LoginController::class, 'login'])->name('store.login.post');
+Route::post('store/login', [LoginController::class, 'login'])->name('store.login');
+Route::post('store/logout', [LoginController::class, 'logout'])->name('store.logout');
+
 //checkout
 Route::middleware(['auth:cliente'])->group(function () {
+    Route::get('/', [HomeController::class, 'index'])->name('home');
+
+    // Delivery App
+    Route::get('/shop', [ShopController::class, 'index'])->name('shop');
+    Route::get('cervejas', [ShopController::class, 'cervejas'])->name('shop.cervejas');
+    Route::get('kits', [ShopController::class, 'kits'])->name('shop.kits');
+    Route::get('embutidos', [ShopController::class, 'embutidos'])->name('shop.embutidos');
+    Route::get('produto/{id}', [ShopController::class, 'single'])->name('shop.single');
+
+    Route::post('search', [ShopController::class, 'search'])->name('search');
+    //cart
+    Route::post('cart-add', [CartController::class, 'cartAdd'])->name('cart.add');
+    Route::any('cart-remove/{id}', [CartController::class, 'itemRemove'])->name('cart.remove');
+
     Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
 
     Route::get('edit/perfil/{id}', [UserController::class, 'edit'])->name('perfil.edit');

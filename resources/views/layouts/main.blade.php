@@ -23,6 +23,19 @@
 </head>
 
 <body>
+    <div class="cookie-idade d-flex align-items-center">
+        <div class="container d-flex flex-column align-items-center">
+            <div><img class="img-fluid" src="{{asset('assets/img/logo.png')}}" alt=""></div>
+            <div class="cookie-title my-3 text-center">
+                <h4 class="text-white">VOCÊ É MAIOR DE</h4>
+                <h3 class="text-orange">18 ANOS?</h3>
+            </div>
+            <div class="btns">
+                <button type="button" class="btn btn-c-white btn-no-cookie-idade">NÃO</button>
+                <button type="button" class="btn btn-c-orange btn-yes-cookie-idade">SIM</button>
+            </div>
+        </div>
+    </div>
 
     @if (Request::is('store/login') == false && Request::is('store/register') == false)
         <div class="div-btn-login">
@@ -51,19 +64,20 @@
                     class="btn btn-close btn-close-lr"></button></div>
         </div>
     </div>
+
     @yield('content')
 
-    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+    <form id="logout-form" action="{{ route('store.logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
- @if (!Cart::isEmpty())
- <div class="float-btn">
-    <a href="{{ route('pre.checkout') }}"> <span class="span-cart">{{ \Cart::getTotalQuantity() }}</span>
-        <button class="btn btn-cart"><i class="fas fa-shopping-cart icon"></i>
-        </button>
-    </a>
-</div>
- @endif
+    @if (!Cart::isEmpty())
+        <div class="float-btn">
+            <a href="{{ route('pre.checkout') }}"> <span class="span-cart">{{ \Cart::getTotalQuantity() }}</span>
+                <button class="btn btn-cart"><i class="fas fa-shopping-cart icon"></i>
+                </button>
+            </a>
+        </div>
+    @endif
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
 

@@ -36,6 +36,38 @@
 }
 //FINALIZADO PAGINA//
 
+.cookie-idade {
+    position: absolute;
+    z-index: 10;
+    background-color: #191919;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+
+    .btn {
+        font-size: 2rem;
+        height: auto;
+    }
+}
+
+.text-orange {
+    color: #EDA200;
+}
+
+.btn-block {
+    width: 100%;
+}
+
+.btn-c-white {
+    background-color: #FFF9F9;
+    color: #191919;
+}
+
+.btn-c-orange {
+    background-color: #EDA200;
+    color: #191919;
+}
+
 //PAGINA DE DESTAQUES//
 .spans {
     width: 100%;
@@ -543,52 +575,6 @@ h1 {
 @media (max-width: 900px){
     .avatar {
         width: 30%;
-    }
-}
-
-.formulario {
-    .invalid-feedbeck {
-        padding: 6px 0 0 0;
-        color: #ff0909;
-        font-family: system-ui;
-    }
-    .inputs {
-        color: #ccc;
-        display: flex;
-        flex-wrap: wrap;
-        input {
-            color: #ccc;
-            font-family: montserrat;
-            background-color: #333332;
-            border: none;
-            width: 61%;
-            height: 39px;
-        }
-        label {
-            align-items: center;
-            display: flex;
-            width: 35%;
-            height: auto;
-            background-color: #333332;
-            border: none;
-        }
-        ::-webkit-input-placeholder {
-            color: white !important;
-        }
-
-        :-moz-placeholder {
-            /* Firefox 18- */
-            color: white !important;
-        }
-
-        ::-moz-placeholder {
-            /* Firefox 19+ */
-            color: white !important;
-        }
-
-        :-ms-input-placeholder {
-            color: white !important;
-        }
     }
 }
 

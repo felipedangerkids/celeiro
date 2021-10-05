@@ -1,41 +1,45 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container-fluid container-login-register">
-        <div class="store">
-            <div class="text-center pt-4">
-                <h1>CADASTRAR</h1>
+    <div class="container vh-100 d-flex align-items-center justify-content-center">
+        <div class="w-75">
+            <div class="text-center mb-4">
+                <img class="img-fluid" src="{{ asset('assets/img/logo-simples.png')}}" alt="">
             </div>
-            <div class="mt-4" id="linha-horizontal"></div>
-            <div class="login-store">
-                <form id="form-login" action="{{ route('store.register.post') }}" method="POST">
+            <div class="mt-5">
+                <form id="form-login" action="{{ route('store.register') }}" method="POST">
                     @csrf
                     <div class="formulario">
-                        <div class="inputs pt-3">
-                            <label for="">NOME:</label>
+                        <div class="inputs mt-3">
                             <input type="text" name="name" placeholder="Seu Nome Completo">
                         </div>
-                        <div class="inputs pt-3">
-                            <label for="">E-MAIL:</label>
-                            <input type="email" name="email" placeholder="exemplo@exemplo.com">
+                        <div class="inputs mt-3">
+                            <input type="email" name="email" placeholder="Email Para Contato">
                         </div>
-                        <div class="inputs pt-3">
-                            <label for="">SENHA:</label>
-                            <input type="password" name="password" placeholder="************">
+                        <div class="inputs mt-3">
+                            <input name="cpf" type="text" placeholder="CPF">
                         </div>
-                        <div class="inputs pt-3">
-                            <label for="">REPETIR SENHA:</label>
-                            <input type="password" name="password_confirmation" placeholder="************">
+                        <div class="inputs mt-3">
+                            <input type="text" id="whatsapp" name="whatsapp" placeholder="Numero de Celular">
                         </div>
-                        <div class="inputs pt-3">
-                            <label for="">WHATSAPP:</label>
-                            <input type="text" id="whatsapp" name="whatsapp" placeholder="00 00000-0000">
+                        <div class="inputs mt-3">
+                            <input type="password" name="password" placeholder="Senha">
                         </div>
-                    </div>
-                    <div class="text-center pt-5">
-                        <button type="button" id="btn-login" class="btn btn-adicionar">CADASTRAR</button>
-                    </div>
-                    <div class="text-center text-white mt-5">
-                        <p>Já possui cadastro? <a href="{{ route('store.login') }}"> Clique Aqui </a></p>
+                        <div class="inputs mt-3">
+                            <input type="password" name="password_confirmation" placeholder="Confirmar Senha">
+                        </div>
+
+                        <div class="checkbox-terms mt-3">
+                            <input name="terms" type="checkbox">
+                            <div class="mx-2"><a target="_blank" href="#">ACEITO OS TERMOS E CONDIÇÕES</a></div>
+                        </div>
+
+                        <div class="d-flex mt-3">
+                            <button type="button" id="btn-login" class="btn btn-block btn-c-orange">CADASTRAR</button>
+                        </div>
+                        <div class="text-center text-white mt-5">
+                            JÁ POSSUI CADASTRO? <br>
+                            <h4><a class="text-orange" href="{{ route('store.login') }}"> CLIQUE AQUI </a></h4>
+                        </div>
                     </div>
                 </form>
             </div>

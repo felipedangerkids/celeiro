@@ -5,8 +5,91 @@ h1 {
 
 body {
     background: #191919;
-    font-family: "Bungee Inline", cursive;
+    font-family: "Bungee Inline";
 }
+
+// Formulario de login e registro
+
+.formulario {
+    .invalid-feedbeck {
+        padding: 6px 0 0 0;
+        color: #ff0909;
+        font-family: system-ui;
+    }
+    .inputs {
+        color: #ccc;
+        display: flex;
+        flex-wrap: wrap;
+        input {
+            color: #ccc;
+            font-family: montserrat;
+            background-color: #333332;
+            border: none;
+            width: 100%;
+            height: 57px;
+            border-radius: .25rem;
+            border-radius: .25rem;
+            padding: 5px 15px;
+        }
+
+        ::-webkit-input-placeholder {
+            color: white !important;
+        }
+
+        :-moz-placeholder {
+            /* Firefox 18- */
+            color: white !important;
+        }
+
+        ::-moz-placeholder {
+            /* Firefox 19+ */
+            color: white !important;
+        }
+
+        :-ms-input-placeholder {
+            color: white !important;
+        }
+    }
+
+    .checkbox {
+        color: #fff;
+        font-size: 1.2rem;
+        display: flex;
+        justify-content: center;
+
+        input {
+            width: 25px;
+            height: 25px;
+        }
+    }
+    .checkbox-terms {
+        color: #fff;
+        font-size: 1rem;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        input {
+            width: 25px;
+            height: 25px;
+        }
+
+        a {
+            color: #fff;
+        }
+
+        a:hover {
+            color:rgb(13, 48, 242);
+        }
+    }
+
+    .btn-c-orange {
+        font-size: 1.5rem;
+        height: auto;
+    }
+}
+
+// /////////
 
 .top-header {
     background-color: #ffc244;
@@ -57,34 +140,6 @@ body {
     }
 }
 
-.container-login-register {
-    height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: center;
-    align-items: center;
-    width: 90%;
-
-    .store {
-        width: 40%;
-    }
-}
-@media (max-width: 1100px) {
-    .container-login-register .store {
-        width: 50%;
-    }
-}
-@media (max-width: 900px) {
-    .container-login-register .store {
-        width: 60%;
-    }
-}
-@media (max-width: 750px) {
-    .container-login-register .store {
-        width: 100%;
-    }
-}
-
 .form-check-input[type="radio"] {
     display: none;
 }
@@ -92,6 +147,7 @@ body {
 .div-btn-login {
     position: fixed;
     top: 3%;
+    z-index: 99;
 
     button {
         background-color: #fff;
@@ -109,6 +165,7 @@ body {
     width: 0;
     overflow: hidden;
     border-radius: 0 10px 10px 0;
+    z-index: 100;
 
     .div-aba {
         display: flex;
@@ -306,13 +363,6 @@ body {
     }
 }
 
-.store {
-    height: 100vh;
-    .login-store {
-        position: relative;
-        top: 20%;
-    }
-}
 .avatar {
     width: 60px;
     img {
