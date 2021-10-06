@@ -22,10 +22,11 @@ class LoginController extends Controller
     public function login(Request $request)
     {
         $remember = $request->remember ? true : false;
+
         $authValid = Auth::guard('cliente')->validate(['cpf' => (str_replace(['.','-'],'',$request->cpf)), 'password' => $request->password]);
         
         if($authValid){
-            if (Auth::guard('cliente')->attempt(['cpf' => $request->cpf, 'password' => $request->password],$remember)) {
+            if (Auth::guard('cliente')->attempt(['cpf' => (str_replace(['.','-'],'',$request->cpf)), 'password' => $request->password],$remember)) {
 
                 if(\Cart::getContent()->count() > 0){
                     return response()->json(route('pre.checkout'), 200);

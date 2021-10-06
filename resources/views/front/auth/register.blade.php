@@ -1,8 +1,8 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container vh-100 d-flex align-items-center justify-content-center">
+    <div class="container d-flex justify-content-center">
         <div class="w-75">
-            <div class="text-center mb-4">
+            <div class="text-center mt-5 mb-4">
                 <img class="img-fluid" src="{{ asset('assets/img/logo-simples.png')}}" alt="">
             </div>
             <div class="mt-5">

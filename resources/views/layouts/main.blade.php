@@ -37,7 +37,7 @@
         </div>
     </div>
 
-    @if (Request::is('store/login') == false && Request::is('store/register') == false)
+    @if (Request::is('store/login') == false && Request::is('store/register') == false && Request::is('/') == false)
         <div class="div-btn-login">
             <button type="button" class="btn btn-dark btn-open-lr"><i class="fa fa-user"></i></button>
         </div>
@@ -54,11 +54,7 @@
                     <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
                 </div>
                 <div class="links">|</div>
-                <div class="links"><a href="{{ route('shop') }}">Home</a></div>
-            @else
-                <div class="links"><a href="{{ route('store.login') }}">Login</a></div>
-                <div class="links">|</div>
-                <div class="links"><a href="{{ route('store.register') }}">Registrar</a></div>
+                <div class="links"><a href="{{ route('home') }}">Home</a></div>
             @endif
             <div class="links" style="margin-left: auto"><button type="button"
                     class="btn btn-close btn-close-lr"></button></div>

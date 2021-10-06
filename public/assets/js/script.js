@@ -1,5 +1,3 @@
-
-
 $.ajaxSetup({
     headers: {
         'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
@@ -91,7 +89,6 @@ $('#segundo').on('click', function () {
 
 });
 $('#phone').mask('00 00000-0000');
-
 
 $(document).on('click', '.btn-verificar', function (e) {
     if ($('.tipo_entrega span').text() == 'Receber em Casa') {
@@ -188,6 +185,8 @@ $(document).ready(function () {
             $('#btn-login').trigger('click');
         }
     });
+
+    $('[name="cpf"]').mask('000.000.000-00');
 
     $(document).on('click', '#btn-login', function () {
         var btn = $(this);

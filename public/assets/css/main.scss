@@ -91,6 +91,17 @@ body {
 
 // /////////
 
+.btn-home {
+    a {
+        font-size: 1.2rem;
+    }
+
+    .logout {
+        font-size: 1.5rem;
+        height: auto;
+    }
+}
+
 .top-header {
     background-color: #ffc244;
 
@@ -146,7 +157,7 @@ body {
 
 .div-btn-login {
     position: fixed;
-    top: 3%;
+    top: 0;
     z-index: 99;
 
     button {
@@ -159,7 +170,7 @@ body {
 }
 .aba-lr {
     position: fixed;
-    top: 3%;
+    top: 0;
     background-color: #fff;
     transition: 0.3s width;
     width: 0;
