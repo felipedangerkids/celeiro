@@ -1,49 +1,50 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
-        <div class="text-center pt-4">
-            <h1>SUAS <br> preferências</h1>
+        <div class="text-center mt-5">
+            <a href="{{route('perfil')}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
+            <h2 class="ms-2 inline-block text-white">ALTERAR DADOS</h2>
         </div>
-        <div class="mt-4" id="linha-horizontal"></div>
-        <div class="profile mt-5">
-            <div style="width: 100px;" class="foto-perfil mx-auto  text-center">
-                <div class="profile-photo" @if (auth()->user()->profile_photo_path) style="background-image: url('{{asset('storage/profile_path/'.auth()->user()->profile_photo_path)}}');" @endif></div>
-                {{-- @if (auth()->user()->profile_photo_path)
-                    <img style="width: 100%;" class="mx-auto" src="{{ asset('storage/profile_path/'.auth()->user()->profile_photo_path) }}" alt="">
-                @else
-                    <img style="width: 100%;" class="mx-auto" src="{{ url('assets/img/avatar.png') }}" alt="">
-                @endif --}}
-            </div>
-            <div class="editar-foto text-center">
-                <button class="btn btn-edit btn-edit-img">
-                    <img src="{{ url('assets/img/edit.png') }}" alt="">
-                </button>
+
+        <div class="mt-5 d-flex justify-content-center">
+            <div class="w-75">
+                <form  action="{{ route('perfil.update') }}" method="POST">
+                    @csrf
+                    <div class="formulario">
+                        <div class="inputs mt-3">
+                            <input type="text" name="name" value="{{auth()->guard('cliente')->user()->name}}">
+                            @error('name')
+                                <span class="invalid-feedbeck">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="inputs mt-3">
+                            <input type="email" name="email" value="{{auth()->guard('cliente')->user()->email}}">
+                            @error('email')
+                                <span class="invalid-feedbeck">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="inputs mt-3">
+                            <input type="text" id="whatsapp" name="whatsapp" value="{{auth()->guard('cliente')->user()->whatsapp}}">
+                            @error('whatsapp')
+                                <span class="invalid-feedbeck">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="inputs mt-3">
+                            <input type="password" name="password" placeholder="Trocar Senha">
+                            @error('password')
+                                <span class="invalid-feedbeck">{{$message}}</span>
+                            @enderror
+                        </div>
+                        <div class="inputs mt-3">
+                            <input type="password" name="password_confirmation" placeholder="Confirmar Senha">
+                        </div>
+
+                        <div class="d-flex mt-3">
+                            <button type="submit" class="btn btn-block btn-c-orange">ATUALIZAR</button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-        <form action="{{ route('perfil.update', $user->id) }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <input type="file" name="img_profile" id="file-custom">
-            <div class="formulario">
-                <div class="inputs pt-3">
-                    <label for="">NOME:</label>
-                    <input type="text" name="name" value="{{ $user->name }}">
-                </div>
-                <div class="inputs pt-3">
-                    <label for="">E-mail:</label>
-                    <input type="email" name="email" value="{{ $user->email }}">
-                </div>
-                <div class="inputs pt-3">
-                    <label for="">WhatsApp:</label>
-                    <input type="text" name="whatsapp" id="phone" value="{{ $user->whatsapp }}">
-                </div>
-                <div class="inputs pt-3">
-                    <label for="">SENHA:</label>
-                    <input type="password" name="password" id="password" placeholder="************">
-                </div>
-            </div>
-            <div class="text-center pt-5">
-                <button type="submit" class="btn btn-adicionar">ATUALIZAR</button>
-            </div>
-        </form>
     </div>
 @endsection

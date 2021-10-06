@@ -4,6 +4,7 @@ namespace App\Http\Controllers\User;
 
 use App\Http\Controllers\Controller;
 use App\Models\Adress;
+use App\Models\ShippMethod;
 use Illuminate\Http\Request;
 use FlyingLuscas\Correios\Client;
 
@@ -16,78 +17,48 @@ class AdressController extends Controller
      */
     public function index()
     {
-        $address = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
-        return view('front.suas-preferencia.atualizar-endereco', compact('address'));
+        $address = Adress::where('user_id', auth()->user()->id)->first();
+        $ship = ShippMethod::where('user_id', auth()->user()->id)->first();
+        return view('front.suas-preferencia.atualizar-endereco', compact('address', 'ship'));
     }
     public function buscaCep(Request $request)
     {
         $correios = new Client;
 
-        $cep = $correios->zipcode()
-            ->find($request->search);
+        $cep = $correios->zipcode()->find($request->search);
 
-           return $cep;
-    }
-    public function create()
-    {
-        //
+        return $cep;
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    public function update(Request $request)
     {
-        $adress = Adress::create($request->all());
+        $address['user_id'] = auth()->guard('cliente')->user()->id;
+        $address['cep'] = $request->cep;
+        $address['endereco'] = $request->endereco;
+        $address['complemento'] = $request->complemento;
+        $address['ref'] = $request->ref;
+        $address['numero'] = $request->numero;
+        $address['bairro'] = $request->bairro;
+        $address['cidade'] = $request->cidade;
+        $address['estado'] = $request->estado;
 
-        return redirect()->route('pre.checkout');
-    }
+        if($request->address_id){
+            $address = Adress::where('id', $request->address_id)->update($address);
+        }else{
+            $address = Adress::create($address);
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
+        $ship['user_id'] = auth()->guard('cliente')->user()->id;
+        $ship['data'] = $request->data;
+        $ship['horario'] = $request->horario;
+        $ship['tipo'] = $request->tipo;
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
+        if($request->ship_id){
+            $ship = ShippMethod::where('id', $request->ship_id)->update($ship);
+        }else{
+            $ship = ShippMethod::create($ship);
+        }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return redirect($request->url_previous)->with('success', 'Endereço atualizadocom sucesso!');
     }
 }

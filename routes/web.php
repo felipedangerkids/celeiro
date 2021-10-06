@@ -65,12 +65,13 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::post('perfil/update', [PerfilController::class, 'update'])->name('perfil.update');
     Route::post('perfil/photo-update', [PerfilController::class, 'update_photo'])->name('perfil.photo.update');
 
-    Route::get('endereco', [AdressController::class, 'index'])->name('user.address');
-    Route::post('adress/post', [AdressController::class, 'store'])->name('user.adress.post');
-    Route::get('adress/get', [AdressController::class, 'buscaCep'])->name('user.adress.get');
+    Route::get('endereco', [AdressController::class, 'index'])->name('address');
+    Route::post('endereco/update', [AdressController::class, 'update'])->name('address.update');
 
-    Route::get('perfil/ship', [ShippMethodController::class, 'index'])->name('user.ship');
-    Route::post('perfil/ship/store', [ShippMethodController::class, 'store'])->name('user.ship.store');
+    Route::get('perfil/buscaCep', [AdressController::class, 'buscaCep'])->name('address.cep');
+
+    // Route::get('perfil/ship', [ShippMethodController::class, 'index'])->name('user.ship');
+    // Route::post('perfil/ship/store', [ShippMethodController::class, 'store'])->name('user.ship.store');
 
     Route::get('process', [CheckoutController::class, 'proccess'])->name('checkout.process');
     Route::post('checkout', [CheckoutController::class, 'checkout'])->name('finish');

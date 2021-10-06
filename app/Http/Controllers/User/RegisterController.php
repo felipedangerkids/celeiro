@@ -60,7 +60,7 @@ class RegisterController extends Controller
             'whatsapp' => $request->whatsapp,
         ]);
 
-        if (Auth::guard('cliente')->attempt(['cpf' => $request->cpf, 'password' => $request->password])) {
+        if (Auth::guard('cliente')->attempt(['cpf' => (str_replace(['.','-'],'',$request->cpf)), 'password' => $request->password])) {
 
             if(\Cart::getContent()->count() > 0){
                 return response()->json(route('pre.checkout'), 200);

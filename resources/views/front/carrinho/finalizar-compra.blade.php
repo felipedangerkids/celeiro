@@ -6,10 +6,10 @@
             <h1>FINALIZAR <br> COMPRA</h1>
         </div>
         <div class="profile mt-3">
+            <div class="avatar w-100 d-flex justify-content-center mb-2">
+                <div class="profile-photo" @if (auth()->user()->profile_photo_path) style="background-image: url('{{asset('storage/profile_path/'.auth()->user()->profile_photo_path)}}');" @endif></div>
+            </div>
             <div class="d-flex">
-                <div class="avatar mb-2">
-                    <div class="profile-photo" @if (auth()->user()->profile_photo_path) style="background-image: url('{{asset('storage/profile_path/'.auth()->user()->profile_photo_path)}}');" @endif></div>
-                </div>
                 <div class="identidade">
                     <div class="nome">
                         <span> {{ auth()->user()->name }}</span>
@@ -48,7 +48,7 @@
                     </div>
                     <div class="edit">
                         <div>
-                            <a href="{{ route('user.adress') }}"> <button class="btn btn-edit">
+                            <a href="{{ route('address') }}"> <button class="btn btn-edit">
                                     <img src="{{ url('assets/img/edit.png') }}" alt="">
                                 </button></a>
                         </div>
@@ -61,7 +61,7 @@
                     </div>
                     <div class="edit">
                         <div>
-                            <a href="{{ route('user.adress') }}"><button class="btn btn-edit">
+                            <a href="{{ route('address') }}"><button class="btn btn-edit">
                                     <img src="{{ url('assets/img/edit.png') }}" alt="">
                                 </button></a>
                         </div>
@@ -89,7 +89,7 @@
                     </div>
                 </div>
                 <div class="edit">
-                    <a href="{{ route('user.ship') }}"> <button type="button" class="btn btn-edit">
+                    <a href="{{ route('address') }}"> <button type="button" class="btn btn-edit">
                             <img src="{{ url('assets/img/edit.png') }}" alt="">
                         </button></a>
                 </div>
@@ -113,7 +113,7 @@
                     </div>
                 </div>
                 <div class="edit">
-                    <a href="{{ route('user.ship') }}"><button class="btn btn-edit">
+                    <a href="{{ route('address') }}"><button class="btn btn-edit">
                         <img src="{{ url('assets/img/edit.png') }}" alt="">
                     </button></a>
                 </div>

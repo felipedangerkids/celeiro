@@ -102,7 +102,7 @@
             $value = $('#cep').val();
             $.ajax({
                 type: 'get',
-                url: '{{ url('adress/get') }}',
+                url: '{{ route("address.cep") }}',
                 data: {
                     'search': $value
                 },
