@@ -16,7 +16,7 @@ class AddCustomCatToProductsTable extends Migration
         Schema::table('products', function (Blueprint $table) {
             $table->integer('delivery')->after('spotlight')->nullable();
             $table->integer('location')->after('delivery')->nullable();
-            $table->integer('stock')->after('loaction')->nullable();
+            $table->integer('stock')->after('location')->nullable();
         });
     }
 
