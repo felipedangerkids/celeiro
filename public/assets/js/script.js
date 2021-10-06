@@ -234,6 +234,7 @@ $(document).ready(function () {
     });
     $(document).on('change', '#file-custom', function () {
         // $('.foto-perfil').empty();
+        var route = $(this).data('route');
         var preview = '';
         var files = $(this).prop('files');
 
@@ -260,10 +261,25 @@ $(document).ready(function () {
         }
 
         setTimeout(() => {
-            $('.profile-photo-edit').css({
+            $('.profile-photo').css({
                 'background-image': 'url(' + preview + ')',
             });
-        }, 500)
+        }, 500);
+
+        var formData = new FormData();
+        formData.append('img_profile',files[0]);
+
+        $.ajax({
+            url: route,
+            type: 'POST',
+            data: formData,
+            cache: false,
+            contentType: false,
+            processData: false,
+            success: (data) => {
+                // console.log(data);
+            }
+        });
     });
 
     // Cookies-Idade

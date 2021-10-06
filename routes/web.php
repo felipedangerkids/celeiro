@@ -60,13 +60,14 @@ Route::middleware(['auth:cliente'])->group(function () {
 
     Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
 
-    Route::get('edit/perfil/{id}', [UserController::class, 'edit'])->name('perfil.edit');
     Route::post('update/perfil/{id}', [UserController::class, 'update'])->name('perfil.update');
     Route::get('perfil', [PerfilController::class, 'index'])->name('perfil');
+    Route::get('perfil/editar', [PerfilController::class, 'edit'])->name('perfil.edit');
+    Route::post('perfil/photo-update', [PerfilController::class, 'update_photo'])->name('perfil.photo.update');
 
-    Route::get('adress', [AdressController::class, 'index'])->name('user.adress');
-    Route::get('adress/get', [AdressController::class, 'buscaCep'])->name('user.adress.get');
+    Route::get('endereco', [AdressController::class, 'index'])->name('user.address');
     Route::post('adress/post', [AdressController::class, 'store'])->name('user.adress.post');
+    Route::get('adress/get', [AdressController::class, 'buscaCep'])->name('user.adress.get');
 
     Route::get('perfil/ship', [ShippMethodController::class, 'index'])->name('user.ship');
     Route::post('perfil/ship/store', [ShippMethodController::class, 'store'])->name('user.ship.store');

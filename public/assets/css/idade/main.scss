@@ -412,10 +412,6 @@ button.d {
     font-family: 'arial black';
 }
 
-#linha-horizontal {
-    width: 100%;
-    border: 2px solid #eda200;
-}
 .edit {
     position: absolute;
     left: 85%;
@@ -547,36 +543,6 @@ h1 {
 }
 
 ///checkbox fim//
-
-//page atualizar perfil///
-
-#file-custom {
-    display: none;
-}
-
-.profile-photo {
-    background-image: url(../../img/avatar.png);
-    width: 100px;
-    height: 100px;
-    background-repeat: no-repeat;
-    background-size: cover;
-    border-radius: 50%;
-}
-
-.foto-perfil {
-    img {
-        width: 50%;
-    }
-}
-.avatar {
-    width: 12%;
-}
-
-@media (max-width: 900px){
-    .avatar {
-        width: 30%;
-    }
-}
 
 .inputs_ {
     color: #ccc;

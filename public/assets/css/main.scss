@@ -6,6 +6,29 @@ h1 {
 body {
     background: #191919;
     font-family: "Bungee Inline";
+    color: #fff;
+}
+
+.avatar {
+    .profile-photo {
+        background-image: url(../img/avatar.png);
+        width: 150px;
+        height: 150px;
+        background-repeat: no-repeat;
+        background-size: cover;
+        border-radius: 50%;
+    }
+}
+
+.btn-home {
+    a {
+        font-size: 1.2rem;
+    }
+
+    .logout {
+        font-size: 1.5rem;
+        height: auto;
+    }
 }
 
 // Formulario de login e registro
@@ -91,15 +114,8 @@ body {
 
 // /////////
 
-.btn-home {
-    a {
-        font-size: 1.2rem;
-    }
-
-    .logout {
-        font-size: 1.5rem;
-        height: auto;
-    }
+.inline-block {
+    display: inline-block;
 }
 
 .top-header {
@@ -136,6 +152,10 @@ body {
         width: 90%;
         margin-top: 10px;
     }
+}
+
+#file-custom {
+    display: none;
 }
 
 .preco-pedido {
@@ -374,14 +394,6 @@ body {
     }
 }
 
-.avatar {
-    width: 60px;
-    img {
-        width: 100%;
-        border-radius: 50%;
-        object-fit: cover;
-    }
-}
 a {
     text-decoration: none !important;
 }
@@ -425,4 +437,24 @@ select:focus {
     position: relative;
     bottom: 20px;
     left: 25px;
+}
+
+.linha-horizontal {
+    width: 90%;
+    border: 2px solid #eda200;
+    position: relative;
+    left: 5%;
+}
+
+.perfil {
+    .btn-edit {
+        font-size: 1.5rem;
+        color: #fff;
+
+        img {
+            width: 30px;
+            height: 30px;
+            margin-left: 10px;
+        }
+    }
 }

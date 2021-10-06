@@ -2,90 +2,45 @@
 
 namespace App\Http\Controllers\User;
 
+use App\Models\Cliente;
 use App\Models\Adress;
 use App\Models\ShippMethod;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
+use Illuminate\Support\Str;
+use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Support\Facades\Hash;
+
+use Illuminate\Support\Facades\Storage;
+
 class PerfilController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        $adress = Adress::where('user_id', auth()->user()->id)->first();
+        $address = Adress::where('user_id', auth()->user()->id)->first();
         $ship = ShippMethod::where('user_id', auth()->user()->id)->max('id');
         $ship = ShippMethod::find($ship);
-        return view('front.suas-preferencia.perfil', compact('adress', 'ship'));
+        return view('front.suas-preferencia.perfil', compact('address', 'ship'));
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    public function update_photo(Request $request)
     {
-        //
-    }
+        if($request->img_profile){
+            $img = Image::make($request->img_profile);
+            
+            $name = Str::random() . '.jpg';
+            
+            $originalPath = storage_path('app/public/profile_path/');
+            
+            $img->save($originalPath . $name);
+        }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
+        $user = Cliente::find(auth()->guard('cliente')->user()->id);
+        if($request->img_profile) $user->profile_photo_path = $name;
+        $user->save();
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+        return response()->json('success',200);
     }
 }
