@@ -25,6 +25,11 @@ class PerfilController extends Controller
         return view('front.suas-preferencia.perfil', compact('address', 'ship'));
     }
 
+    public function edit($id)
+    {
+        return view('front.suas-preferencia.atualizar-perfil');
+    }
+
     public function update_photo(Request $request)
     {
         if($request->img_profile){

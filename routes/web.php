@@ -60,9 +60,9 @@ Route::middleware(['auth:cliente'])->group(function () {
 
     Route::get('pre-checkout', [CheckoutController::class, 'preCheck'])->name('pre.checkout');
 
-    Route::post('update/perfil/{id}', [UserController::class, 'update'])->name('perfil.update');
     Route::get('perfil', [PerfilController::class, 'index'])->name('perfil');
     Route::get('perfil/editar', [PerfilController::class, 'edit'])->name('perfil.edit');
+    Route::post('perfil/update', [PerfilController::class, 'update'])->name('perfil.update');
     Route::post('perfil/photo-update', [PerfilController::class, 'update_photo'])->name('perfil.photo.update');
 
     Route::get('endereco', [AdressController::class, 'index'])->name('user.address');

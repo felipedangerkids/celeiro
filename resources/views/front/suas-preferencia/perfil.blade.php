@@ -39,7 +39,7 @@
 
                 <div class="my-3 linha-horizontal"></div>
 
-                <div class="col-12">
+                <div class="col-12 mb-5">
                     @if ($address)
                         <div class="row justify-content-center">
                             <div class="col-10">{{$adress->endereco}}, {{$adress->numero}} - {{$adress->bairro}}</div>
