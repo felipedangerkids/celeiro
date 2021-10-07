@@ -9,6 +9,22 @@ body {
     color: #fff;
 }
 
+.text-size-1 {
+    font-size: 1rem;
+}
+.text-size-2 {
+    font-size: 2rem;
+}
+.text-size-3 {
+    font-size: 3rem;
+}
+.text-size-4 {
+    font-size: 4rem;
+}
+.text-size-5 {
+    font-size: 5rem;
+}
+
 .avatar {
     .profile-photo {
         background-image: url(../img/avatar.png);
@@ -489,5 +505,61 @@ select:focus {
 
     .data {
         font-size: .9rem;
+    }
+}
+
+.select-custom {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #eda200;
+    border-radius: 0;
+    text-align: center;
+    background: url(../../assets/img/selector-arrow.svg) 95.5% 50% no-repeat;
+    background-size: 7%;
+
+    option {
+        background-color: #191919;
+        font-size: .7rem;
+    }
+}
+
+.select-custom:focus {
+    color: #fff;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #eda200;
+    box-shadow: none;
+}
+
+.select-custom-mesa {
+    background-size: 18%;
+    padding-bottom: 0;
+    font-size: 4rem;
+
+    option {
+        font-size: 1rem;
+    }
+}
+
+.btn-c-location-c {
+    font-size: 1.7rem;
+    height: auto;
+}
+
+.catalogo-location {
+    .beer {
+        width: 100%;
+        background-color: white;
+        border-radius: 19px;
+        height: 80px;
+        -webkit-box-shadow: #eda200 0px 6px 3px 0px;
+        box-shadow: #eda200 0px 6px 3px 0px;
+
+        img {
+            position: relative;
+            top: 8px;
+            left: 8px;
+        }
     }
 }

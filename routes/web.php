@@ -27,6 +27,8 @@ use App\Http\Controllers\Painel\PainelController;
 use App\Http\Controllers\Painel\TableController;
 use App\Http\Controllers\Painel\ProductController;
 
+use App\Http\Controllers\Location\LocationController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -85,6 +87,15 @@ Route::middleware(['auth:cliente'])->group(function () {
 
     Route::get('user/pedidos', [PedidoController::class, 'index'])->name('user.pedidos');
     Route::get('user/pedidos/ver/{id}', [PedidoController::class, 'indexVer'])->name('user.pedidos.ver');
+
+    Route::get('check-in', [LocationController::class, 'checkIn'])->name('checkIn');
+    Route::get('check-in/mesa/{unidade?}', [LocationController::class, 'mesa'])->name('mesa');
+    Route::post('mesa/gerarComanda', [LocationController::class, 'gerarComanda'])->name('gerarComanda');
+    Route::get('mesa/home', [LocationController::class, 'mesaHome'])->name('mesa.home');
+
+    Route::get('mesa/catalogo/{catalogo}', [LocationController::class, 'catalogo'])->name('mesa.catalogo');
+
+    Route::get('comanda', [LocationController::class, 'comanda'])->name('comanda');
 });
 
 Route::post('user-store', [CapturaController::class, 'store']);

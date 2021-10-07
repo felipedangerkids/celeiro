@@ -283,6 +283,52 @@ $(document).ready(function () {
         });
     });
 
+    // Escolha a unidade
+    $(document).on('change', '#unidade', function(){
+        var dados = $(this).find('option:selected').data('dados');
+        $('.btn-check-in').removeClass('d-none');
+
+        if(dados){
+            $('#unidade-info').html(
+                '<div class="col-10 mb-2">'+dados.name+'</div>'+
+                '<div class="col-10">'+dados.address+', Nº '+dados.number+'</div>'+
+                '<div class="col-10">'+dados.address2+'</div>'+
+                '<div class="col-10">'+dados.city+' - '+dados.state+'</div>'+
+                '<div class="col-10">'+dados.zip_code+'</div>'
+            );
+        }else{
+            $('#unidade-info').empty();
+            $('.btn-check-in').addClass('d-none');
+        }
+    });
+    $(document).on('click', '#btnCheckIn', function(){
+        window.location.href = $(this).data('route')+'/'+$('#unidade').val();
+    });
+    // Escolha a mesa
+    $(document).on('change', '#mesa', function(){
+        var dados = $(this).find('option:selected').data('dados');
+        $('.btn-avancar').removeClass('d-none');
+
+        if(dados){
+            
+        }else{
+            $('.btn-avancar').addClass('d-none');
+        }
+    });
+    $(document).on('click', '#btnAvancar', function(){
+        var routes = $(this).data('routes');
+
+        $.ajax({
+            url: routes.pedido,
+            type: 'POST',
+            data: {mesa: $('#mesa').val()},
+            success: (data) => {
+                console.log(data);
+                window.location.href = routes.home;
+            }
+        });
+    });
+
     // Cookies-Idade
     $('.btn-yes-cookie-idade').on('click', function(){
         $('.cookie-idade').css({

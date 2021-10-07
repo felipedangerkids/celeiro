@@ -14,7 +14,7 @@ class Unity extends Model
         'zip_code',
         'address',
         'number',
-        'adrress2',
+        'address2',
         'city',
         'state',
         'status',

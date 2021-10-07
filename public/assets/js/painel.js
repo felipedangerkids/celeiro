@@ -147,14 +147,14 @@ $(document).ready(function(){
             type: 'GET',
             data: {search: cep},
             success: (data) => {
-                // console.log(data);
-                $('#addUnity').find('[name="zip_code"]').val(data.zipcode);
-                $('#addUnity').find('[name="state"]').val(data.uf);
-                $('#addUnity').find('[name="city"]').val(data.city);
-                $('#addUnity').find('[name="address2"]').val(data.district);
-                $('#addUnity').find('[name="address"]').val(data.street);
+                console.log(data);
+                $('[name="zip_code"]').val(data.zipcode);
+                $('[name="state"]').val(data.uf);
+                $('[name="city"]').val(data.city);
+                $('[name="address2"]').val(data.district);
+                $('[name="address"]').val(data.street);
 
-                $('#addUnity').find('[name="number"]').focus();
+                $('[name="number"]').focus();
             }
         });
     });

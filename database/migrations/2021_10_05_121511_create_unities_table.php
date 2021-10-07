@@ -19,7 +19,7 @@ class CreateUnitiesTable extends Migration
             $table->string('zip_code')->nullable();
             $table->string('address')->nullable();
             $table->string('number')->nullable();
-            $table->string('adrress2')->nullable();
+            $table->string('address2')->nullable();
             $table->string('city')->nullable();
             $table->string('state')->nullable();
             $table->integer('status')->default(1)->nullable();
