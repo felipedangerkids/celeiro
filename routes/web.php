@@ -2,25 +2,31 @@
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
+use Intervention\Image\Commands\ChecksumCommand;
+
 use App\Http\Controllers\HomeController;
-use App\Http\Controllers\TesteController;
-use App\Http\Controllers\User\ShippMethod;
 use App\Http\Controllers\CapturaController;
-use App\Http\Controllers\ProductController;
 use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\Shop\CartController;
-use App\Http\Controllers\Shop\ShopController;
+use App\Http\Controllers\TesteController;
+
+use App\Http\Controllers\User\ShippMethod;
 use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\AdressController;
 use App\Http\Controllers\User\PerfilController;
-use App\Http\Controllers\Painel\PainelController;
-use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\User\PedidoController;
 use App\Http\Controllers\User\RegisterController;
 use App\Http\Controllers\User\ShippMethodController;
-use App\Http\Controllers\TableController;
-use Intervention\Image\Commands\ChecksumCommand;
+use App\Http\Controllers\User\CashbackController;
+
+use App\Http\Controllers\Shop\CartController;
+use App\Http\Controllers\Shop\ShopController;
+use App\Http\Controllers\Shop\CheckoutController;
+
+use App\Http\Controllers\Painel\PainelController;
+use App\Http\Controllers\Painel\TableController;
+use App\Http\Controllers\Painel\ProductController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -70,8 +76,7 @@ Route::middleware(['auth:cliente'])->group(function () {
 
     Route::get('perfil/buscaCep', [AdressController::class, 'buscaCep'])->name('address.cep');
 
-    // Route::get('perfil/ship', [ShippMethodController::class, 'index'])->name('user.ship');
-    // Route::post('perfil/ship/store', [ShippMethodController::class, 'store'])->name('user.ship.store');
+    Route::get('cashback', [CashbackController::class, 'index'])->name('cashback');
 
     Route::get('process', [CheckoutController::class, 'proccess'])->name('checkout.process');
     Route::post('checkout', [CheckoutController::class, 'checkout'])->name('finish');
