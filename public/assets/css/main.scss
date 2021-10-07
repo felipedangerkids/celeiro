@@ -563,3 +563,34 @@ select:focus {
         }
     }
 }
+
+.product-showcase {
+    .product {
+        .product-image {
+            width: 70%;
+            height: 150px;
+            background-color: white;
+            border-radius: 19px;
+            -webkit-box-shadow: #eda200 0px 6px 3px 0px;
+            box-shadow: #eda200 0px 6px 3px 0px;
+            margin-bottom: 10px;
+
+            img {
+                border-radius: 19px;
+                height: 100%;
+                position: relative;
+                left: 0;
+                width: 100%;
+            }
+        }
+
+        .caption {
+            font-size: .9rem;
+            margin-bottom: 5px;
+        }
+
+        .caption.price {
+            font-size: 1rem;
+        }
+    }
+}

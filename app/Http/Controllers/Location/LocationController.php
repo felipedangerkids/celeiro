@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Location;
 
 use App\Models\Unity;
 use App\Models\Table;
+use App\Models\Product;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -33,5 +34,11 @@ class LocationController extends Controller
     {
         $table = Table::where('code', session()->get('mesa'))->first();
         return view('location.mesaHome', get_defined_vars());
+    }
+
+    public function catalogo($slug)
+    {
+        $products = Product::where('categoria', str_replace('s','', $slug))->where('stock', '>', 0)->where('location', 1)->get();
+        return view('location.catalogo', get_defined_vars());
     }
 }

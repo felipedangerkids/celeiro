@@ -93,7 +93,8 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::post('mesa/gerarComanda', [LocationController::class, 'gerarComanda'])->name('gerarComanda');
     Route::get('mesa/home', [LocationController::class, 'mesaHome'])->name('mesa.home');
 
-    Route::get('mesa/catalogo/{catalogo}', [LocationController::class, 'catalogo'])->name('mesa.catalogo');
+    Route::get('mesa/catalogo/{slug}', [LocationController::class, 'catalogo'])->name('mesa.catalogo');
+    Route::get('mesa/produto/{slug}', [LocationController::class, 'produto'])->name('mesa.produto');
 
     Route::get('comanda', [LocationController::class, 'comanda'])->name('comanda');
 });

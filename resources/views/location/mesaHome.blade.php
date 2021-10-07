@@ -52,7 +52,7 @@
             </div>
         </div>
 
-        <div class="mt-5">
+        <div class="my-5">
             <div class="row justify-content-center">
                 <div class="col-10 d-flex p-0">
                     <a href="{{route('comanda')}}" class="btn btn-block btn-c-location-c btn-c-orange">COMANDA</a>
