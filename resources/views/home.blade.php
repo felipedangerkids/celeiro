@@ -15,8 +15,8 @@
                     </div>
 
                     <div class="col-6 text-center my-3"><a class="btn btn-c-orange px-3 py-2" href="{{route('shop')}}">COMPRAR ONLINE</a></div>
-                    <div class="col-6 text-center my-3"><a class="btn btn-c-orange px-3 py-2" href="{{route('cashback')}}">ESTOU NO LOCAL</a></div>
-                    <div class="col-6 text-center my-3"><a class="btn btn-c-orange px-3 py-2" href="#">SEU CASHBACK</a></div>
+                    <div class="col-6 text-center my-3"><a class="btn btn-c-orange px-3 py-2" href="#">ESTOU NO LOCAL</a></div>
+                    <div class="col-6 text-center my-3"><a class="btn btn-c-orange px-3 py-2" href="{{route('cashback')}}">SEU CASHBACK</a></div>
                     <div class="col-6 text-center my-3"><a class="btn btn-c-orange px-3 py-2" href="{{route('perfil')}}">SEUS DADOS</a></div>
 
                     <div class="col-12 text-center my-3">
