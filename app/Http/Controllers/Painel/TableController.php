@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Painel;
 
 use App\Models\Unity;
 use App\Models\Table;
 
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class TableController extends Controller

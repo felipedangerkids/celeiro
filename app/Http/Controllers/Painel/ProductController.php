@@ -1,10 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Painel;
 
 use App\Models\Product;
 use App\Models\Stock;
 use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Intervention\Image\ImageManagerStatic;
 
