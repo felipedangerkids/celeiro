@@ -41,4 +41,12 @@ class LocationController extends Controller
         $products = Product::where('categoria', str_replace('s','', $slug))->where('stock', '>', 0)->where('location', 1)->get();
         return view('location.catalogo', get_defined_vars());
     }
+
+    public function produto($slug)
+    {
+        $product = Product::where('slug', $slug)->where('stock', '>', 0)->where('location', 1)->first();
+        if(empty($product)) return redirect()->route('mesa.home');
+
+        return view('location.produto', get_defined_vars());
+    }
 }

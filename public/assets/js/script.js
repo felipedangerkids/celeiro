@@ -329,6 +329,25 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '.btn-qty', function(){
+        var method  = $(this).data('method');
+        var target  = $(this).data('target');
+        var qty_add = parseFloat($(this).data('qty')) || 0;
+        var qty     = parseFloat($(target).val()) || 0;
+
+        if(qty_add > 0){
+            $(target).val(qty + qty_add);
+        }else{
+            if(method == 'plus'){
+                $(target).val(qty + 1);
+            }else if('minus'){
+                if(qty > 0){
+                    $(target).val(qty - 1);
+                }
+            }
+        }
+    });
+
     // Cookies-Idade
     $('.btn-yes-cookie-idade').on('click', function(){
         $('.cookie-idade').css({

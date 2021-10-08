@@ -581,6 +581,7 @@ select:focus {
                 position: relative;
                 left: 0;
                 width: 100%;
+                object-fit: cover;
             }
         }
 
@@ -591,6 +592,86 @@ select:focus {
 
         .caption.price {
             font-size: 1rem;
+        }
+    }
+}
+
+
+.single {
+    .product {
+        background: blue;
+        width: 45%;
+        height: 336px;
+        background-color: white;
+        border-radius: 19px;
+        box-shadow: #eda200 0px 6px 3px 0px;
+        img{
+            border-radius: 19px;
+            height: 100%;
+            position: relative;
+            left: 0;
+            width: 100%;
+            object-fit: cover;
+        }
+    }
+}
+
+.descriptions {
+    .lupulo {
+        width: 80px;
+        background-color: white;
+        border-radius: 19px;
+        height: 80px;
+        box-shadow: #eda200 0px 6px 3px 0px;
+    }
+
+    .amargor {
+        color: #eda200;
+    }
+    span {
+        font-size: 1rem;
+        display: block;
+    }
+    img {
+        position: relative;
+        top: 8px;
+        left: 10px;
+        height: 60px;
+    }
+}
+
+.preco-add {
+    .btns-add-qty {
+        .input-group-prepend {
+            button {
+                background: #fff;
+                border-top-right-radius: 0;
+                border-bottom-right-radius: 0;
+                height: 29px;
+                top: 1px;
+                font-size: 1.3rem;
+                border-top-left-radius: 1rem;
+                border-bottom-left-radius: 1rem;
+            }
+        }
+
+        .input-group-append {
+            button {
+                background: #fff;
+                border-top-right-radius: 1rem;
+                border-bottom-right-radius: 1rem;
+                height: 29px;
+                top: 1px;
+                font-size: 1.3rem;
+                border-top-left-radius: 0;
+                border-bottom-left-radius: 0;
+            }
+        }
+    }
+
+    .multiplicadores {
+        .btn {
+            background-color: #fff;
         }
     }
 }

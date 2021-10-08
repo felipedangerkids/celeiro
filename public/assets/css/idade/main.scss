@@ -213,67 +213,6 @@
         }
     }
 }
-.descriptions {
-    margin-left: 20px;
-    padding-left: 20px;
-    .lupulo {
-        margin-bottom: 120px;
-        margin-left: 20px;
-        width: 80px;
-        background-color: white;
-        border-radius: 19px;
-        height: 80px;
-        box-shadow: #eda200 0px 6px 3px 0px;
-        .amargor {
-            color: #eda200;
-        }
-        span {
-            font-size: 17px;
-            display: block;
-            width: 171px;
-        }
-        img {
-            position: relative;
-            top: 8px;
-            left: 0;
-            height: 60px;
-        }
-    }
-}
-
-.single {
-    margin-left: 25px;
-    .product {
-        background: blue;
-        margin-left: 5px;
-        width: 45%;
-        height: 289px;
-        background-color: white;
-        border-radius: 19px;
-        box-shadow: #eda200 0px 6px 3px 0px;
-        img{
-            width: 100%;
-            height: auto;
-            min-height: 200px;
-            max-height: 230px;
-        }
-    }
-    img {
-        position: relative;
-        top: 41px;
-        left: 0;
-        width: 100%;
-    }
-    button {
-        border: none;
-    }
-    .cap {
-        position: relative;
-        top: 30px;
-        right: 42px;
-        color: white;
-    }
-}
 
 .btn-american-ipa {
     background-color: white;
