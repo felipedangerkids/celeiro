@@ -97,6 +97,7 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('mesa/produto/{slug}', [LocationController::class, 'produto'])->name('mesa.produto');
 
     Route::get('comanda', [LocationController::class, 'comanda'])->name('comanda');
+    Route::get('comanda/fechar', [LocationController::class, 'comandaClose'])->name('comanda.close');
 });
 
 Route::post('user-store', [CapturaController::class, 'store']);

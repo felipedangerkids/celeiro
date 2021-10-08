@@ -123,8 +123,6 @@
         <div class="profile mt-3">
             <div class="row">
                 @foreach (\Cart::getContent() as $item)
-
-
                     <div class="col-4 my-2 mt-3">
                         <div class="fundo-branco ">
                             <div class="text-center">

@@ -49,4 +49,10 @@ class LocationController extends Controller
 
         return view('location.produto', get_defined_vars());
     }
+
+    public function comanda()
+    {
+        $table = Table::where('code', session()->get('mesa'))->first();
+        return view('location.comanda', get_defined_vars());
+    }
 }
