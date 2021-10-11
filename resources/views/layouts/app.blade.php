@@ -51,7 +51,7 @@
                     <a href="{{ url('painel/transportes') }}">Transportes</a>
                 </li>
                 <li>
-                    <a href="#">Configurações</a>
+                    <a href="{{route('setting.admin')}}">Administradores</a>
                 </li>
             </ul>
         </nav>
@@ -105,13 +105,13 @@
     @if(Session::has('success'))
     <script type="text/javascript">
         Swal.fire({
-                    icon: 'success',
-                    title: 'Muito bom!',
-                    text: "{{Session::get('success')}}",
+            icon: 'success',
+            title: 'Muito bom!',
+            text: "{{Session::get('success')}}",
 
-                    }).then((value) => {
-                    location.reload();
-                    }).catch(swal.noop);
+        }).then((value) => {
+            // location.reload();
+        }).catch(swal.noop);
     </script>
     @endif
 

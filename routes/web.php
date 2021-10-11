@@ -26,6 +26,7 @@ use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\Painel\PainelController;
 use App\Http\Controllers\Painel\TableController;
 use App\Http\Controllers\Painel\ProductController;
+use App\Http\Controllers\Painel\SettingsController;
 
 use App\Http\Controllers\Location\LocationController;
 
@@ -144,6 +145,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/unity/edit/{id}', [TableController::class, 'editUnity'])->name('table.edit.unity');
     Route::post('/unity/update/{id}', [TableController::class, 'updateUnity'])->name('table.update.unity');
     Route::delete('/unity/delete/{id?}', [TableController::class, 'destroyUnity'])->name('table.delete.unity');
+
+    Route::get('/settings/admin', [SettingsController::class, 'index'])->name('setting.admin');
+    Route::post('/settings/admin/store', [SettingsController::class, 'store'])->name('setting.admin.store');
+    Route::get('/settings/admin/edit/{id}', [SettingsController::class, 'edit'])->name('setting.admin.edit');
+    Route::post('/settings/admin/update/{id}', [SettingsController::class, 'update'])->name('setting.admin.update');
+    Route::delete('/settings/admin/delete/{id?}', [SettingsController::class, 'destroy'])->name('setting.admin.delete');
 
     Route::get('/buscaCep', [AdressController::class, 'buscaCep'])->name('painel.cep');
 });
