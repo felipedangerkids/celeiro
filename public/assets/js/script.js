@@ -89,6 +89,18 @@ $('#segundo').on('click', function () {
     }
 
 });
+$('#terceiro').on('click', function () {
+
+    var pix = $('#terceiro').attr('checked', true);
+    if (pix) {
+        // console.log('e true');
+        $('#money').addClass("d-none");
+        $('#card').addClass("d-none");
+    } else {
+
+    }
+
+});
 $('#phone').mask('00 00000-0000');
 
 $(document).on('click', '.btn-verificar', function (e) {
@@ -348,6 +360,27 @@ $(document).ready(function () {
         }
     });
 
+    // Confirma fechar comanda
+    $(document).on('click', '#btn-comanda-close', function(){
+        var width = $(window).width();
+
+        $('body').css('overflow', 'hidden');
+        $('.comanda-close').find('.container').css('min-width', width);
+
+        $('.comanda-close').css({
+            'width': width,
+            'transition': '.6s width',
+        });
+    });
+    $(document).on('click', '.btn-comanda-close-cancel', function(){
+        $('body').css('overflow', 'auto');
+
+        $('.comanda-close').css({
+            'width': '0',
+            'transition': '.6s width',
+        });
+    });
+
     // Cookies-Idade
     $('.btn-yes-cookie-idade').on('click', function(){
         $('.cookie-idade').css({
@@ -359,6 +392,9 @@ $(document).ready(function () {
 
     $(function(){
         if(!getCookie('cookie_maior18')){
+            var width = $(window).width();
+            $('.cookie-idade').find('.container').css('width', width);
+
             $('.cookie-idade').css('width', '100%');
         }
     })

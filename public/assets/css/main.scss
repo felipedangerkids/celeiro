@@ -680,3 +680,19 @@ select:focus {
         }
     }
 }
+
+.comanda-close {
+    position: fixed;
+    z-index: 10;
+    background-color: #191919;
+    width: 0;
+    height: 100%;
+    overflow: hidden;
+    transition: .6s width;
+    top: 0;
+
+    .btn {
+        font-size: 2rem;
+        height: auto;
+    }
+}

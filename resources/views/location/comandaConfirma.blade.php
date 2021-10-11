@@ -3,7 +3,7 @@
     <div class="container vh-100 d-flex flex-column">
         <div class="text-center mt-5">
             <a href="{{route('mesa.home')}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
-            <h2 class="ms-2 inline-block text-white">COMANDA</h2>
+            <h2 class="ms-2 inline-block text-white">VOLTAR</h2>
         </div>
 
         <div class="mt-2">
@@ -22,15 +22,6 @@
                     <h5 class="">GASTOU ATÉ AGORA</h5>
                     <h5 class="text-orange">R$ 125,00</h5>
                 </div>
-            </div>
-        </div>
-
-        <div class="my-2">
-            <div class="row justify-content-center">
-                <div class="col-10 d-flex p-0">
-                    <button type="button" id="btn-comanda-close" class="btn btn-block btn-c-location-c btn-c-red">FECHAR CONTA</button>
-                </div>
-
             </div>
         </div>
 
@@ -110,21 +101,8 @@
         <div class="mt-auto mb-3">
             <div class="row justify-content-center">
                 <div class="col-10 d-flex p-0">
-                    <a href="{{route('comanda')}}" class="btn btn-block btn-c-location-c btn-c-orange">FINALIZAR PEDIDO</a>
+                    <a href="{{route('comanda.checkout')}}" class="btn btn-block btn-c-location-c btn-c-orange">PAGAR SUA COMANDA</a>
                 </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="comanda-close d-flex align-items-center">
-        <div class="container d-flex flex-column align-items-center">
-            <div><img class="img-fluid" src="{{asset('assets/img/logo.png')}}" alt=""></div>
-            <div class="comanda-title my-3 text-center">
-                <h3 class="text-orange">DESEJA FECHAR SUA CONTA?</h3>
-            </div>
-            <div class="btns">
-                <button type="button" class="btn btn-c-white btn-comanda-close-cancel">NÃO</button>
-                <a href="{{route('comanda.confirma')}}" class="btn btn-c-orange">SIM</a>
             </div>
         </div>
     </div>
