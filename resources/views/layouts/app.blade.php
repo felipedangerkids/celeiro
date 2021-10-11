@@ -36,9 +36,6 @@
                     <a href="{{ url('dashboard') }}">Dashboard</a>
                 </li>
                 <li>
-                    <a href="{{ url('clientes') }}">Clientes</a>
-                </li>
-                <li>
                     <a href="{{ url('produtos') }}">Produtos</a>
                 </li>
                 <li>
@@ -49,6 +46,12 @@
                 </li>
                 <li>
                     <a href="{{ url('painel/transportes') }}">Transportes</a>
+                </li>
+                <li>
+                    <a href="{{ url('clientes') }}">Clientes</a>
+                </li>
+                <li>
+                    <a href="{{route('setting.waiter')}}">Garçons</a>
                 </li>
                 <li>
                     <a href="{{route('setting.admin')}}">Administradores</a>

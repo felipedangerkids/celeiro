@@ -27,6 +27,7 @@ use App\Http\Controllers\Painel\PainelController;
 use App\Http\Controllers\Painel\TableController;
 use App\Http\Controllers\Painel\ProductController;
 use App\Http\Controllers\Painel\SettingsController;
+use App\Http\Controllers\Painel\WaiterController;
 
 use App\Http\Controllers\Location\LocationController;
 
@@ -151,6 +152,12 @@ Route::middleware(['auth:sanctum', 'verified'])->group(function(){
     Route::get('/settings/admin/edit/{id}', [SettingsController::class, 'edit'])->name('setting.admin.edit');
     Route::post('/settings/admin/update/{id}', [SettingsController::class, 'update'])->name('setting.admin.update');
     Route::delete('/settings/admin/delete/{id?}', [SettingsController::class, 'destroy'])->name('setting.admin.delete');
+
+    Route::get('/settings/waiter', [WaiterController::class, 'index'])->name('setting.waiter');
+    Route::post('/settings/waiter/store', [WaiterController::class, 'store'])->name('setting.waiter.store');
+    Route::get('/settings/waiter/edit/{id}', [WaiterController::class, 'edit'])->name('setting.waiter.edit');
+    Route::post('/settings/waiter/update/{id}', [WaiterController::class, 'update'])->name('setting.waiter.update');
+    Route::delete('/settings/waiter/delete/{id?}', [WaiterController::class, 'destroy'])->name('setting.waiter.delete');
 
     Route::get('/buscaCep', [AdressController::class, 'buscaCep'])->name('painel.cep');
 });
