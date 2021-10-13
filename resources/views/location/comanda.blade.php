@@ -40,35 +40,37 @@
             <div class="row justify-content-center">
                 <div class="row">
                     @foreach ($comanda->products as $product)
-                        <div class="col-4 my-2 mt-3">
-                            <div class="fundo-branco ">
-                                <div class="text-center">
-                                    <div class="lata">
-                                        <a href="#">
-                                            <img style="width: 100%; object-fit: cover;" src="{{asset('storage/produtos/'.$product->product->image)}}" alt="">
-                                        </a>
+                        @if ($product->status == 0)
+                            <div class="col-4 my-2 mt-3">
+                                <div class="fundo-branco ">
+                                    <div class="text-center">
+                                        <div class="lata">
+                                            <a href="#">
+                                                <img style="width: 100%; object-fit: cover;" src="{{asset('storage/produtos/'.$product->product->image)}}" alt="">
+                                            </a>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="title col-6 my-2">
-                            <div class="nome_">
-                                <span>{{$product->product->name}}</span> <br>
+                            <div class="title col-6 my-2">
+                                <div class="nome_">
+                                    <span>{{$product->product->name}}</span> <br>
+                                </div>
+                                <div class="unid">
+                                    <span>{{$product->quantity}} UNID</span> <br>
+                                </div>
+                                <div class="preco">
+                                    <h2>{{ 'R$ ' . number_format($product->total_value, 2, ',', '.') }} </h2> <br>
+                                </div>
                             </div>
-                            <div class="unid">
-                                <span>{{$product->quantity}} UNID</span> <br>
+                            <div class="d-block col-2">
+                                <div class="edit mt-5">
+                                    <a href="{{ route('mesa.produto.remove', $product->id) }}"><button type="button" class="btn btn-lixeira"> <img src="{{ url('assets/img/lixeira.png') }}" alt=""></button></a>
+                                </div>
                             </div>
-                            <div class="preco">
-                                <h2>{{ 'R$ ' . number_format($product->total_value, 2, ',', '.') }} </h2> <br>
-                            </div>
-                        </div>
-                        <div class="d-block col-2">
-                            <div class="edit mt-5">
-                                <a href="{{ route('mesa.produto.remove', $product->id) }}"><button type="button" class="btn btn-lixeira"> <img src="{{ url('assets/img/lixeira.png') }}" alt=""></button></a>
-                            </div>
-                        </div>
 
-                        <div class="my-3 linha-horizontal"></div>
+                            <div class="my-3 linha-horizontal"></div>
+                        @endif
                     @endforeach
                 </div>
             </div>

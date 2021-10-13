@@ -21,7 +21,7 @@ class ComandaController extends Controller
 
     public function comandaConfirma()
     {
-        $table = Table::where('code', session()->get('mesa'))->first();
+        $comanda = Comanda::with('table', 'products.product')->where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
         return view('location.comandaConfirma', get_defined_vars());
     }
 
