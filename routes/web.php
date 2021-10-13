@@ -30,6 +30,7 @@ use App\Http\Controllers\Painel\SettingsController;
 use App\Http\Controllers\Painel\WaiterController;
 
 use App\Http\Controllers\Location\LocationController;
+use App\Http\Controllers\Location\ComandaController;
 
 
 /*
@@ -97,10 +98,12 @@ Route::middleware(['auth:cliente'])->group(function () {
 
     Route::get('mesa/catalogo/{slug}', [LocationController::class, 'catalogo'])->name('mesa.catalogo');
     Route::get('mesa/produto/{slug}', [LocationController::class, 'produto'])->name('mesa.produto');
+    Route::post('mesa/add-produto', [LocationController::class, 'addProduto'])->name('mesa.produto.add');
+    Route::get('mesa/remove-produto/{id}', [LocationController::class, 'removeProduto'])->name('mesa.produto.remove');
 
-    Route::get('comanda', [LocationController::class, 'comanda'])->name('comanda');
-    Route::get('comanda/confirma', [LocationController::class, 'comandaConfirma'])->name('comanda.confirma');
-    Route::get('comanda/checkout', [LocationController::class, 'comandaCheckout'])->name('comanda.checkout');
+    Route::get('comanda', [ComandaController::class, 'comanda'])->name('comanda');
+    Route::get('comanda/confirma', [ComandaController::class, 'comandaConfirma'])->name('comanda.confirma');
+    Route::get('comanda/checkout', [ComandaController::class, 'comandaCheckout'])->name('comanda.checkout');
 });
 
 Route::post('user-store', [CapturaController::class, 'store']);

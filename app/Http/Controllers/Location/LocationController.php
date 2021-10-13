@@ -6,12 +6,14 @@ use App\Models\Unity;
 use App\Models\Table;
 use App\Models\Product;
 use App\Models\Comanda;
+use App\Models\ComandaProduct;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class LocationController extends Controller
 {
+    // Inicio do check-in
     public function checkIn()
     {
         $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->get();
@@ -34,10 +36,11 @@ class LocationController extends Controller
             'table_code' => $request->mesa,
         ]);
 
-
         return response()->json('success', 200);
     }
+    // FIm do check-in
 
+    // Escolha dos catalogos e produtos
     public function mesaHome()
     {
         $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->first();
@@ -60,21 +63,37 @@ class LocationController extends Controller
 
         return view('location.produto', get_defined_vars());
     }
+    // Fim dos catalogos e produtos
 
-    public function comanda()
+    // Adição de produtos a comanda
+    public function addProduto(Request $request)
     {
-        $table = Table::where('code', session()->get('mesa'))->first();
-        return view('location.comanda', get_defined_vars());
+        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->first();
+
+        $comandaProduct['comanda_id'] = $comanda->id;
+        $comandaProduct['product_id'] = $request->id;
+        $comandaProduct['quantity'] = $request->quantity;
+        $comandaProduct['total_value'] = ($request->quantity * $request->price);
+        ComandaProduct::create($comandaProduct);
+
+        $new_value = ($comanda->total_value + $comandaProduct['total_value']);
+        Comanda::find($comanda->id)->update(['total_value' => $new_value]);
+
+        return redirect()->route('mesa.home')->with('success', 'Produto adicionado a sua comanda!');
     }
 
-    public function comandaConfirma()
+    public function removeProduto($id)
     {
-        $table = Table::where('code', session()->get('mesa'))->first();
-        return view('location.comandaConfirma', get_defined_vars());
-    }
+        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->first();
 
-    public function comandaCheckout()
-    {
-        return view('location.comandaCheckout', get_defined_vars());
+        $comandaProduct = ComandaProduct::find($id);
+
+        $new_value = ($comanda->total_value - $comandaProduct->total_value);
+
+        Comanda::find($comanda->id)->update(['total_value' => $new_value]);
+
+        $comandaProduct->delete();
+
+        return redirect()->back()->with('success', 'Produto removido da comanda');
     }
 }

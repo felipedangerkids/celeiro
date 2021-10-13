@@ -43,6 +43,12 @@
         </div>
     @endif
 
+    <div class="alert-custom">
+        <div class="w-100 text-dark alert alert-success" role="alert">
+            @if(session()->has('success')) {{session()->get('success')}} @endif
+        </div>
+    </div>
+
     <div class="aba-lr">
         <div class="div-aba">
             @if (auth()->guard('cliente')->check())
@@ -115,6 +121,14 @@
                 }
             });
         })
+
+        $(document).ready(function(){
+            if('{{session()->has("success")}}'){
+                $('.alert-custom').css('height', '100vh');
+
+                setTimeout(() => {$('.alert-custom').css('height', '0');}, 1300);
+            }
+        });
     </script>
 </body>
 

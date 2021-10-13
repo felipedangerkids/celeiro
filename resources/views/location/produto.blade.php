@@ -55,7 +55,8 @@
                 </div>
 
                 <div class="col-10">
-                    <form action="" method="post">
+                    <form action="{{route('mesa.produto.add')}}" method="post">
+                        @csrf
                         <div class="preco-add">
                             <div class="text-center mt-5">
                                 <h2 class="text-orange text-size-1">PREÇO/UNIT</h2>

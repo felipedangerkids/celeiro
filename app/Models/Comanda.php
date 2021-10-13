@@ -21,4 +21,14 @@ class Comanda extends Model
         'troco',
         'status',
     ];
+
+    public function table()
+    {
+        return $this->belongsTo(Table::class, 'table_code', 'code');
+    }
+
+    public function products()
+    {
+        return $this->hasMany(ComandaProduct::class);
+    }
 }
