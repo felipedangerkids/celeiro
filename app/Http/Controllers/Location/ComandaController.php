@@ -6,6 +6,8 @@ use App\Models\Unity;
 use App\Models\Table;
 use App\Models\Product;
 use App\Models\Comanda;
+use App\Models\ComandaProduct;
+use App\Models\OrderFlow;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -19,6 +21,44 @@ class ComandaController extends Controller
         return view('location.comanda', get_defined_vars());
     }
 
+    public function makeWish()
+    {
+        $comanda = Comanda::with('table', 'products.product')->where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
+
+        foreach($comanda->products as $product) {
+            if($product->status == 0){
+                ComandaProduct::find($product->id)->update(['status' => 1]);
+
+                if($comanda->waiter_id){
+                    if($product->status == 0){
+                        OrderFlow::create([
+                            'key' => 'comanda_produto',
+                            'key_id' => $product->id,
+                            'reason' => 'Solicitando pedido'
+                        ]);
+                    }
+                }
+            }
+        }
+
+        if(empty($comanda->waiter_id)){
+            Comanda::find($comanda->id)->update(['waiter_status' => 1]);
+
+            if($comanda->waiter_status == 0){
+                OrderFlow::create([
+                    'key' => 'comanda',
+                    'key_id' => $comanda->id,
+                    'reason' => 'Geração da comanda'
+                ]);
+            }
+
+            $OrderFlow = OrderFlow::where('key', 'comanda')->where('key_id', $comanda->id)->where('status', 0)->first();
+
+            return view('location.waitWaiter', get_defined_vars());
+        }
+
+        return redirect()->route('mesa.home')->with('success', 'Aguarde enquanto seu pedido é montado!');
+    }
     public function comandaConfirma()
     {
         $comanda = Comanda::with('table', 'products.product')->where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
@@ -28,5 +68,13 @@ class ComandaController extends Controller
     public function comandaCheckout()
     {
         return view('location.comandaCheckout', get_defined_vars());
+    }
+
+    public function give_up()
+    {
+        $comanda = Comanda::with('table', 'products.product')->where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
+        OrderFlow::where('key', 'comanda')->where('key_id', $comanda->id)->where('status', 0)->delte();
+        ComandaProduct::where('comanda_id', $comanda->id)->delete();
+        Comanda::find($comanda->id)->update(['status' => 3]);
     }
 }

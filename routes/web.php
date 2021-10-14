@@ -102,8 +102,11 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('mesa/remove-produto/{id}', [LocationController::class, 'removeProduto'])->name('mesa.produto.remove');
 
     Route::get('comanda', [ComandaController::class, 'comanda'])->name('comanda');
+    Route::get('comanda/fazer-pedido', [ComandaController::class, 'makeWish'])->name('comanda.make_wish');
     Route::get('comanda/confirma', [ComandaController::class, 'comandaConfirma'])->name('comanda.confirma');
     Route::get('comanda/checkout', [ComandaController::class, 'comandaCheckout'])->name('comanda.checkout');
+
+    Route::get('comanda/give-up', [ComandaController::class, 'give_up'])->name('comanda.give_up');
 });
 
 Route::post('user-store', [CapturaController::class, 'store']);

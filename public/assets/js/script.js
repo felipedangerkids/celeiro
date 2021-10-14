@@ -199,6 +199,14 @@ $(document).ready(function () {
         }
     });
 
+    $(function(){
+        $('[data-auto_timer="true"]').each(function(){
+            var start_time = $(this).data('start_time');
+
+            $(this).stopwatch({startTime: (parseInt(start_time) || 0)*1000}).stopwatch('start');
+        });
+    });
+
     $('[name="cpf"]').mask('000.000.000-00');
 
     $(document).on('click', '#btn-login', function () {
