@@ -389,6 +389,31 @@ $(document).ready(function () {
         });
     });
 
+    $(document).on('click', '.btn-entregue-comandaProduto', function(){
+        var id = $(this).data('id');
+        var route = $(this).data('route');
+        $(this).addClass('d-none');
+
+        $.ajax({
+            url: route,
+            type: 'POST',
+            data: {id},
+            success: (data) => {
+                console.log(data);
+            }
+        });
+
+        var height = $('#produto-'+id).height();
+        var html_produto = $('#produto-'+id)[0].outerHTML;
+
+        $('#produto-'+id).css('height', height+'px');
+        setTimeout(() => {$('#produto-'+id).css('height', '0');}, 100);
+
+        setTimeout(() => {
+            $('#delivered').append(html_produto);
+        },1000);
+    });
+
     // Cookies-Idade
     $('.btn-yes-cookie-idade').on('click', function(){
         $('.cookie-idade').css({

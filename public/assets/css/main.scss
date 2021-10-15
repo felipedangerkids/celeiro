@@ -703,7 +703,40 @@ select:focus {
     top: 0;
     left: 0;
     right: 0;
-    transition: .6s;
+    transition: .9s;
     height: 0;
+    overflow: hidden;
+}
+
+.table-custom {
+    width: 100%;
+
+    td {
+        color: #fff;
+    }
+
+    thead {
+        tr {
+            border-bottom: 4px solid #eda200;
+        }
+    }
+}
+
+.nav.nav-tabs {
+    border-bottom: 1px solid #eda200;
+
+    button {
+        color: #fff;
+    }
+
+    button.active {
+        color: #000;
+        background-color: #eda200;
+        border-color: #eda200 #eda200 #fff;
+    }
+}
+
+.comanda-produto {
+    transition: .6s height;
     overflow: hidden;
 }

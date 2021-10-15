@@ -44,6 +44,10 @@ return [
             'driver' => 'session',
             'provider' => 'clientes',
         ],
+        'waiter' => [
+            'driver' => 'session',
+            'provider' => 'waiters',
+        ],
 
         'api' => [
             'driver' => 'token',
@@ -77,6 +81,10 @@ return [
         'clientes' => [
             'driver' => 'eloquent',
             'model' => App\Models\Cliente::class,
+        ],
+        'waiters' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\Waiter::class,
         ],
 
         // 'users' => [

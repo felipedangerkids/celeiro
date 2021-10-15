@@ -21,6 +21,8 @@ class LoginController extends Controller
 
     public function login(Request $request)
     {
+        $cookie_maior18 = !empty($_COOKIE['cookie_maior18']) ? $_COOKIE['cookie_maior18'] : null;
+
         $remember = $request->remember ? true : false;
 
         $authValid = Auth::guard('cliente')->validate(['cpf' => (str_replace(['.','-'],'',$request->cpf)), 'password' => $request->password]);
@@ -28,6 +30,7 @@ class LoginController extends Controller
         if($authValid){
             if (Auth::guard('cliente')->attempt(['cpf' => (str_replace(['.','-'],'',$request->cpf)), 'password' => $request->password],$remember)) {
 
+                if($cookie_maior18) setcookie('cookie_maior18', $cookie_maior18, null, '/');
                 if(\Cart::getContent()->count() > 0){
                     return response()->json(route('pre.checkout'), 200);
                 }else{

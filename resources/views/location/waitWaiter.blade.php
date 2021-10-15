@@ -20,7 +20,7 @@
                     <div class="col-12 wait-timer my-3 text-center text-size-2" data-auto_timer="{{$OrderFlow->status == 1 ? 'false' : 'true'}}" data-start_time="{{ $seconds }}">
                         {{str_pad($since_start->h, 2, '0', STR_PAD_LEFT) }}:{{str_pad($since_start->i, 2, '0', STR_PAD_LEFT) }}:{{str_pad($since_start->s, 2, '0', STR_PAD_LEFT) }}
                     </div>
-                    <div class="col-12 text-size-2 text-orange my-3 text-center">AGUARDE A VALIDAÇÃO DO GARÇON</div>
+                    <div class="col-12 text-size-2 text-orange my-3 text-center">AGUARDE A VALIDAÇÃO DO GARÇOM</div>
                     <div class="col-12 my-3 p-0"><a href="{{route('comanda.give_up')}}" class="btn btn-block btn-c-orange btn-c-location-c">DESISTIR</a></div>
                 </div>
             </div>

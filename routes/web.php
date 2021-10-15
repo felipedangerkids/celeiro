@@ -53,6 +53,10 @@ Route::get('store/login', [LoginController::class, 'index'])->name('store.login'
 Route::post('store/login', [LoginController::class, 'login'])->name('store.login');
 Route::post('store/logout', [LoginController::class, 'logout'])->name('store.logout');
 
+Route::get('garcom/login', [WaiterController::class, 'waiterIndex'])->name('waiter.login');
+Route::post('garcom/login', [WaiterController::class, 'waiterAuth'])->name('waiter.login');
+Route::post('garcom/logout', [WaiterController::class, 'waiterLogout'])->name('waiter.logout');
+
 //checkout
 Route::middleware(['auth:cliente'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -107,6 +111,15 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('comanda/checkout', [ComandaController::class, 'comandaCheckout'])->name('comanda.checkout');
 
     Route::get('comanda/give-up', [ComandaController::class, 'give_up'])->name('comanda.give_up');
+});
+
+// Waiter / Garçom
+Route::middleware(['auth:waiter'])->group(function () {
+    Route::get('garcom/check-in', [WaiterController::class, 'waiterCheckInindex'])->name('waiter.check_in');
+    Route::post('garcom/check-in', [WaiterController::class, 'waiterCheckIn'])->name('waiter.check_in');
+    Route::get('garcom/comandas', [WaiterController::class, 'waiterComandas'])->name('waiter.comanda');
+    Route::get('garcom/comanda/{id}', [WaiterController::class, 'waiterComanda'])->name('waiter.comanda.pedido');
+    Route::post('garcom/comanda-produto-entregue', [WaiterController::class, 'waiterComandaProductDelivered'])->name('waiter.comanda.pedido.entregue');
 });
 
 Route::post('user-store', [CapturaController::class, 'store']);

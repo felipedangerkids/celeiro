@@ -54,11 +54,6 @@
                                     <h2>{{ 'R$ ' . number_format($product->total_value, 2, ',', '.') }} </h2> <br>
                                 </div>
                             </div>
-                            <div class="d-block col-2">
-                                <div class="edit mt-5">
-                                    <a href="{{ route('mesa.produto.remove', $product->id) }}"><button type="button" class="btn btn-lixeira"> <img src="{{ url('assets/img/lixeira.png') }}" alt=""></button></a>
-                                </div>
-                            </div>
 
                             <div class="my-3 linha-horizontal"></div>
                         @endif

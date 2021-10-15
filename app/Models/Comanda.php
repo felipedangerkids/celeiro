@@ -27,6 +27,11 @@ class Comanda extends Model
         return $this->belongsTo(Table::class, 'table_code', 'code');
     }
 
+    public function client()
+    {
+        return $this->belongsTo(Cliente::class, 'client_id');
+    }
+
     public function products()
     {
         return $this->hasMany(ComandaProduct::class);

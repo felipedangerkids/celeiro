@@ -30,7 +30,6 @@
                 <div class="col-10 d-flex p-0">
                     <button type="button" id="btn-comanda-close" class="btn btn-block btn-c-location-c btn-c-red">FECHAR CONTA</button>
                 </div>
-
             </div>
         </div>
 
