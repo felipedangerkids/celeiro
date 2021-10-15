@@ -414,6 +414,55 @@ $(document).ready(function () {
         },1000);
     });
 
+    // Checkout de cliente local
+    $(document).on('click', '#btnComandaCheckout', function () {
+        var route = $(this).data('route');
+        var dados = $('#form-checkout').serialize();
+
+        var metodo = $('[name="metodo"]:checked').val();
+
+        var isValid = true;
+        if(metodo == 'card'){
+            $('.req').each(function () {
+                if ($(this).val() == '') {
+
+                    isValid = false;
+                    $(this).addClass('is-invalid');
+                } else {
+                    $(this).removeClass('is-invalid');
+                }
+            });
+        }
+
+        if (isValid) {
+            $.ajax({
+                url: route,
+                type: 'POST',
+                data: dados,
+                success: (data) => {
+                    console.log(data);
+                    if (data[0] == 'success') {
+                        window.location.href = data[1];
+                    }
+
+                },
+                error: (err) => {
+                    //   console.log(err.responseJSON);
+                    if (err.responseJSON == 'refused') {
+                        Swal.fire({
+                            icon: 'error',
+                            title: 'Algo de Errado!',
+                            text: "Compra não autorizada, certifique que todos os dados estão corretos"
+
+                        });
+                    }
+
+                }
+
+            });
+        }
+    });
+
     // Cookies-Idade
     $('.btn-yes-cookie-idade').on('click', function(){
         $('.cookie-idade').css({

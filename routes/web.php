@@ -31,6 +31,7 @@ use App\Http\Controllers\Painel\WaiterController;
 
 use App\Http\Controllers\Location\LocationController;
 use App\Http\Controllers\Location\ComandaController;
+use App\Http\Controllers\Location\ComandaCheckoutController;
 
 
 /*
@@ -109,8 +110,13 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('comanda/fazer-pedido', [ComandaController::class, 'makeWish'])->name('comanda.make_wish');
     Route::get('comanda/confirma', [ComandaController::class, 'comandaConfirma'])->name('comanda.confirma');
     Route::get('comanda/checkout', [ComandaController::class, 'comandaCheckout'])->name('comanda.checkout');
+    Route::post('comanda/checkout/finalizar', [ComandaCheckoutController::class, 'checkout'])->name('comanda.checkout.finalizar');
+    Route::get('comanda/checkout/confirma', [ComandaCheckoutController::class, 'comandaCheckoutConfirma'])->name('comanda.checkout.confirma');
 
     Route::get('comanda/give-up', [ComandaController::class, 'give_up'])->name('comanda.give_up');
+
+    Route::get('comanda/pix/{id}', [ComandaCheckoutController::class, 'comandaPix'])->name('comanda.pix');
+    Route::get('comanda/finalizado', [ComandaCheckoutController::class, 'comandaFinalizado'])->name('comanda.finalizado');
 });
 
 // Waiter / Garçom
@@ -120,6 +126,7 @@ Route::middleware(['auth:waiter'])->group(function () {
     Route::get('garcom/comandas', [WaiterController::class, 'waiterComandas'])->name('waiter.comanda');
     Route::get('garcom/comanda/{id}', [WaiterController::class, 'waiterComanda'])->name('waiter.comanda.pedido');
     Route::post('garcom/comanda-produto-entregue', [WaiterController::class, 'waiterComandaProductDelivered'])->name('waiter.comanda.pedido.entregue');
+    Route::get('garcom/comanda/fechar/{id}', [WaiterController::class, 'waiterComandaClose'])->name('waiter.comanda.fechar');
 });
 
 Route::post('user-store', [CapturaController::class, 'store']);

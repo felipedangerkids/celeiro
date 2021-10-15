@@ -6,7 +6,9 @@ use App\Models\Waiter;
 use App\Models\Unity;
 use App\Models\Comanda;
 use App\Models\OrderFlow;
+use App\Models\Product;
 use App\Models\ComandaProduct;
+use App\Models\Stock;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Hash;
@@ -108,7 +110,7 @@ class WaiterController extends Controller
 
     public function waiterComandas()
     {
-        $comandas = Comanda::with('table', 'client', 'products.product')->where('status', 1)->whereHas('table', function($query) {
+        $comandas = Comanda::with('table', 'client', 'products.product')->whereIn('status', [1,2])->whereHas('table', function($query) {
             return $query->where('unity_id', auth()->guard('waiter')->user()->unity_id);
         })->get();
 
@@ -144,7 +146,7 @@ class WaiterController extends Controller
 
     public function waiterComandaProductDelivered(Request $request)
     {
-        $order_flow = OrderFlow::where('key', 'comanda_produto')->where('key_id', $request->id)->first();
+        $order_flow = OrderFlow::where('key', 'comanda_produto')->where('key_id', $request->id)->where('status', 0)->first();
         OrderFlow::find($order_flow->id)->update([
             'user' => 'waiter',
             'user_id' => auth()->guard('waiter')->user()->id,
@@ -152,7 +154,36 @@ class WaiterController extends Controller
         ]);
 
         ComandaProduct::find($request->id)->update(['status' => 2]);
+        $comanda_product = ComandaProduct::find($request->id);
+
+        $product_stock = Product::find($comanda_product->product_id);
+        Product::find($comanda_product->product_id)->update([
+            'stock' => ($product_stock->stock - $comanda_product->quantity)
+        ]);
+
+        Stock::create([
+            'product_id' => $product_stock->id,
+            'type' => 'S',
+            'value' => $comanda_product->quantity,
+            'description' => '(Venda no local - '.auth()->guard('waiter')->user()->unity->name.')',
+        ]);
 
         return response()->json('success', 200);
+    }
+
+    public function waiterComandaClose($id)
+    {
+        Comanda::find($id)->update(['status' => 3]);
+
+        $order_flow = OrderFlow::where('key', 'payment_comanda')->where('key_id', $id)->where('status', 0)->first();
+        if($order_flow){
+            OrderFlow::find($order_flow->id)->update([
+                'user' => 'waiter',
+                'user_id' => auth()->guard('waiter')->user()->id,
+                'status' => 1
+            ]);
+        }
+
+        return redirect()->route('waiter.comanda')->with('success', 'Comanda fechada com successo');
     }
 }

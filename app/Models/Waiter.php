@@ -19,4 +19,13 @@ class Waiter extends Authenticatable
         'password',
         'unity_id',
     ];
+
+    protected $hidden = [
+        'password',
+    ];
+
+    public function unity()
+    {
+        return $this->belongsTo(Unity::class, 'unity_id');
+    }
 }

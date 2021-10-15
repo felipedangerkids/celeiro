@@ -62,11 +62,17 @@ class ComandaController extends Controller
     public function comandaConfirma()
     {
         $comanda = Comanda::with('table', 'products.product')->where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
+        if(empty($comanda)) return redirect()->route('home');
         return view('location.comandaConfirma', get_defined_vars());
     }
 
     public function comandaCheckout()
     {
+        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
+        if(empty($comanda)) return redirect()->route('home');
+        if($comanda->payment_method == 'dinheiro') {
+            if($comanda->status == 2) return redirect()->route('comanda.checkout.confirma');
+        }
         return view('location.comandaCheckout', get_defined_vars());
     }
 

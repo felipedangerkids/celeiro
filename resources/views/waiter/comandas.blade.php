@@ -48,7 +48,17 @@
                                     {{$total_comanda_produto}}
                                 </td>
                                 <td>
-                                    <a href="{{route('waiter.comanda.pedido', $comanda->id)}}" class="btn btn-sm btn-c-orange">{{empty($comanda->waiter_id) ? 'Aceitar' : 'Pedidos'}}</a>
+                                    @if ($comanda->status == 1)
+                                        <a href="{{route('waiter.comanda.pedido', $comanda->id)}}" class="btn btn-sm btn-c-orange">{{empty($comanda->waiter_id) ? 'Aceitar' : 'Pedidos'}}</a>
+                                    @else
+                                        <a href="{{route('waiter.comanda.pedido', $comanda->id)}}" class="btn btn-sm {{$comanda->payment_method == 'dinheiro' ? 'btn-danger' : 'btn-success'}}">
+                                            @if ($comanda->payment_method == 'dinheiro')
+                                                Dinheiro
+                                            @else
+                                                Pago
+                                            @endif
+                                        </a>
+                                    @endif
                                 </td>
                             </tr>
                         @endforeach
@@ -57,4 +67,10 @@
             </div>
         </div>
     </div>
+
+    <script>
+        setTimeout(() => {
+            window.location.reload();
+        }, 60000)
+    </script>
 @endsection

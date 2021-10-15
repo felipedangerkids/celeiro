@@ -42,36 +42,17 @@
                     <div class="form-group col-4 my-2">
                         <label class="text-white" for="">Mês</label>
                         <select name="mes" class="form-control" id="">
-                            <option value="01">01</option>
-                            <option value="02">02</option>
-                            <option value="03">03</option>
-                            <option value="04">04</option>
-                            <option value="05">05</option>
-                            <option value="06">06</option>
-                            <option value="07">07</option>
-                            <option value="08">08</option>
-                            <option value="09">09</option>
-                            <option value="10">10</option>
-                            <option value="11">11</option>
-                            <option value="12">12</option>
+                            @for ($i = 1; $i < 13; $i++)
+                            <option value="{{str_pad($i, 2, '0', STR_PAD_LEFT)}}">{{str_pad($i, 2, '0', STR_PAD_LEFT)}}</option>
+                            @endfor
                         </select>
-                        {{-- <input type="text" name="mes" id="validade" class="form-control req"> --}}
                     </div>
                     <div class="form-group col-4 my-2">
                         <label class="text-white" for="">Ano</label>
                         <select name="ano" class="form-control" id="">
-                            <option value="2021">2021</option>
-                            <option value="2022">2022</option>
-                            <option value="2023">2023</option>
-                            <option value="2024">2024</option>
-                            <option value="2025">2025</option>
-                            <option value="2026">2026</option>
-                            <option value="2027">2027</option>
-                            <option value="2028">2028</option>
-                            <option value="2029">2029</option>
-                            <option value="2030">2030</option>
-                            <option value="2031">2031</option>
-                            <option value="2032">2032</option>
+                            @for ($i = 0; $i < 11; $i++)
+                                <option value="{{date('Y', strtotime('+ '.$i.'years'))}}">{{date('Y', strtotime('+ '.$i.'years'))}}</option>
+                            @endfor
                         </select>
                     </div>
                     <div class="form-group col-4 my-2">
@@ -104,7 +85,7 @@
                 <div class="row justify-content-between my-4 mx-3">
                     <div class="form-group col-12 my-2">
                         <label class="text-white" for="">Troco Para:</label>
-                        <input type="text" name="troco" id="dinheiro" class="form-control">
+                        <input type="text" name="troco" id="dinheiro" value="{{number_format(($comanda->total_value ?? 0), 2, ',', '.') }}" class="form-control">
                     </div>
                 </div>
             </div>
@@ -134,7 +115,7 @@
         <div class="mt-5">
             <div class="row justify-content-center">
                 <div class="col-10 d-flex mt-4 p-0">
-                    <a href="{{route('comanda.checkout')}}" class="btn btn-block btn-c-location-c btn-c-orange">PAGAR SUA COMANDA</a>
+                    <button type="button" data-route="{{route('comanda.checkout.finalizar')}}" id="btnComandaCheckout" class="btn btn-block btn-c-location-c btn-c-orange">PAGAR E FINALIZAR</button>
                 </div>
                 <div class="col-10 d-flex mt-4 p-0">
                     <a href="{{route('mesa.home')}}" class="btn btn-block btn-c-location-c btn-c-white">VOLTAR</a>

@@ -15,24 +15,48 @@
                     <h5>MESA: <span class="text-orange">{{$comanda->table->name}}</span></h5>
                 </div>
 
-                <div class="col-8 gastos text-center mt-2">
-                    <h5 class="">GASTOU ATÉ AGORA</h5>
-                    <h5 class="text-orange">R$ {{number_format($comanda->total_value, 2, ',', '.')}}</h5>
-                </div>
+                @if ($comanda->status == 1)
+                    <div class="col-10 gastos text-center mt-2">
+                        <h5 class="">GASTOU ATÉ AGORA</h5>
+                        <h5 class="text-orange">R$ {{number_format($comanda->total_value, 2, ',', '.')}}</h5>
+                    </div>
+                @else
+                    @if ($comanda->payment_method == 'dinheiro')
+                        <div class="col-10 gastos text-center mt-2">
+                            <h5 class="">TOTAL A PAGAR: <span class="text-orange">R$ {{number_format($comanda->total_value, 2, ',', '.')}}</span></h5>
+                            <h5 class="">TROCO: <span class="text-orange">R$ {{number_format(((float)$comanda->troco - $comanda->total_value), 2, ',', '.')}} (R$ {{number_format((float)$comanda->troco, 2, ',', '.')}})</span></h5>
+                        </div>
+                    @else
+                        <div class="col-10 gastos text-center mt-2">
+                            <h5 class="">TOTAL PAGO: <span class="text-orange">R$ {{number_format($comanda->total_value, 2, ',', '.')}}</span></h5>
+                            <h5 class="">METODO: <span class="text-orange">@if($comanda->payment_method == 'card') CARTÃO @endif @if($comanda->payment_method == 'pix') PIX @endif</span></h5>
+                        </div>
+                    @endif
+                @endif
             </div>
         </div>
+
+        @if ($comanda->status == 2)
+            <div class="my-2">
+                <div class="row justify-content-center">
+                    <div class="col-10 d-flex p-0">
+                        <a href="{{route('waiter.comanda.fechar', $comanda->id)}}" class="btn btn-block btn-c-location-c btn-c-red">FECHAR COMANDA</a>
+                    </div>
+                </div>
+            </div>
+        @endif
 
         <div class="mt-3">
             <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="notDelivered-tab" data-bs-toggle="tab" data-bs-target="#notDelivered" type="button" role="tab" aria-controls="notDelivered" aria-selected="true">NÃO ENTREGUE</button>
+                    <button class="nav-link @if($comanda->status == 1) active @endif" id="notDelivered-tab" data-bs-toggle="tab" data-bs-target="#notDelivered" type="button" role="tab" aria-controls="notDelivered" aria-selected="true">NÃO ENTREGUE</button>
                 </li>
                 <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="delivered-tab" data-bs-toggle="tab" data-bs-target="#delivered" type="button" role="tab" aria-controls="delivered" aria-selected="false">ENTREGUE</button>
+                    <button class="nav-link @if($comanda->status == 2) active @endif" id="delivered-tab" data-bs-toggle="tab" data-bs-target="#delivered" type="button" role="tab" aria-controls="delivered" aria-selected="false">ENTREGUE</button>
                 </li>
             </ul>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="notDelivered" role="tabpanel" aria-labelledby="notDelivered-tab">
+                <div class="tab-pane fade @if($comanda->status == 1) show active @endif" id="notDelivered" role="tabpanel" aria-labelledby="notDelivered-tab">
                     @foreach ($comanda->products as $product)
                         @if ($product->status == 1)
                             <div class="row comanda-produto" id="produto-{{$product->id}}">
@@ -57,6 +81,9 @@
                                     <div class="preco">
                                         <h2>{{ 'R$ ' . number_format($product->total_value, 2, ',', '.') }} </h2> <br>
                                     </div>
+                                    <div class="stock">
+                                        <span>ESTQ {{$product->product->stock}} </span> <br>
+                                    </div>
                                 </div>
                                 <div class="d-block col-2">
                                     <div class="edit mt-5">
@@ -69,7 +96,7 @@
                         @endif
                     @endforeach
                 </div>
-                <div class="tab-pane fade" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
+                <div class="tab-pane fade @if($comanda->status == 2) show active @endif" id="delivered" role="tabpanel" aria-labelledby="delivered-tab">
                     @foreach ($comanda->products as $product)
                         @if ($product->status == 2)
                             <div class="row comanda-produto" id="produto-{{$product->id}}">
