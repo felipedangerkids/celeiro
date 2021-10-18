@@ -43,7 +43,7 @@ class LocationController extends Controller
     // Escolha dos catalogos e produtos
     public function mesaHome()
     {
-        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->first();
+        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
         if(empty($comanda)) return redirect()->route('home');
 
         $table = Table::where('code', $comanda->table_code)->first();
@@ -68,7 +68,7 @@ class LocationController extends Controller
     // Adição de produtos a comanda
     public function addProduto(Request $request)
     {
-        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->first();
+        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
 
         $comandaProduct['comanda_id'] = $comanda->id;
         $comandaProduct['product_id'] = $request->id;
@@ -84,7 +84,7 @@ class LocationController extends Controller
 
     public function removeProduto($id)
     {
-        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->first();
+        $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
 
         $comandaProduct = ComandaProduct::find($id);
 
