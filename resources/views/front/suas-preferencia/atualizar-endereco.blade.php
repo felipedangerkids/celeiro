@@ -21,7 +21,7 @@
                         @enderror
                     </div>
                     <div class="col-4 mt-3 d-flex align-items-center">
-                        <button type="button" id="buscar" class="btn px-3 py-3 btn-light">Buscar</button>
+                        <button type="button" id="buscar" class="btn px-3 py-3 btn-light"><span class="text">Buscar</span><span class="icon"><i class="fas fa-search"></i></span></button>
                     </div>
 
                     <div class="col-9 inputs mt-3">
@@ -67,57 +67,50 @@
 
                     <div class="col-12">
                         <input type="hidden" name="ship_id" value="{{ $ship->id ?? '' }}">
-                        <div class="profile mt-3">
-                            <div class="d-flex">
-                                <div>
+                        <div class="profile-check mt-3">
+                            <div class="row">
+                                <div class="col-2">
                                     <div class="icon-img"><img src="{{ url('assets/img/relogio.png') }}" alt=""></div>
                                 </div>
-                                <label class="check-in" for="1">Pedir agora
+                                <label class="check-in col-8" for="1">
+                                    Pedir agora
                                     <input name="data" value="Pedir Agora" class="form-check-input later" id="1" type="radio">
                                     <span class="check"></span>
                                 </label>
                             </div>
                             <div class="mt-3" id="linha-horizontal"></div>
                         </div>
-                        <div class="profile mt-3">
+                        <div class="profile-check mt-3">
                             <div class="row">
-                                <div class="d-flex">
-                                    <div>
-                                        <div class="icon-img"><img src="{{ url('assets/img/calendario.png') }}" alt=""></div>
-                                    </div>
-                                    <div class="wrapper">
-                                        <div class="lista-item">
-                                            <label class="check-in" for="6">Agendar Pedido
-                                                <input name="data" value="Agendar Pedido" class="form-check-input now" id="6"
-                                                    type="radio">
-                                                <span class="check "></span>
-                                            </label>
+                                <div class="col-2">
+                                    <div class="icon-img"><img src="{{ url('assets/img/calendario.png') }}" alt=""></div>
+                                </div>
+                                <label class="check-in col-8" for="6">Agendar Pedido
+                                    <input name="data" value="Agendar Pedido" class="form-check-input now" id="6"
+                                        type="radio">
+                                    <span class="check "></span>
+                                </label>
 
-                                            <div class="times d-none">
-                                                <div class="horarios">
-                                                    <div class="mt-3 row ">
-                                                        <div class="col-12">
-                                                            <label class="check-in" for="7">
-                                                                <input class="form-check-input" name="horario" value="07:00-08:00" id="7" type="radio">
-                                                                07:00 - 08:00
-                                                                <span class="check"></span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="check-in" for="8">
-                                                                <input class="form-check-input" name="horario" value="08:00-09:00" id="8" type="radio">
-                                                                08:00 - 09:00
-                                                                <span class="check"></span>
-                                                            </label>
-                                                        </div>
-                                                        <div class="col-12">
-                                                            <label class="check-in" for="9">
-                                                                <input class="form-check-input" value="09:00-10:00" name="horario" id="9" type="radio">
-                                                                09:00 - 10:00
-                                                                <span class="check"></span>
-                                                            </label>
-                                                        </div>
-                                                    </div>
+                                <div class="wrapper col-12">
+                                    <div class="lista-item">
+                                        <div class="times d-none">
+                                            <div class="horarios">
+                                                <div class="mt-3 row">
+                                                    <label class="check-in col-10" for="7">
+                                                        <input class="form-check-input" name="horario" value="07:00-08:00" id="7" type="radio">
+                                                        07:00 - 08:00
+                                                        <span class="check"></span>
+                                                    </label>
+                                                    <label class="check-in col-10" for="8">
+                                                        <input class="form-check-input" name="horario" value="08:00-09:00" id="8" type="radio">
+                                                        08:00 - 09:00
+                                                        <span class="check"></span>
+                                                    </label>
+                                                    <label class="check-in col-10" for="9">
+                                                        <input class="form-check-input" value="09:00-10:00" name="horario" id="9" type="radio">
+                                                        09:00 - 10:00
+                                                        <span class="check"></span>
+                                                    </label>
                                                 </div>
                                             </div>
                                         </div>
@@ -126,24 +119,24 @@
                             </div>
                             <div class="mt-3" id="linha-horizontal"></div>
                         </div>
-                        <div class="profile mt-3">
-                            <div class="d-flex">
-                                <div>
+                        <div class="profile-check mt-3">
+                            <div class="row">
+                                <div class="col-2">
                                     <div class="icon-img"><img src="{{ url('assets/img/moto.png') }}" alt=""></div>
                                 </div>
-                                <label class="check-in" for="3">Receber em casa
+                                <label class="check-in col-8" for="3">Receber em casa
                                     <input name="tipo" class="form-check-input" value="Receber em Casa" id="3" type="radio">
                                     <span class="check"></span>
                                 </label>
                             </div>
                             <div class="mt-3" id="linha-horizontal"></div>
                         </div>
-                        <div class="profile mt-3">
-                            <div class="d-flex">
-                                <div>
+                        <div class="profile-check mt-3">
+                            <div class="row">
+                                <div class="col-2">
                                     <div class="icon-img"><img src="{{ url('assets/img/carro.png') }}" alt=""></div>
                                 </div>
-                                <label class="check-in" for="4">Retirar pedido
+                                <label class="check-in col-8" for="4">Retirar pedido
                                     <input name="tipo" value="Retirar Pedido" class="form-check-input" id="4" type="radio">
                                     <span class="check"></span>
                                 </label>
@@ -159,40 +152,4 @@
             </form>
         </div>
     </div>
-    {{-- <div class="container">
-        <div class="text-center pt-4">
-            <h1>SUAS <br> preferências</h1>
-        </div>
-
-        <div class="mt-4" id="linha-horizontal"></div>
-        <form action="{{ route('user.adress.post') }}" method="POST">
-            @csrf
-            <div class="formulario">
-                <div class="container">
-                    <div class="row">
-                        
-                        <div class="inputs_ pt-3 col-6">
-                            <label for="">Ponto de Ref:</label>
-                            
-                        </div>
-                        <div class="inputs_ pt-3 col-8">
-                            <label for="">Bairro</label>
-                            
-                        </div>
-                        <div class="inputs_ pt-3 col-6">
-                            <label for="">Cidade</label>
-                            
-                        </div>
-                        <div class="inputs_ pt-3 col-6">
-                            <label for="">Estado</label>
-                            
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="text-center pt-5">
-                <button type="submit" class="btn btn-adicionar">SALVAR</button>
-            </div>
-        </form>
-    </div> --}}
 @endsection

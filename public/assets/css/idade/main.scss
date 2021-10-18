@@ -320,7 +320,6 @@ button.d {
 
 ///checkbox//
 
-
 .check-in {
     color: white;
     position: relative;
@@ -334,8 +333,19 @@ button.d {
     }
 }
 
+@media (max-width: 380px) {
+    .check-in {
+        font-size: 1rem;
+    }
+}
+@media (max-width: 320px) {
+    .check-in {
+        font-size: .8rem;
+    }
+}
+
 .check {
-    left: 290px;
+    right: 0;
     width: 35px;
     height: 35px;
     border-radius: 25px;

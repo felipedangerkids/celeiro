@@ -97,6 +97,12 @@ body {
             padding: 5px 15px;
         }
 
+        @media (max-width: 380px){
+            input {
+                height: 43px;
+            }
+        }
+
         ::-webkit-input-placeholder {
             color: white !important;
         }
@@ -113,6 +119,24 @@ body {
 
         :-ms-input-placeholder {
             color: white !important;
+        }
+    }
+
+    button.btn-light {
+        width: 100%;
+
+        span.icon {
+            display: none;
+        }
+
+        @media (max-width: 380px) {
+            span.text {
+                display: none;
+            }
+
+            span.icon {
+                display: block;
+            }
         }
     }
 
