@@ -33,34 +33,36 @@
                     </thead>
                     <tbody>
                         @foreach ($comandas as $comanda)
-                            <tr>
-                                <td>{{$comanda->table->name}}</td>
-                                <td>
-                                    {{explode(' ',$comanda->client->name)[0]}}
-                                </td>
-                                <td>
-                                    @php
-                                        $total_comanda_produto = 0;
-                                        foreach($comanda->products as $product){
-                                            if($product->status == 1) $total_comanda_produto += 1;
-                                        }
-                                    @endphp
-                                    {{$total_comanda_produto}}
-                                </td>
-                                <td>
-                                    @if ($comanda->status == 1)
-                                        <a href="{{route('waiter.comanda.pedido', $comanda->id)}}" class="btn btn-sm btn-c-orange">{{empty($comanda->waiter_id) ? 'Aceitar' : 'Pedidos'}}</a>
-                                    @else
-                                        <a href="{{route('waiter.comanda.pedido', $comanda->id)}}" class="btn btn-sm {{$comanda->payment_method == 'dinheiro' ? 'btn-danger' : 'btn-success'}}">
-                                            @if ($comanda->payment_method == 'dinheiro')
-                                                Dinheiro
-                                            @else
-                                                Pago
-                                            @endif
-                                        </a>
-                                    @endif
-                                </td>
-                            </tr>
+                            @if ($comanda->waiter_status == '1')
+                                <tr>
+                                    <td>{{$comanda->table->name}}</td>
+                                    <td>
+                                        {{explode(' ',$comanda->client->name)[0]}}
+                                    </td>
+                                    <td>
+                                        @php
+                                            $total_comanda_produto = 0;
+                                            foreach($comanda->products as $product){
+                                                if($product->status == 1) $total_comanda_produto += 1;
+                                            }
+                                        @endphp
+                                        {{$total_comanda_produto}}
+                                    </td>
+                                    <td>
+                                        @if ($comanda->status == 1)
+                                            <a href="{{route('waiter.comanda.pedido', $comanda->id)}}" class="btn btn-sm btn-c-orange">{{empty($comanda->waiter_id) ? 'Aceitar' : 'Pedidos'}}</a>
+                                        @else
+                                            <a href="{{route('waiter.comanda.pedido', $comanda->id)}}" class="btn btn-sm {{$comanda->payment_method == 'dinheiro' ? 'btn-danger' : 'btn-success'}}">
+                                                @if ($comanda->payment_method == 'dinheiro')
+                                                    Dinheiro
+                                                @else
+                                                    Pago
+                                                @endif
+                                            </a>
+                                        @endif
+                                    </td>
+                                </tr>
+                            @endif
                         @endforeach
                     </tbody>
                 </table>
