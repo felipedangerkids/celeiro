@@ -68,17 +68,19 @@
     </div>
 
     @yield('content')
-
+    
     <form id="logout-form" action="{{ route('store.logout') }}" method="POST" style="display: none;">
         @csrf
     </form>
     @if (!Cart::isEmpty())
+        @if (Request::is('comanda') == false && Request::is('comanda/*') == false && Request::is('mesa') == false && Request::is('mesa/*') == false)
         <div class="float-btn">
             <a href="{{ route('pre.checkout') }}"> <span class="span-cart">{{ \Cart::getTotalQuantity() }}</span>
                 <button class="btn btn-cart"><i class="fas fa-shopping-cart icon"></i>
                 </button>
             </a>
         </div>
+        @endif
     @endif
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="{{asset('assets/js/jquery.stopwatch.js')}}"></script>

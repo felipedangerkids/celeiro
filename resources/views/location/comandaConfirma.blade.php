@@ -27,39 +27,31 @@
 
         <div class="my-3 linha-horizontal"></div>
 
-        <div class="my-3">
-            <div class="row justify-content-center">
-                <div class="row">
-                    @foreach ($comanda->products as $product)
-                        @if ($product->status >= 1)
-                            <div class="col-4 my-2 mt-3">
-                                <div class="fundo-branco ">
-                                    <div class="text-center">
-                                        <div class="lata">
-                                            <a href="#">
-                                                <img style="width: 100%; object-fit: cover;" src="{{asset('storage/produtos/'.$product->product->image)}}" alt="">
-                                            </a>
-                                        </div>
-                                    </div>
-                                </div>
+        <div class="my-3 pre-visualizar-produto">
+            @foreach ($comanda->products as $product)
+                @if ($product->status >= 1)
+                    <div class="row">
+                        <div class="col-5 my-2">
+                            <div class="fundo-branco">
+                                    <img src="{{asset('storage/produtos/'.$product->product->image)}}" alt="">
                             </div>
-                            <div class="title col-6 my-2">
-                                <div class="nome_">
-                                    <span>{{$product->product->name}}</span> <br>
-                                </div>
-                                <div class="unid">
-                                    <span>{{$product->quantity}} UNID</span> <br>
-                                </div>
-                                <div class="preco">
-                                    <h2>{{ 'R$ ' . number_format($product->total_value, 2, ',', '.') }} </h2> <br>
-                                </div>
+                        </div>
+                        <div class="title col-7 my-2">
+                            <div class="nome mb-1">
+                                <span>{{$product->product->name}}</span>
                             </div>
+                            <div class="unid mb-1">
+                                <span>{{$product->quantity}} UNID</span>
+                            </div>
+                            <div class="preco">
+                                <h2>{{ 'R$ ' . number_format($product->total_value, 2, ',', '.') }} </h2>
+                            </div>
+                        </div>
 
-                            <div class="my-3 linha-horizontal"></div>
-                        @endif
-                    @endforeach
-                </div>
-            </div>
+                        <div class="my-3 linha-horizontal"></div>
+                    </div>
+                @endif
+            @endforeach
         </div>
 
         <div class="mt-auto mb-3">

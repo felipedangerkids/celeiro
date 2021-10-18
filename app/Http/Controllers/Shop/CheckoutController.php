@@ -45,14 +45,14 @@ class CheckoutController extends Controller
 
     public function preCheck()
     {
-        $adress = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
-        if ($adress) {
-            $transporte = Transporte::where('estado', $adress->estado)->where('cidade', $adress->cidade)->where('bairro', 'like', '%' . $adress->bairro . '%')->first();
+        $address = Adress::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
+        if ($address) {
+            $transporte = Transporte::where('estado', $address->estado)->where('cidade', $address->cidade)->where('bairro', 'like', '%' . $address->bairro . '%')->first();
         } else {
             $transporte = '';
         }
         $ship = ShippMethod::where('user_id', auth()->user()->id)->orderBy('created_at', 'desc')->first();
-        return view('front.carrinho.finalizar-compra', compact('adress', 'ship', 'transporte'));
+        return view('front.carrinho.finalizar-compra', get_defined_vars());
     }
 
     public function proccess()

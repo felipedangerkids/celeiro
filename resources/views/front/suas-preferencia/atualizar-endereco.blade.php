@@ -70,13 +70,7 @@
                         <div class="profile mt-3">
                             <div class="d-flex">
                                 <div>
-                                    <div class="icones-back">
-                                        <div class="text-center">
-                                            <div class="icon-img">
-                                                <img src="{{ url('assets/img/relogio.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="icon-img"><img src="{{ url('assets/img/relogio.png') }}" alt=""></div>
                                 </div>
                                 <label class="check-in" for="1">Pedir agora
                                     <input name="data" value="Pedir Agora" class="form-check-input later" id="1" type="radio">
@@ -89,13 +83,7 @@
                             <div class="row">
                                 <div class="d-flex">
                                     <div>
-                                        <div class="icones-back">
-                                            <div class="text-center">
-                                                <div class="icon-img">
-                                                    <img src="{{ url('assets/img/calendario.png') }}" alt="">
-                                                </div>
-                                            </div>
-                                        </div>
+                                        <div class="icon-img"><img src="{{ url('assets/img/calendario.png') }}" alt=""></div>
                                     </div>
                                     <div class="wrapper">
                                         <div class="lista-item">
@@ -130,10 +118,7 @@
                                                             </label>
                                                         </div>
                                                     </div>
-
-
                                                 </div>
-
                                             </div>
                                         </div>
                                     </div>
@@ -144,13 +129,7 @@
                         <div class="profile mt-3">
                             <div class="d-flex">
                                 <div>
-                                    <div class="icones-back">
-                                        <div class="text-center">
-                                            <div class="icon-img">
-                                                <img src="{{ url('assets/img/moto.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="icon-img"><img src="{{ url('assets/img/moto.png') }}" alt=""></div>
                                 </div>
                                 <label class="check-in" for="3">Receber em casa
                                     <input name="tipo" class="form-check-input" value="Receber em Casa" id="3" type="radio">
@@ -162,13 +141,7 @@
                         <div class="profile mt-3">
                             <div class="d-flex">
                                 <div>
-                                    <div class="icones-back">
-                                        <div class="text-center">
-                                            <div class="icon-img">
-                                                <img src="{{ url('assets/img/carro.png') }}" alt="">
-                                            </div>
-                                        </div>
-                                    </div>
+                                    <div class="icon-img"><img src="{{ url('assets/img/carro.png') }}" alt=""></div>
                                 </div>
                                 <label class="check-in" for="4">Retirar pedido
                                     <input name="tipo" value="Retirar Pedido" class="form-check-input" id="4" type="radio">
