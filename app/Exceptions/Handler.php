@@ -51,11 +51,13 @@ class Handler extends ExceptionHandler
         switch ($guard) {
             case 'cliente':
                 $login = 'store.login';
-                break;
-
+            break;
+            case 'waiter':
+                $login = 'waiter.login';
+            break;
             default:
                 $login = 'login';
-                break;
+            break;
         }
         return redirect()->guest(route($login));
     }
