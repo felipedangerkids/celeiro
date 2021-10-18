@@ -10,7 +10,7 @@
                     @csrf
                     <div class="formulario">
                         <div class="inputs">
-                            <input name="cpf" type="text" placeholder="CPF">
+                            <input name="cpf" type="number" placeholder="CPF">
                         </div>
                         <div class="inputs mt-3">
                             <input name="password" type="password" placeholder="SENHA">

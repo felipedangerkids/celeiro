@@ -16,7 +16,7 @@
                             <input type="email" name="email" placeholder="Email Para Contato">
                         </div>
                         <div class="inputs mt-3">
-                            <input name="cpf" type="text" placeholder="CPF">
+                            <input name="cpf" type="number" placeholder="CPF">
                         </div>
                         <div class="inputs mt-3">
                             <input type="text" id="whatsapp" name="whatsapp" placeholder="Numero de Celular">

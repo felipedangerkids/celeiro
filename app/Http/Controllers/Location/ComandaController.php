@@ -79,7 +79,7 @@ class ComandaController extends Controller
     public function give_up()
     {
         $comanda = Comanda::with('table', 'products.product')->where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->first();
-        OrderFlow::where('key', 'comanda')->where('key_id', $comanda->id)->where('status', 0)->delte();
+        OrderFlow::where('key', 'comanda')->where('key_id', $comanda->id)->where('status', 0)->update(['status' => 2]);
         ComandaProduct::where('comanda_id', $comanda->id)->delete();
         Comanda::find($comanda->id)->update(['status' => 3]);
     }
