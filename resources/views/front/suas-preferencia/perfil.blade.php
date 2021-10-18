@@ -6,7 +6,7 @@
             <h2 class="ms-2 inline-block text-white">SEUS DADOS</h2>
         </div>
 
-        <div class="mt-3">
+        <div class="mt-3 mb-5">
             <div class="row">
                 <div class="col-12 avatar d-flex justify-content-center">
                     <div class="profile-photo btn-edit-img" @if (auth()->user()->profile_photo_path) style="background-image: url('{{asset('storage/profile_path/'.auth()->user()->profile_photo_path)}}');" @endif></div>
@@ -41,7 +41,7 @@
                     @if ($address)
                         <div class="row justify-content-center">
                             <div class="col-10">{{$address->endereco}}, {{$address->numero}} - {{$address->bairro}}</div>
-                            <div class="col-10">{{$address->complemento}}, {{$address->ref}}</div>
+                            <div class="col-10">{{$address->complemento}} {{$address->complemento && $address->ref ? ', ' : ''}} {{$address->ref}}</div>
                             <div class="col-10">{{$address->cidade}}/{{$address->estado}}</div>
                             <div class="col-10 mt-3">
                                 <a href="{{route('address')}}" class="btn btn-edit d-flex justify-content-center">EDITAR <img src="{{ url('assets/img/edit.png') }}" alt=""></a>
