@@ -33,7 +33,7 @@
                     </thead>
                     <tbody>
                         @foreach ($comandas as $comanda)
-                            @if ($comanda->waiter_status == '1')
+                            @if ($comanda->waiter_status == '1' || $comanda->waiter_status == '2')
                                 <tr>
                                     <td>{{$comanda->table->name}}</td>
                                     <td>
