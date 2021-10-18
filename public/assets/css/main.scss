@@ -571,7 +571,7 @@ select:focus {
 
 .catalogo-location {
     .beer {
-        width: 100%;
+        width: 80px;
         background-color: white;
         border-radius: 19px;
         height: 80px;
@@ -582,6 +582,24 @@ select:focus {
             position: relative;
             top: 8px;
             left: 8px;
+        }
+
+        @media (max-width: 340px) {
+            width: 60px;
+            height: 70px;
+
+            img {
+                top: 14px;
+                left: 8px;
+                width: 75%;
+            }
+        }
+    }
+
+    @media (max-width: 340px) {
+        .text-orange {
+            margin-top: 5px;
+            font-size: .8rem;
         }
     }
 }
@@ -610,6 +628,12 @@ select:focus {
         .caption {
             font-size: .9rem;
             margin-bottom: 5px;
+
+            @media (max-width: 340px) {
+                button {
+                    font-size: .8rem;
+                }
+            }
         }
 
         .caption.price {
@@ -623,7 +647,7 @@ select:focus {
     .product {
         background: blue;
         width: 45%;
-        height: 336px;
+        height: 340px;
         background-color: white;
         border-radius: 19px;
         box-shadow: #eda200 0px 6px 3px 0px;
@@ -694,6 +718,20 @@ select:focus {
     .multiplicadores {
         .btn {
             background-color: #fff;
+        }
+
+        @media (max-width: 340px) {
+            div {
+                width: 40%;
+                display: flex;
+            }
+
+            .btn {
+                width: 100%;
+                span {
+                    display: none;
+                }
+            }
         }
     }
 }

@@ -50,58 +50,66 @@
             </button>
         </form>
     </div>
-    <div class="icones-gerais mt-4">
-        <div class="d-flex text-center">
-            <div class="beer">
-                <a href="{{ route('shop.cervejas') }}">
-                    <img src="{{ url('assets/img/beer 1.png') }}" alt="merg">
-                    <p class="home-p">Cervejas</p>
-                </a>
+
+    <div class="mt-5">
+        <div class="row catalogo-location justify-content-center">
+            <div class="col-3 d-flex flex-column align-items-center">
+                <div class="beer">
+                    <a href="{{ route('shop.cervejas') }}">
+                        <img src="{{ asset('assets/img/beer 1.png') }}" alt="merg">
+                    </a>
+                </div>
+                <p class="pt-2 text-orange">Cervejas</p>
             </div>
-            <div class="beer">
-                <a href="{{ route('shop.kits') }}">
-                    <img src="{{ url('assets/img/beer-box 1.png') }}" alt="">
-                    <p class="home-p">Kits</p>
-                </a>
+            <div class="col-3 d-flex flex-column align-items-center">
+                <div class="beer">
+                    <a href="{{ route('shop.kits') }}">
+                        <img src="{{ asset('assets/img/beer-box 1.png') }}" alt="">
+                    </a>
+                </div>
+                <p class="pt-2 text-orange">Kits</p>
             </div>
-            <div class="beer">
-                <a href="{{ route('shop.embutidos') }}">
-                    <img src="{{ url('assets/img/sausage 1.png') }}" alt="">
-                    <p class="home-p">embutidos</p>
-                </a>
+            <div class="col-3 d-flex flex-column align-items-center">
+                <div class="beer">
+                    <a href="{{ route('shop.embutidos') }}">
+                        <img src="{{ asset('assets/img/sausage 1.png') }}" alt="">
+                    </a>
+                </div>
+                <p class="pt-2 text-orange">embutidos</p>
             </div>
         </div>
     </div>
+
     <div class="mt-5 text-center">
         <h1>o que você <br> quer beber <br> hoje?</h1>
         <img src="{{ url('assets/img/arrow-left 1.png') }}" alt="">
     </div>
 
-    <div class="destaque-produtos mt-5">
-        <div class="text-center">
-            <div class="row">
-                @foreach ($produtos as $produto)
-                    @if ($produto->spotlight == 1)
-                        <div style="margin-bottom: 9rem !important;" class="product col-5 mt-3 mb-5">
-                            <a href="{{ route('shop.single', $produto->id) }}">
-                                <img style="object-fit: cover;" src="{{ url('storage/produtos/' . $produto->image) }}"
-                                    alt="">
+    <div class="my-3">
+        <div class="row justify-content-center product-showcase">
+            @foreach ($produtos as $product)
+                @if ($product->spotlight == 1)
+                    <div class="col-5 col-md-4 my-3 product d-flex flex-column align-items-center">
+                        <div class=" mb-3 product-image">
+                            <a href="{{ route('shop.single', $product->slug) }}">
+                                <img src="{{ asset('storage/produtos/'.$product->image) }}" alt="">
                             </a>
-                            <div class="caption">
-                                <span>{{ $produto->name }}</span>
-                            </div>
-                            <div class="caption price">
-                                <span>{{  'R$ '.number_format($produto->sellprice, 2, ',', '.') }}  </span>
-                            </div>
-                            <div class="caption price">
-                                <a href="{{ route('shop.single', $produto->id) }}">  <button class="btn btn-adicionar">Ver Mais</button></a>
-                            </div>
                         </div>
-                    @endif
-                @endforeach
-            </div>
+                        <div class="caption text-center">
+                            <span>{{ $product->name }}</span>
+                        </div>
+                        <div class="caption price mt-auto text-center text-orange">
+                            <span>{{  'R$ '.number_format($product->sellprice, 2, ',', '.') }}  </span>
+                        </div>
+                        <div class="caption mt-auto">
+                            <a href="{{ route('shop.single', $product->slug) }}">  <button class="btn btn-adicionar">Ver Mais</button></a>
+                        </div>
+                    </div>
+                @endif
+            @endforeach
         </div>
     </div>
+
     <div class="fundo">
     </div>
     </div>

@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container perfil">
+    <div class="container">
         <div class="text-center mt-5">
             <a href="{{url()->previous()}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
             <h2 class="ms-2 inline-block text-white">VOLTAR</h2>
@@ -71,10 +71,10 @@
                             </div>
                             <div class="multiplicadores mt-3 d-flex">
                                 <div>
-                                    <button type="button" class="btn btn-qty" data-method="plus" data-qty="6" data-target=".qty">+ 06 unid</button>
+                                    <button type="button" class="btn btn-qty" data-method="plus" data-qty="6" data-target=".qty">+ 06 <span>unid</span></button>
                                 </div>
                                 <div>
-                                    <button type="button" class="btn btn-qty" data-method="plus" data-qty="12" data-target=".qty">+ 12 unid</button>
+                                    <button type="button" class="btn btn-qty" data-method="plus" data-qty="12" data-target=".qty">+ 12 <span>unid</span></button>
                                 </div>
                             </div>
                             <div>

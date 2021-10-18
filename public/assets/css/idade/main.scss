@@ -138,61 +138,6 @@
     color: black !important;
 }
 
-.icones-gerais {
-    display: flex;
-    justify-content: center;
-    .beer {
-        margin-left: 20px;
-        width: 80px;
-        background-color: white;
-        border-radius: 19px;
-        height: 80px;
-        box-shadow: #eda200 0px 6px 3px 0px;
-    }
-    img {
-        position: relative;
-        top: 8px;
-        left: 0;
-    }
-}
-
-.destaque-produtos {
-    margin-left: 25px;
-    .product {
-        margin-left: 20px;
-        width: 40%;
-        height: 200px;
-        background-color: white;
-        border-radius: 19px;
-        box-shadow: #eda200 0px 6px 3px 0px;
-        margin-bottom: 9rem !important;
-    }
-    .product_ {
-        margin-top: 70px;
-        margin-left: 20px;
-        width: 40%;
-        height: 200px;
-        background-color: white;
-        border-radius: 19px;
-        box-shadow: #eda200 0px 6px 3px 0px;
-    }
-    img {
-        position: relative;
-        top: 8px;
-        left: 0;
-        width: 80%;
-        height: 180px;
-    }
-    button {
-        border: none;
-    }
-    .caption {
-        position: relative;
-        top: 30px;
-        padding: 5px 0;
-        color: white;
-    }
-}
 //PAGINA DE DESTAQUE FINALIZADA//
 
 //PRODUTO SINGLE INICIO//

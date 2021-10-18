@@ -1,6 +1,6 @@
 @extends('layouts.main')
 @section('content')
-    <div class="container perfil">
+    <div class="container">
         <div class="text-center mt-5">
             <a href="{{route('mesa.home')}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
             <h2 class="ms-2 inline-block text-white">{{mb_convert_case($slug, MB_CASE_UPPER)}}</h2>
@@ -15,7 +15,7 @@
                                 <img src="{{ asset('storage/produtos/'.$product->image) }}" alt="">
                             </a>
                         </div>
-                        <div class="caption">
+                        <div class="caption text-center">
                             <span>{{ $product->name }}</span>
                         </div>
                         <div class="caption price mt-auto text-center text-orange">

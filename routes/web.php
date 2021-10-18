@@ -67,7 +67,7 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('cervejas', [ShopController::class, 'cervejas'])->name('shop.cervejas');
     Route::get('kits', [ShopController::class, 'kits'])->name('shop.kits');
     Route::get('embutidos', [ShopController::class, 'embutidos'])->name('shop.embutidos');
-    Route::get('produto/{id}', [ShopController::class, 'single'])->name('shop.single');
+    Route::get('produto/{slug}', [ShopController::class, 'single'])->name('shop.single');
 
     Route::post('search', [ShopController::class, 'search'])->name('search');
     //cart
