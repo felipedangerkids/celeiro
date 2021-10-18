@@ -50,6 +50,22 @@ body {
         font-size: 1.5rem;
         height: auto;
     }
+
+    @media (max-width: 360px) {
+        a {
+            font-size: .8rem;
+        }
+
+        .logout {
+            font-size: 1.2rem;
+        }
+    }
+
+    @media (max-width: 340px) {
+        .col-app-home {
+            width: 100%;
+        }
+    }
 }
 
 // Formulario de login e registro
