@@ -4,6 +4,10 @@ $.ajaxSetup({
     }
 });
 
+$("#click").click(function(){
+    $("#nav").toggleClass("closed");
+});
+
 $('#whatsapp').mask('00 00000-0000');
 $('#numero').mask('0000000000000000');
 $('#validade').mask('00/00');

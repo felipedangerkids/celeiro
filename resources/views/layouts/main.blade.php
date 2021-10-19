@@ -18,6 +18,7 @@
     <script src="https://kit.fontawesome.com/0ab2bcde1c.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="{{ url('assets/css/main.min.css') }}">
     <link rel="stylesheet" href="{{ url('assets/css/idade/main.min.css') }}">
+    <link rel="stylesheet" href="{{ url('assets/css/menu.min.css') }}">
 
     <title>CELEIRO DO MALTE</title>
 </head>
@@ -37,10 +38,19 @@
         </div>
     </div>
 
-    @if (Request::is('store/login') == false && Request::is('store/register') == false && Request::is('/') == false)
+    {{-- @if (Request::is('store/login') == false && Request::is('store/register') == false && Request::is('/') == false)
         <div class="div-btn-login">
             <button type="button" class="btn btn-dark btn-open-lr"><i class="fa fa-user"></i></button>
         </div>
+    @endif --}}
+
+    @if (Request::is('store/login') == false && Request::is('store/register') == false && Request::is('/') == false)
+      <div id="nav" class="wrapcircles closed">
+        <div class="circle c-1"><span><a class="link" href="{{ route('perfil') }}"></a></span></div>
+        <div class="circle c-2"><span><a class="link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></a></span></div>
+        <div class="circle c-3"><span><a class="link" href="{{ route('home') }}"></a></span></div>
+        <div id="click" class="circle c-5"><span><a class="link"></a></span></div>
+      </div>
     @endif
 
     <div class="alert-custom">
@@ -49,7 +59,7 @@
         </div>
     </div>
 
-    <div class="aba-lr">
+    {{-- <div class="aba-lr">
         <div class="div-aba">
             @if (auth()->guard('cliente')->check())
                 <div class="links">
@@ -65,7 +75,7 @@
             <div class="links" style="margin-left: auto"><button type="button"
                     class="btn btn-close btn-close-lr"></button></div>
         </div>
-    </div>
+    </div> --}}
 
     @yield('content')
     
