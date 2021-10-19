@@ -58,10 +58,10 @@ Route::get('noti', function () {
     $type = "basic";
 
     $res = send_notification_FCM($notification_id, $title, $message, $id,$type);
-
+    /Log::info($res);
     if($res == 1){
 
-       // success code
+
 
     }else{
 
