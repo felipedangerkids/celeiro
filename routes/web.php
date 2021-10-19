@@ -50,7 +50,7 @@ use App\Http\Controllers\Location\ComandaCheckoutController;
 
 Route::get('note', function() {
 
-    $user = User::find(1);
+    $user = User::all();
     $user->notify(new AccountActivated);
 });
 
