@@ -1,14 +1,15 @@
 <?php
 
 use App\Models\User;
+use App\Models\Cliente;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Route;
 
+use Illuminate\Support\Facades\Route;
 use App\Notifications\AccountActivated;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\TesteController;
-use App\Http\Controllers\User\ShippMethod;
 
+use App\Http\Controllers\User\ShippMethod;
 use App\Http\Controllers\CapturaController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\Shop\CartController;
@@ -17,18 +18,18 @@ use App\Http\Controllers\User\UserController;
 use App\Http\Controllers\User\LoginController;
 use App\Http\Controllers\User\AdressController;
 use App\Http\Controllers\User\PedidoController;
-use App\Http\Controllers\User\PerfilController;
 
+use App\Http\Controllers\User\PerfilController;
 use App\Http\Controllers\Painel\TableController;
 use Intervention\Image\Commands\ChecksumCommand;
-use App\Http\Controllers\Painel\PainelController;
 
+use App\Http\Controllers\Painel\PainelController;
 use App\Http\Controllers\Painel\WaiterController;
 use App\Http\Controllers\Shop\CheckoutController;
 use App\Http\Controllers\User\CashbackController;
 use App\Http\Controllers\User\RegisterController;
-use App\Http\Controllers\Painel\ProductController;
 
+use App\Http\Controllers\Painel\ProductController;
 use App\Http\Controllers\Painel\SettingsController;
 use App\Http\Controllers\Location\ComandaController;
 use App\Http\Controllers\User\ShippMethodController;
@@ -47,7 +48,26 @@ use App\Http\Controllers\Location\ComandaCheckoutController;
 |
 */
 
+Route::get('noti', function () {
+    $user = Cliente::where('id', 4)->first();
 
+    $notification_id = $user->notification_id;
+    $title = "Greeting Notification";
+    $message = "Have good day!";
+    $id = $user->id;
+    $type = "basic";
+
+    $res = send_notification_FCM($notification_id, $title, $message, $id,$type);
+
+    if($res == 1){
+
+       // success code
+
+    }else{
+
+      // fail code
+    }
+});
 
 Route::get('teste', [TesteController::class, 'index']);
 
