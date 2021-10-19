@@ -49,11 +49,6 @@
         </div>
     </div>
 
-    <div class="mt-5 text-center">
-        <h1>o que você <br> quer beber <br> hoje?</h1>
-        <img src="{{ url('assets/img/arrow-left 1.png') }}" alt="">
-    </div>
-
     <div class="my-3">
         <div class="row justify-content-center product-showcase">
             @foreach ($produtos as $product)

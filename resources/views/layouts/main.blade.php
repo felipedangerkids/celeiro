@@ -46,9 +46,9 @@
 
     @if (Request::is('store/login') == false && Request::is('store/register') == false && Request::is('/') == false)
       <div id="nav" class="wrapcircles closed">
-        <div class="circle c-1"><span><a class="link" href="{{ route('perfil') }}"></a></span></div>
-        <div class="circle c-2"><span><a class="link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></a></span></div>
-        <div class="circle c-3"><span><a class="link" href="{{ route('home') }}"></a></span></div>
+        <div class="circle c-1"><a class="link" href="{{ route('perfil') }}"></a></div>
+        <div class="circle c-2"><a class="link" href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();"></a></div>
+        <div class="circle c-3"><a class="link" href="{{ route('home') }}"></a></div>
         <div id="click" class="circle c-5"><span><a class="link"></a></span></div>
       </div>
     @endif

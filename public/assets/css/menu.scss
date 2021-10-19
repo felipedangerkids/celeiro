@@ -1,4 +1,4 @@
-$radius: 15em;
+$radius: 12em;
 .circle {
   position: absolute;
   /*top: -$radius;
@@ -26,8 +26,8 @@ $radius: 15em;
     color: white;
     font-family: 'FontAwesome';
     font-size: 1.5em;
-    top: 1em;
-    right: 1em;
+    top: .6em;
+    right: .6em;
   }
 }
 .wrapcircles.closed{
@@ -41,8 +41,8 @@ $radius: 15em;
     transform: none;
     transition: all 0.3s;
     span {
-      top: (18em / 16);
-      right: 2em;
+      top: (9em / 16);
+      right: 1.5em;
       &::after {
         transform: rotate(90deg);
       }
@@ -60,7 +60,7 @@ $radius: 15em;
   display: block;
   width: 30px;
   height: 30px;
-  top: 1em;
+  top: .8em;
   right: 1em;
   position: absolute;
   &::before, &::after{
@@ -83,35 +83,38 @@ $radius: 15em;
   }
 }
 .c-1 {
-  background: #43A047;
+  background: #e39b00;
   transition-delay: 0.1s, 0.1s, 0.1s;
   transform: rotate((90deg/5) * 1);
+  z-index: 2;
   .link::before {
     transform: rotate((90deg/5) * -1);
     content: '\f4fe';
   }
 }
 .c-2 {
-  background: #388E3C;
+  background: #bd8100;
   transition-delay: 0.2s, 0.2s, 0.2s;
-  transform: rotate((90deg/5) * 2);
+  transform: rotate((100deg/5) * 2);
+  z-index: 3;
   .link::before {
-    transform: rotate((90deg/5) * -2);
+    transform: rotate((100deg/5) * -2);
     content: '\f2f5';
   }
 }
 .c-3 {
   transition-delay: 0.3s,0.3s, 0.3s;
-  background: #2E7D32;
-  transform: rotate((90deg/5) * 3);
+  background: #9d6b00;
+  transform: rotate((110deg/5) * 3);
+  z-index: 4;
   .link::before {
-    transform: rotate((90deg/5) * -3);
+    transform: rotate((110deg/5) * -3);
     content: '\f015';
   }
 }
 .c-5 {
-  background: #4CAF50;
-  z-index: -1;
+  background: #ffae00;
+  z-index: 1;
 }
 * {
   padding: 0;
