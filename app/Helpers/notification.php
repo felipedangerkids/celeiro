@@ -2,7 +2,7 @@
 
   function send_notification_FCM($notification_id, $title, $message, $id,$type) {
 
-    $accesstoken = env('FCM_KEY');
+    $accesstoken = "AIzaSyCcTnukB7zVZVr3T-Pk6-Lptswge0BDOXg";
 
     $URL = 'https://fcm.googleapis.com/fcm/send';
 
