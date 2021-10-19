@@ -195,19 +195,11 @@
                                 <input type="hidden" name="type" value="{{ $product->type }}">
                                 <input type="hidden" name="resume" value="{{ $product->resume }}">
                             </div>
-                            <div class="mt-5 d-flex">
+                            <div class="my-5 pb-5 d-flex">
                                 <button type="submit" class="btn btn-block btn-c-orange">ADICIONAR</button>
                             </div>
                         </div>
                     </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="my-5">
-            <div class="row justify-content-center">
-                <div class="col-10 d-flex p-0">
-                    <a href="{{route('comanda')}}" class="btn btn-block btn-c-location-c btn-c-orange">COMANDA</a>
                 </div>
             </div>
         </div>

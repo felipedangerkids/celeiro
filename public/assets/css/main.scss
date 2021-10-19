@@ -747,6 +747,11 @@ select:focus {
     }
 }
 
+.form-group {
+    display: flex;
+    flex-wrap: wrap;
+}
+
 .preco-add {
     .btns-add-qty {
         .input-group-prepend {

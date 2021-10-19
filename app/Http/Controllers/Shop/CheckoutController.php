@@ -92,7 +92,7 @@ class CheckoutController extends Controller
         $pedido = Pedido::create([
             'user_id' => auth()->user()->id,
             'adress_id' => $adress->id,
-            'produto_id' => null,
+            'produto_id' => 0,
             'pagamento' => $request->metodo,
             'troco' => $request->troco,
             'ship_id' => $ship->id,
@@ -298,16 +298,18 @@ class CheckoutController extends Controller
 
     }
 
-    public function pedidoConcluido($id)
+    public function pedidoConcluido($id = null)
     {
-        $payment = Payment::find($id);
-        if ($payment->payment_method == 'pix') {
-            $code = $this->getCode($payment->url_qr);
-        } else {
-            $code = '';
+        if($id){
+            $payment = Payment::find($id);
+            if ($payment->payment_method == 'pix') {
+                $code = $this->getCode($payment->url_qr);
+            } else {
+                $code = '';
+            }
         }
 
-        return view('front.carrinho.pedido-concluido', compact('payment', 'code'));
+        return view('front.carrinho.pedido-concluido', get_defined_vars());
     }
 
     public function getCode($code)

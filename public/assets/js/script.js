@@ -116,13 +116,12 @@ $(document).on('click', '.btn-verificar', function (e) {
 });
 
 $(document).on('click', '#enviar', function () {
-
     var dados = $('#form-checkout').serialize();
 
     var metodo = $('[name="metodo"]:checked').val();
-    console.log(metodo);
-    if (metodo == 'card') {
-        var isValid = true;
+
+    var isValid = true;
+    if(metodo == 'card'){
         $('.req').each(function () {
             if ($(this).val() == '') {
 
@@ -132,36 +131,9 @@ $(document).on('click', '#enviar', function () {
                 $(this).removeClass('is-invalid');
             }
         });
+    }
 
-        if (isValid) {
-            $.ajax({
-                url: 'checkout',
-                type: 'POST',
-                data: dados,
-                success: (data) => {
-                    console.log(data);
-                    if (data[0] == 'success') {
-
-                        window.location.href = 'pedido-concluido/'+data[1];
-                    }
-
-                },
-                error: (err) => {
-                    //   console.log(err.responseJSON);
-                    if (err.responseJSON == 'refused') {
-                        Swal.fire({
-                            icon: 'error',
-                            title: 'Algo de Errado!',
-                            text: "Compra não autorizada, certifique que todos os dados estão corretos"
-
-                        });
-                    }
-
-                }
-
-            });
-        }
-    } else {
+    if (isValid) {
         $.ajax({
             url: 'checkout',
             type: 'POST',
@@ -169,8 +141,11 @@ $(document).on('click', '#enviar', function () {
             success: (data) => {
                 console.log(data);
                 if (data[0] == 'success') {
-
-                    window.location.href = 'pedido-concluido/'+data[1];
+                    if(data[1]){
+                        window.location.href = 'pedido-concluido/'+data[1];
+                    }else{
+                        window.location.href = 'pedido-concluido/';
+                    }
                 }
 
             },

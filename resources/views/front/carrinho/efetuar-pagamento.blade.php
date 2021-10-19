@@ -132,58 +132,7 @@
                 </div>
             @endforeach
 
-            <div class="text-center my-5 pb-5">
-                <button type="button" id="enviar" class="btn btn-c-orange btn-c-location-c">PAGAR E FINALIZAR</button>
-            </div>
-        <form>
-
-        {{-- <form id="form-checkout">
-            
-            
-            <div class="profile mt-5">
-                <div class="row">
-                    @foreach (\Cart::getContent() as $item)
-                        <div class="col-4 my-2">
-                            <div class="fundo-branco">
-                                <div class="text-center">
-                                    <div class="lata">
-                                        <a href="#">
-                                            <img style="width: 100%; object-fit: cover;"
-                                                src="{{ url('storage/produtos/' . $item->attributes->image) }}" alt="">
-                                        </a>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="title col-6 my-2">
-                            <div class="nome_">
-                                <span>{{ $item->name }} <br> {{ $item->attributes->resume }}</span> <br>
-                            </div>
-                            <div class="unid">
-                                <span>{{ $item->quantity }} UNID</span> <br>
-                            </div>
-                            <div class="preco">
-                                <h2>{{ 'R$ ' . number_format($item->price, 2, ',', '.') }} </h2> <br>
-                            </div>
-                        </div>
-                        <div class="d-block col-2">
-                            <div class="edit">
-                                <button class="btn btn-edit">
-                                    <img src="{{ url('assets/img/edit.png') }}" alt="">
-                                </button>
-                            </div>
-                            <div class="edit mt-5">
-                                <a href="{{ route('cart.remove', $item->id) }}"><button type="button"
-                                        class="btn btn-lixeira">
-                                        <img src="{{ url('assets/img/lixeira.png') }}" alt=""></button></a>
-                            </div>
-                        </div>
-
-                    @endforeach
-                </div>
-                <div class="mt-5" id="linha-horizontal"></div>
-            </div>
-            <div class="profile mt-5">
+            <div class="mt-5">
                 @if ($transporte)
                     <div class="row">
                         <div class="col-6 my-2 mb-3">
@@ -208,10 +157,11 @@
                 </div>
                 <div class="mt-5" id="linha-horizontal"></div>
             </div>
-            <div class="text-center my-5">
-                <button type="button" id="enviar" class="btn btn-adicionar">PAGAR E FINALIZAR</button>
+
+            <div class="text-center my-5 pb-5">
+                <button type="button" id="enviar" class="btn btn-c-orange btn-c-location-c">PAGAR E FINALIZAR</button>
             </div>
-        </form> --}}
+        <form>
     </div>
 
 @endsection

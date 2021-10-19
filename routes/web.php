@@ -91,7 +91,7 @@ Route::middleware(['auth:cliente'])->group(function () {
     Route::get('process', [CheckoutController::class, 'proccess'])->name('checkout.process');
     Route::post('checkout', [CheckoutController::class, 'checkout'])->name('finish');
 
-    Route::get('/pedido-concluido/{id}', [CheckoutController::class, 'pedidoConcluido'])->name('pedido.concluido');
+    Route::get('/pedido-concluido/{id?}', [CheckoutController::class, 'pedidoConcluido'])->name('pedido.concluido');
 
     Route::get('user/pedidos', [PedidoController::class, 'index'])->name('user.pedidos');
     Route::get('user/pedidos/ver/{id}', [PedidoController::class, 'indexVer'])->name('user.pedidos.ver');
