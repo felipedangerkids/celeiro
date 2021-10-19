@@ -20,4 +20,9 @@ class Cliente extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function routeNotificationForFcm()
+    {
+        return $this->fcm_token;
+    }
 }

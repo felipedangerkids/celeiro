@@ -48,11 +48,6 @@ use App\Http\Controllers\Location\ComandaCheckoutController;
 */
 
 
-Route::get('note', function() {
-
-    $user = User::find(4);
-    $user->notify(new AccountActivated);
-});
 
 Route::get('teste', [TesteController::class, 'index']);
 
