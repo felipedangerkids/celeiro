@@ -45,6 +45,7 @@
 
     $rest = curl_exec($crl);
 
+    \Log::info($rest);
     if ($rest === false) {
         // throw new Exception('Curl error: ' . curl_error($crl));
         //print_r('Curl error: ' . curl_error($crl));
