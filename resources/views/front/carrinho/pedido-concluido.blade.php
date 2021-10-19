@@ -1,12 +1,15 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
-        <div class="logo-img mt-5">
-            <img src="{{ url('assets/img/Camada x0020 2.png') }}" alt="">
+        <div class="text-center mt-5">
+            <a href="{{route('shop')}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
+            <h2 class="ms-2 inline-block text-white">VOLTAR</h2>
         </div>
-        <div class="sub-logo mt-4">
-            <img src="{{ url('assets/img/Camada x0020 3.png') }}" alt="">
+
+        <div class="text-center mt-3">
+            <img class="img-fluid" src="{{ asset('assets/img/logo-simples.png')}}" alt="">
         </div>
+
         <div class="idade pt-5">
             @if (isset($payment))
                 @if($payment->payment_method == 'card')

@@ -6,6 +6,10 @@
             <h2 class="ms-2 inline-block text-white">CERVEJAS</h2>
         </div>
 
+        <div class="text-center mt-3">
+            <img class="img-fluid" src="{{ asset('assets/img/logo-simples.png')}}" alt="">
+        </div>
+
         <div class="mt-5">
             <div class="row catalogo-location justify-content-center">
                 <div class="col-3 d-flex flex-column align-items-center">

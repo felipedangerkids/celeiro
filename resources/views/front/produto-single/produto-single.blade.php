@@ -1,88 +1,13 @@
 @extends('layouts.main')
 @section('content')
-    {{-- <form action="{{ route('cart.add') }}" method="post">
-            <div class="text-center">
-                <h1>{{ $produto->name }} <br> {{ $produto->resume }}</h1>
-            </div>
-            <div class="text-center mt-3">
-                <button class="btn btn-american-ipa">{{ $produto->type }}</button>
-            </div>
-            <div class="desc text-center mt-5 font">
-                <p>Descrição
-                    {{ $produto->description }}</p>
-            </div>
-            <div class="preco">
-                <div class="text-center mt-5">
-                    <h1>R$32,00</h1>
-                </div>
-                <div class="text-center">
-                    <button type="button" onclick="menos()" class="a">-</button><input class="text-center" min="1"
-                        id="total" name="quantity" value="0" type="number"><button type="button" onclick="mais()" class="b">+</button>
-                </div>
-                <div class="multiplicadores mt-3 d-flex">
-                    <div>
-                        <button type="button" onclick="seis()" class="c">+ 06 unid</button>
-                    </div>
-                    <div>
-                        <button type="button" onclick="doze()" class="d">+ 12 unid</button>
-                    </div>
-                </div>
-                <div>
-                    <input type="hidden" name="id" value="{{ $produto->id }}">
-                    <input type="hidden" name="name" value="{{ $produto->name }}">
-                    <input type="hidden" name="price" value="{{ $produto->sellprice }}">
-                    <input type="hidden" name="image" value="{{ $produto->image }}">
-                    <input type="hidden" name="bitterness" value="{{ $produto->bitterness }}">
-                    <input type="hidden" name="ibv" value="{{ $produto->ibv }}">
-                    <input type="hidden" name="type" value="{{ $produto->type }}">
-                    <input type="hidden" name="resume" value="{{ $produto->resume }}">
-                </div>
-                <div>
-                    <div class="text-center mt-4">
-                        <button type="submit" class="btn btn-adicionar">ADICIONAR</button>
-                    </div>
-                    <div class="text-center mt-4">
-                      <a href="{{ route('pre.checkout') }}"> <button type="button" class="btn btn-adicionar">ITENS ({{ \Cart::getTotalQuantity() }}) {{  'R$ '.number_format(\Cart::getTotal(), 2, ',', '.') }}  </button></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-    <div class="fundo">
-    </div>
-    <script>
-        function mais() {
-            var atual = document.getElementById("total").value;
-            var novo = atual - -1; //Evitando Concatenacoes
-            document.getElementById("total").value = novo;
-        }
-
-        function seis() {
-            var atual = document.getElementById("total").value;
-            var novo = atual - -6; //Evitando Concatenacoes
-            document.getElementById("total").value = novo;
-        }
-
-        function doze() {
-            var atual = document.getElementById("total").value;
-            var novo = atual - -12; //Evitando Concatenacoes
-            document.getElementById("total").value = novo;
-        }
-
-        function menos() {
-            var atual = document.getElementById("total").value;
-            if (atual > 0) {
-                //evita números negativos
-                var novo = atual - 1;
-                document.getElementById("total").value = novo;
-            }
-        }
-    </script> --}}
-
     <div class="container">
         <div class="text-center mt-5">
             <a href="{{url()->previous()}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
             <h2 class="ms-2 inline-block text-white">VOLTAR</h2>
+        </div>
+
+        <div class="text-center mt-3">
+            <img class="img-fluid" src="{{ asset('assets/img/logo-simples.png')}}" alt="">
         </div>
 
         <div class="mt-5">

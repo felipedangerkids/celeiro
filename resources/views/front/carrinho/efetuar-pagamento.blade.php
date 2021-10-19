@@ -6,6 +6,10 @@
             <h2 class="ms-2 inline-block text-white">VOLTAR</h2>
         </div>
 
+        <div class="text-center mt-3">
+            <img class="img-fluid" src="{{ asset('assets/img/logo-simples.png')}}" alt="">
+        </div>
+
         <div class="text-center pt-4">
             <h1>EFETUAR <br> PAGAMENTO</h1>
         </div>

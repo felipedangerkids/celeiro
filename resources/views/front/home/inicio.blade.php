@@ -1,44 +1,13 @@
 @extends('layouts.main')
 @section('content')
 <div class="container">
-    {{-- @if (auth()->guard('cliente')->check())
-        <div class="container">
-            <div class="profile mt-5">
-                <div class="d-flex">
-                    <div>
-                        <a href="">
-                            <img src="{{ url('assets/img/Group 1.png') }}" alt="">
-                        </a>
-                    </div>
-                    <div class="spans">
-                        <div class="receber">
-                            <span>Receber agora em:</span> <br>
-                        </div>
-                        <div class="endereco">
-                            <a href="/perfil">
-                                <span>Avenida do Batel, 600-Batel, Curitiba-PR</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    @else
-        <div class="container">
-            <div class="profile mt-5">
-                <div class="d-flex">
-                    <div class="spans">
-                        <div class="endereco text-center">
-                            <a href="/perfil">
-                                <span>Faça login para ver seu endereço.</span>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-    @endif --}}
-    <div class="sub-logo mt-4">
-        <img src="{{ url('assets/img/Camada x0020 3.png') }}" alt="">
+    <div class="text-center mt-5">
+        <a href="{{route('home')}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
+        <h2 class="ms-2 inline-block text-white">VOLTAR</h2>
+    </div>
+
+    <div class="text-center mt-3">
+        <img class="img-fluid" src="{{ asset('assets/img/logo-simples.png')}}" alt="">
     </div>
 
     <div class="submit-line mt-3 text-center">
