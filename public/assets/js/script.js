@@ -192,36 +192,52 @@ $(document).ready(function () {
         $('#form-login').find('input').prop('disabled', true);
         $('#form-login').find('.invalid-feedbeck').remove();
 
-        $.ajax({
-            url: url,
-            type: 'POST',
-            data: form,
-            success: (data) => {
-                // console.log(data);
+        var cpf = $('#form-login').find('[name="cpf"]').val();
 
-                window.location.href = data;
-            },
-            error: (err) => {
-                // console.log(err);
-                var errors = err.responseJSON.errors;
-
+        var isValidCpf = true;
+        if(cpf){
+            // Testa a validação
+            if ( valida_cpf_cnpj( cpf ) == false ) {
+                isValidCpf = false;
+                $('#form-login').find('[name="cpf"]').focus().parent().append('<span class="invalid-feedbeck">O campo cpf está incorreto</span>');;
                 btn.html('ENTRAR');
                 btn.prop('disabled', false);
                 $('#form-login').find('input').prop('disabled', false);
-
-                if (errors) {
-                    console.log(errors);
-                    $.each(errors, (key, value) => {
-                        $('#form-login').find('[name="' + key + '"]').parent().append('<span class="invalid-feedbeck">' + value[0] + '</span>');
-                    });
-                } else {
-                    Swal.fire({
-                        icon: 'error',
-                        title: err.responseJSON.invalid
-                    });
-                }
             }
-        });
+        }
+
+        if(isValidCpf){
+            $.ajax({
+                url: url,
+                type: 'POST',
+                data: form,
+                success: (data) => {
+                    // console.log(data);
+
+                    window.location.href = data;
+                },
+                error: (err) => {
+                    // console.log(err);
+                    var errors = err.responseJSON.errors;
+
+                    btn.html('ENTRAR');
+                    btn.prop('disabled', false);
+                    $('#form-login').find('input').prop('disabled', false);
+
+                    if (errors) {
+                        // console.log(errors);
+                        $.each(errors, (key, value) => {
+                            $('#form-login').find('[name="' + key + '"]').parent().append('<span class="invalid-feedbeck">' + value[0] + '</span>');
+                        });
+                    } else {
+                        Swal.fire({
+                            icon: 'error',
+                            title: err.responseJSON.invalid
+                        });
+                    }
+                }
+            });
+        }
     });
 
     $(document).on('click', '.btn-edit-img', function () {

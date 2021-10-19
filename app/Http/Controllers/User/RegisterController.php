@@ -55,12 +55,12 @@ class RegisterController extends Controller
         $save = Cliente::create([
             'name' => $request->name,
             'email' => $request->email,
-            'cpf' => (str_replace(['.','-'],'',$request->cpf)),
+            'cpf' => $request->cpf,
             'password' => Hash::make($request->password),
             'whatsapp' => $request->whatsapp,
         ]);
 
-        if (Auth::guard('cliente')->attempt(['cpf' => (str_replace(['.','-'],'',$request->cpf)), 'password' => $request->password])) {
+        if (Auth::guard('cliente')->attempt(['cpf' => $request->cpf, 'password' => $request->password])) {
 
             if(\Cart::getContent()->count() > 0){
                 return response()->json(route('pre.checkout'), 200);

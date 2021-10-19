@@ -25,10 +25,10 @@ class LoginController extends Controller
 
         $remember = $request->remember ? true : false;
 
-        $authValid = Auth::guard('cliente')->validate(['cpf' => (str_replace(['.','-'],'',$request->cpf)), 'password' => $request->password]);
+        $authValid = Auth::guard('cliente')->validate(['cpf' => $request->cpf, 'password' => $request->password]);
         
         if($authValid){
-            if (Auth::guard('cliente')->attempt(['cpf' => (str_replace(['.','-'],'',$request->cpf)), 'password' => $request->password],$remember)) {
+            if (Auth::guard('cliente')->attempt(['cpf' => $request->cpf, 'password' => $request->password],$remember)) {
 
                 if($cookie_maior18) setcookie('cookie_maior18', $cookie_maior18, null, '/');
                 if(\Cart::getContent()->count() > 0){
