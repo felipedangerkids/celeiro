@@ -40,12 +40,6 @@
         </div>
     </div>
 
-    {{-- @if (Request::is('store/login') == false && Request::is('store/register') == false && Request::is('/') == false)
-        <div class="div-btn-login">
-            <button type="button" class="btn btn-dark btn-open-lr"><i class="fa fa-user"></i></button>
-        </div>
-    @endif --}}
-
     @if (Request::is('store/login') == false && Request::is('store/register') == false && Request::is('/') == false)
         <div id="nav" class="wrapcircles closed">
             <div class="circle c-1"><a class="link" href="{{ route('perfil') }}"></a></div>
@@ -55,30 +49,6 @@
             <div id="click" class="circle c-5"><span><a class="link"></a></span></div>
         </div>
     @endif
-
-    <div class="alert-custom">
-        <div class="w-100 text-dark alert alert-success" role="alert">
-            @if (session()->has('success')) {{ session()->get('success') }} @endif
-        </div>
-    </div>
-
-    {{-- <div class="aba-lr">
-        <div class="div-aba">
-            @if (auth()->guard('cliente')->check())
-                <div class="links">
-                    <a href="{{ route('perfil') }}">{{ explode(' ', auth()->guard('cliente')->user()->name, )[0] }}</a>
-                </div>
-                <div class="links">|</div>
-                <div class="links">
-                    <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">Sair</a>
-                </div>
-                <div class="links">|</div>
-                <div class="links"><a href="{{ route('home') }}">Home</a></div>
-            @endif
-            <div class="links" style="margin-left: auto"><button type="button"
-                    class="btn btn-close btn-close-lr"></button></div>
-        </div>
-    </div> --}}
 
     @yield('content')
 
@@ -140,17 +110,41 @@
                 }
             });
         })
-
-        $(document).ready(function() {
-            if ('{{ session()->has('success') }}') {
-                $('.alert-custom').css('height', '100vh');
-
-                setTimeout(() => {
-                    $('.alert-custom').css('height', '0');
-                }, 1300);
-            }
-        });
     </script>
+
+    @if(Session::has('success'))
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: "{{Session::get('success')}}",
+
+            }).then((value) => {
+                // location.reload();
+            }).catch(swal.noop);
+        </script>
+    @endif
+    @if(Session::has('error'))
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'error',
+                title: "{{Session::get('error')}}",
+
+            }).then((value) => {
+                // location.reload();
+            }).catch(swal.noop);
+        </script>
+    @endif
+    @if(Session::has('info'))
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'info',
+                title: "{{Session::get('info')}}",
+
+            }).then((value) => {
+                // location.reload();
+            }).catch(swal.noop);
+        </script>
+    @endif
     <script type="module">
         // Import the functions you need from the SDKs you need
         import { initializeApp } from "https://www.gstatic.com/firebasejs/9.1.3/firebase-app.js";

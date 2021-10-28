@@ -1,15 +1,16 @@
 @extends('layouts.main')
 @section('content')
     <div class="container">
-        <div class="text-center pt-4">
-            <h1>SEUS <br> PEDIDOS</h1>
+        <div class="text-center mt-3">
+            <a href="{{route('home')}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
+            <h2 class="ms-2 inline-block text-white">PEDIDOS</h2>
         </div>
-        <div class="text-center pt-4">
-            <a href="{{route('perfil')}}" class="btn btn-continuar">Voltar</a>
+
+        <div class="text-center mt-4 mb-4">
+            <img class="img-fluid" src="{{ asset('assets/img/logo-simples.png')}}" alt="">
         </div>
     </div>
     @foreach ($pedidos as $pedido)
-
         <div class="pedido my-4">
                 <div class="container">
                     <div class="row">

@@ -818,17 +818,6 @@ select:focus {
     }
 }
 
-.alert-custom {
-    position: absolute;
-    z-index: 1000;
-    top: 0;
-    left: 0;
-    right: 0;
-    transition: .9s;
-    height: 0;
-    overflow: hidden;
-}
-
 .table-custom {
     width: 100%;
 
@@ -896,6 +885,7 @@ select:focus {
     }
 
     .title {
+        position: relative;
         .nome {
             width: 100%;
         }
@@ -912,6 +902,14 @@ select:focus {
                 position: relative;
                 left: -10px;
             }
+        }
+
+        .edit-custom {
+            position: absolute;
+            right: -31px;
+            justify-content: end;
+            display: flex;
+            top: 0;
         }
     }
 }

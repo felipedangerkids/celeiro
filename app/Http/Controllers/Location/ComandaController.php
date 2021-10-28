@@ -57,7 +57,12 @@ class ComandaController extends Controller
             return view('location.waitWaiter', get_defined_vars());
         }
 
-        return redirect()->route('mesa.home')->with('success', 'Aguarde enquanto seu pedido é montado!');
+        if(session()->has('comanda_aceita')){
+            return redirect()->route('mesa.home')->with('info', 'Aguarde enquanto o garçom prepara seu pedido, logo entregará na sua mesa!');
+        }else{
+            session(['comanda_aceita', 'true']);
+            return redirect()->route('mesa.home')->with('info', 'Garçom já anotou seu pedido e já esta preparando, logo entregará na sua mesa!');
+        }
     }
     public function comandaConfirma()
     {

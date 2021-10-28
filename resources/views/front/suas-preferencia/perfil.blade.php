@@ -1,7 +1,7 @@
 @extends('layouts.main')
 @section('content')
     <div class="container perfil">
-        <div class="text-center mt-5">
+        <div class="text-center mt-4">
             <a href="{{route('home')}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
             <h2 class="ms-2 inline-block text-white">SEUS DADOS</h2>
         </div>
@@ -19,6 +19,12 @@
                         </button>
                     </div>
                     <input type="file" id="file-custom" data-route="{{route('perfil.photo.update')}}">
+                </div>
+
+                <div class="my-3 linha-horizontal"></div>
+
+                <div class="d-flex my-3">
+                    <a href="{{route('user.pedidos')}}" class="btn btn-block btn-c-orange">MEUS PEDIDOS</a>
                 </div>
 
                 <div class="my-3 linha-horizontal"></div>

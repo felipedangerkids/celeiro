@@ -3,6 +3,11 @@
 @section('content')
     <div class="container-fluid py-4 font top-header">
         <div class="container">
+            <div class="text-center mt-1">
+                <a href="{{url()->previous()}}"><img src="{{asset('assets/img/arrow-left.png')}}" alt=""></a>
+                <h2 class="ms-2 inline-block text-white">VOLTAR</h2>
+            </div>
+
             @if ($pedido->status !== 5)
                 @if ($pedido->ship->tipo == 'Receber em Casa')
                     <div class="text-center mt-2 mb-4">
@@ -53,37 +58,31 @@
         </div>
     </div>
 
-    <div class="container font">
+    <div class="container pre-visualizar-produto font">
         @php
             $valor_pedido = 0;
         @endphp
         @foreach ($items as $item)
-        @php
-            $valor_pedido += ($item->quantity * $item->unit_price);
-        @endphp
-            <div class="row justify-content-center">
-                <div class="col-5 my-2 mt-3">
-                    <div class="fundo-branco ">
-                        <div class="text-center">
-                            <div class="lata">
-                                <a href="#">
-                                    <img style="width: 100%; object-fit: cover;"
-                                        src="{{ url('storage/produtos/' . $item->produto->image) }}" alt="">
-                                </a>
-                            </div>
-                        </div>
+            @php
+                $valor_pedido += ($item->quantity * $item->unit_price);
+            @endphp
+            <div class="row">
+                <div class="col-5 my-2">
+                    <div class="fundo-branco">
+                        <img src="{{asset('storage/produtos/'.$item->produto->image)}}" alt="">
                     </div>
                 </div>
-                <div class="title col-6 d-flex flex-column">
-                    <div class="nome_">
-                        <span>{{ $item->produto->name }}</span>
+                <div class="title col-6 my-2">
+                    <div class="nome mb-1">
+                        <span>{{$item->produto->name}}</span>
                     </div>
-                    <div class="unid">
-                        <span>R$ {{ number_format($item->unit_price, 2, ',', '.') }} UNID</span> <br>
+                    <div class="unid mb-1">
+                        <span>R$ {{ number_format($item->unit_price, 2, ',', '.') }} UNID</span>
                     </div>
-                    <div class="preco-pedido mt-4 d-flex">
-                        <div>{{$item->quantity}}</div>
-                        <div>{{ 'R$ ' . number_format(($item->quantity * $item->unit_price), 2, ',', '.') }}</div>
+                    <div class="preco d-flex mb-1">
+                        <div class="me-2">{{$item->quantity}}</div>
+                        x
+                        <div class="ms-2">{{ 'R$ ' . number_format(($item->quantity * $item->unit_price), 2, ',', '.') }}</div>
                     </div>
                 </div>
             </div>
