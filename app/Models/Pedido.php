@@ -20,7 +20,7 @@ class Pedido extends Model
     ];
     public function users()
     {
-        return $this->belongsTo(User::class, 'user_id');
+        return $this->hasOne(Cliente::class, 'id', 'user_id');
     }
     public function adress()
     {
