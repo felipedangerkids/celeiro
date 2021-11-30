@@ -196,7 +196,7 @@ $(document).ready(function () {
         $('#form-login').find('input').prop('disabled', true);
         $('#form-login').find('.invalid-feedbeck').remove();
 
-        var cpf = $('#form-login').find('[name="cpf"]').val();
+        var cpf = $('#form-login').find('.cpf').val();
 
         var isValidCpf = true;
         if(cpf){

@@ -18,6 +18,7 @@ class LocationController extends Controller
     {
         $comanda = Comanda::where('client_id', auth()->guard('cliente')->user()->id)->where('status', 1)->get();
         if($comanda->count() > 0) return redirect()->route('mesa.home');
+        session()->forget('comanda_aceita');
 
         $unities = Unity::all();
         return view('location.checkIn', get_defined_vars());

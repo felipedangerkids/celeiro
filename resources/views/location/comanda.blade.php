@@ -9,10 +9,7 @@
         <div class="mt-2 texto-comanda">
             <div class="row justify-content-center">
                 <div class="col-10 text-center">
-                    @php
-                        $cpf = auth()->guard('cliente')->user()->cpf;
-                    @endphp
-                    <h5>CPF: <span class="text-orange">{{substr($cpf, 0, 3)}}.{{substr($cpf, 3, 3)}}.{{substr($cpf, 6, 3)}}-{{substr($cpf, 9, 2)}}</span></h5>
+                    <h5>CPF: <span class="text-orange">{{auth()->guard('cliente')->user()->cpf}}</span></h5>
                 </div>
                 <div class="col-10 text-center">
                     <h5>MESA: <span class="text-orange">{{$comanda->table->name}}</span></h5>

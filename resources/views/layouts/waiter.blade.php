@@ -30,12 +30,6 @@
         </div>
     @endif
 
-    <div class="alert-custom">
-        <div class="w-100 text-dark alert alert-success" role="alert">
-            @if(session()->has('success')) {{session()->get('success')}} @endif
-        </div>
-    </div>
-
     <div class="aba-lr">
         <div class="div-aba">
             @if (auth()->guard('waiter')->check())
@@ -91,6 +85,40 @@
             }
         });
     </script>
+
+    @if(Session::has('success'))
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'success',
+                title: "{{Session::get('success')}}",
+
+            }).then((value) => {
+                // location.reload();
+            }).catch(swal.noop);
+        </script>
+    @endif
+    @if(Session::has('error'))
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'error',
+                title: "{{Session::get('error')}}",
+
+            }).then((value) => {
+                // location.reload();
+            }).catch(swal.noop);
+        </script>
+    @endif
+    @if(Session::has('info'))
+        <script type="text/javascript">
+            Swal.fire({
+                icon: 'info',
+                title: "{{Session::get('info')}}",
+
+            }).then((value) => {
+                // location.reload();
+            }).catch(swal.noop);
+        </script>
+    @endif
 </body>
 
 </html>

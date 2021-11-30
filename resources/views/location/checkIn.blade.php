@@ -15,10 +15,7 @@
                     <h3>OLÁ, {{mb_convert_case($user_name[0].(count($user_name) > 0 ? ' '.($user_name[(count($user_name) - 1)]) : ''), MB_CASE_UPPER)}}</h3>
                 </div>
                 <div class="col-10 text-center">
-                    @php
-                        $cpf = auth()->guard('cliente')->user()->cpf;
-                    @endphp
-                    <h3>CPF: <span class="text-orange">{{substr($cpf, 0, 3)}}.{{substr($cpf, 3, 3)}}.{{substr($cpf, 6, 3)}}-{{substr($cpf, 9, 2)}}</span></h3>
+                    <h3>CPF: <span class="text-orange">{{auth()->guard('cliente')->user()->cpf}}</span></h3>
                 </div>
             </div>
         </div>
