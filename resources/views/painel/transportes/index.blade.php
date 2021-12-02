@@ -59,7 +59,7 @@
 </div>
 
 {{-- modal --}}
-<div class="modal fade" id="addTransportes" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addTransportesLabel" aria-hidden="true">
+<div class="modal " id="addTransportes" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addTransportesLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
             <div class="modal-header">
