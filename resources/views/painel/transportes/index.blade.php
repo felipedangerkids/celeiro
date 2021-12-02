@@ -57,7 +57,11 @@
             </tbody>
     </table>
 </div>
-
+<style>
+    .modal-backdrop.show{
+    display: none !important;
+}
+</style>
 {{-- modal --}}
 <div class="modal " id="addTransportes" data-backdrop="static" data-keyboard="false" tabindex="-1" aria-labelledby="addTransportesLabel" aria-hidden="true">
     <div class="modal-dialog modal-dialog-centered">
