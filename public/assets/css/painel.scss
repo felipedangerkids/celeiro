@@ -84,7 +84,9 @@ a:focus {
     padding: 20px;
     background: #333332;
 }
-
+.modal-backdrop.show{
+    display: none !important;
+}
 #sidebar ul.components {
     padding: 20px 0;
     border-bottom: 1px solid #333332;
